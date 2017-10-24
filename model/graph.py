@@ -12,7 +12,7 @@ class Graph(object):
         node = Node(self, id)
         self.nodeIdToIndex[node.id] = len(self.nodes)
         self.nodes.append(node)
-        
+
     def hasEdge(self,n1Id,n2Id):
         assert n1Id < n2Id
         for pageIdx in self.pages:
@@ -27,24 +27,24 @@ class Graph(object):
         return n1Id,n2Id
     def addEdge(self,n1Id,n2Id,p):
         self.pageNumber = max(self.pageNumber, p)
-        
+
         if not p in self.pages:
             self.pages[p] = set()
         page = self.pages[p]
-        
+
         n1Id,n2Id = self._normalizeEdge(n1Id,n2Id)
-        
+
         if self.hasEdge(n1Id,n2Id):
             return
-        
+
         page.add((n1Id, n2Id))
-        
+
         n1 = self.getNodeByID(n1Id)
         n1.neighbours.add(n2Id)
-        
+
         n2 = self.getNodeByID(n2Id)
         n2.neighbours.add(n1Id)
-        
+
     def areEdgesCrossing(self, e1, e2):
         e1Idx = (self.getNodeIndex(e1[0]), self.getNodeIndex(e1[1]))
         e2Idx = (self.getNodeIndex(e2[0]), self.getNodeIndex(e2[1]))
@@ -52,8 +52,8 @@ class Graph(object):
             tmp = e1Idx
             e1Idx = e2Idx
             e2Idx = tmp
-        return e2Idx[0] < e1Idx[1] and e2Idx[1] > e1Idx[1]
-        
+        return e1Idx[0] < e2Idx[0] < e1Idx[1] < e2Idx[1]
+
     def canAddToPage(self,n1Id, n2Id, p):
         if not p in self.pages:
             return True
@@ -64,25 +64,65 @@ class Graph(object):
             if self.areEdgesCrossing(toCheck, edge):
                 return False
         return True
-        
+
+    def numCrossingsIfAddedToPage(self, n1Id, n2Id, p):
+        crossings = 0
+
+        if not p in self.pages:
+            return 0
+        toCheck = self._normalizeEdge(n1Id,n2Id)
+        if toCheck in self.pages[p]:
+            return 0
+        for edge in self.pages[p]:
+            if self.areEdgesCrossing(toCheck, edge):
+                crossings += 1
+        return crossings
+
+    def numCrossings(self):
+        crossings = 0
+
+        for p in self.pages:
+            for edge1 in self.pages[p]:
+                for edge2 in self.pages[p]:
+                    if self.areEdgesCrossing(edge1, edge2):
+                        crossings += 1
+
+        return crossings / 2
+
     def getEdges(self):
         for page in self.pages:
             for edge in self.pages[page]:
                 yield (edge[0], edge[1], page)
-        
+
     def getNodeByID(self,id):
         return self.nodes[self.nodeIdToIndex[id]]
-    
+
     def getNodeByIndex(self,idx):
         return self.nodes[idx]
-    
+
     def getNodeIndex(self,id):
         return self.nodeIdToIndex[id]
-    
+
     def getDistance(self,n1Id,n2Id):
         i1 = self.nodeIdToIndex[n1Id]
         i2 = self.nodeIdToIndex[n2Id]
         return abs(i1-i2)
+
+    def reorder(self, newOrdering):
+        self.nodes = [self.nodes[i] for i in newOrdering]
+        for i in range(len(self.nodes)):
+            self.nodeIdToIndex[self.nodes[i].id] = i
+
+        edges = self.getEdges()
+        copiedEdges = list()
+        for edge in edges:
+            copiedEdges.append(edge)
+
+        self.pages = {}
+
+        for edge in copiedEdges:
+            self.addEdge(edge[0], edge[1], 0)
+
     
     def read(self, filepath):
         with open(filepath, newline='') as csvfile:
@@ -142,6 +182,12 @@ class Node(object):
                 self._insertionSort(distances)
                 
         return distances
+
+    def getNeighbours(self):
+        neighbours = list()
+        for otherId in self.neighbours:
+            neighbours.append(self.graph.getNodeByID(otherId))
+        return neighbours
             
     def _insertionSort(self,alist):
         for index in range(1,len(alist)):

@@ -10,6 +10,7 @@ from model.graph  import Graph
 from BEP_Visualizer.BEP_visualizer import View
 from solvers.GreedyLongestChain import *
 from solvers.FastGreedy import *
+from solvers.DepthFirstVertexOrder import *
 
 import tkinter as tk
 from tkinter import *
@@ -45,7 +46,7 @@ USAGE
         parser.add_argument('output', metavar='output-file', type=str, nargs='?', help="Book embedding output file")
         parser.add_argument("-s", "--solve", dest="solve", action="store_true", help="Calculate solution")
         parser.add_argument("-v", "--view", dest="view", action="store_true", help="View input file")
-        parser.add_argument("-c", "--construction", dest="construction", action="store_true", default="FastGreedy", help="Choose construction heuristic")
+        parser.add_argument("-c", "--construction", dest="construction", action="store", default="FastGreedy", help="Choose construction heuristic")
 
         # Process arguments
         args = parser.parse_args()
@@ -60,6 +61,9 @@ USAGE
             elif args.construction.lower() == "fastgreedy":
                 print("Creating initial solution using fast greedy method")
                 constructSolutionFast(graph)
+            elif args.construction.lower() == "dfs":
+                print("Creating initial vertex order using dfs method")
+                constructVertexOrderDFS(graph)
                 
         if args.output:
             graph.write(args.output)

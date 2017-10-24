@@ -62,7 +62,13 @@ class View():
             if p%2 is 1:
                 start = 90
 
-            self.canvas.create_arc(left_inset-width, pos1, left_inset+width, pos2, style=tk.ARC, start=start, extent = 180, outline=tk_rgb, width = 2)
+            dash = None
+            if p%3 is 1:
+                dash = (8, 8, 16)
+            elif p%3 is 2:
+                dash = (12, 8, 4, 8)
+
+            self.canvas.create_arc(left_inset-width, pos1, left_inset+width, pos2, style=tk.ARC, start=start, extent = 180, outline=tk_rgb, width = 3, dash=dash)
 
 
 
