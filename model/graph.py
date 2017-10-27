@@ -233,3 +233,48 @@ class Node(object):
     def __ne__(self, other):
         return not self == other
     
+class Page(object):
+    
+    def __init__(self):
+        self.edges = {}
+        self.redges = {}
+        
+    def addEdge(self,id1,id2):
+        id1,id2 = self._normalizeEdge(id1, id2)
+        if not id1 in self.edges:
+            self.edges[id1] = set()
+            self.redges[id2] = set()
+            
+        self.edges[id1].add(id2)
+        self.redges[id2].add(id1)
+        
+    def removeEdge(self,id1,id2):
+        id1, id2 = self._normalizeEdge(id1,id2)
+        if id1 in self.edges:
+            myset = self.edges[id1]
+            del myset[id2]
+            if len(myset)==0:
+                del self.edges
+                
+            myset = self.redges[id2]    
+            del myset[id1]
+            if len(myset)==0:
+                del self.edges
+                        
+    def getAllEdges(self):
+        for id1 in self.edges:
+            for id2 in self.edges[id1]:
+                yield (id1,id2)
+            
+    def getEdges(self, startId):
+        for id2 in self.edges[startId]:
+            yield (startId,id2)
+                
+        
+    def _normalizeEdge(self,n1Id,n2Id):
+        if(n1Id>n2Id):
+            tmp = n1Id
+            n1Id = n2Id
+            n2Id = tmp
+        return n1Id,n2Id
+    
