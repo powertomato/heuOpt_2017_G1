@@ -151,6 +151,25 @@ class Graph(object):
             
             for edge in self.getEdges():
                 writefile.write("%d %d [%d]\n" % edge)
+    
+    def copy(self):
+        ret = Graph()
+        
+        ret.nodes = list()
+        for node in self.nodes:
+            new = node.copy(ret)
+        ret.nodeIdToIndex = dict(self.nodeIdToIndex)
+        ret.pages = {}
+        for pageIdx in self.pages:
+            ret.pages[pageIdx] = dict(self.pages[pageIdx])
+        ret.pageNumber = ret.pageNumber
+    
+    def __eq__(self, other):
+        return self.pages == other.pages
+    
+    def __ne__(self, other):
+        return not self == other
+        
                     
 class Node(object):
     def __init__(self, graph, id):
@@ -200,4 +219,17 @@ class Node(object):
                 position = position-1
     
             alist[position]=currentvalue
+
+    def copy(self, graph=None):
+        if(graph==None):
+            graph = self.graph
+        new = Node(graph, self.id)
+        new.neighbours = set(self.neighbours)
+        new.neighboursMarked = set(self.neighboursMarked)
                 
+    def __eq__(self, other):
+        return self.id == other.id
+    
+    def __ne__(self, other):
+        return not self == other
+    

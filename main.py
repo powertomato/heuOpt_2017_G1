@@ -46,7 +46,7 @@ USAGE
         parser.add_argument('output', metavar='output-file', type=str, nargs='?', help="Book embedding output file")
         parser.add_argument("-s", "--solve", dest="solve", action="store_true", help="Calculate solution")
         parser.add_argument("-v", "--view", dest="view", action="store_true", help="View input file")
-        parser.add_argument("-c", "--construction", dest="construction", action="store", default="FastGreedy", help="Choose construction heuristic")
+        parser.add_argument("-c", "--construction", dest="construction", action="store", default="dfs", help="Choose construction heuristic")
 
         # Process arguments
         args = parser.parse_args()
