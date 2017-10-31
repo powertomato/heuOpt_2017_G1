@@ -3,46 +3,76 @@ import random
 
 class Neighborhood(object):
     
-    def __init__(self, stepFunction, evaluator):
-        self.stepFunction = stepFunction
-        self.evaluator = evaluator
-        
-    def chooseOne(self, x):
-        return self.stepFunction(self,x)
-        
-    def choose(self, x, num):
-        raise Exception("Abstract: not implemented")
+    RANDOM = 1
+    NEXT = 2
+    BEST = 3
     
-    def size(self, x):
-        raise Exception("Abstract: not implemented")
-
-def stepFunctionRandom(neighborhood, x):
-    n = neighborhood.size(x)-1
-    return neighborhood.choose(x, random.randint(1,n))
+    def __init__(self, strategy, evaluator):
+        self.strategy = strategy
+        self.evaluator = evaluator
+        self.neighborGenerator = None
+        self.stepGenerator = None
         
-def generateStepFunctionRandom(bestOfN=1):
-    if bestOfN == 1:
-        return stepFunctionRandom
-    def f(neighborhood, x):
-        for n in range(0, bestOfN):
-            proposed = stepFunctionRandom(neighborhood, x)
-            if neighborhood.evaluator.compare(proposed, x):
+    def step(self):
+        return self._traverseGenerator(self.stepGenerator)
+    
+    def _chooseNext(self):
+        return self._traverseGenerator(self.neighborGenerator)
+        
+    def _traverseGenerator(self, generator):
+        if generator == None:
+            return None
+        try: 
+            return next(generator)
+        except StopIteration:
+            generator = None
+            return None
+        
+    def reset(self, x, strategy=None):
+        if strategy != None:
+            self.strategy = strategy
+        if self.strategy == self.RANDOM:
+            self.neighborGenerator = self.generateRandom(x)
+        elif self.strategy == self.NEXT or self.strategy == self.BEST:
+            self.neighborGenerator = self.generateSingle(x)
+            
+        if self.strategy == self.RANDOM:
+            self.neighborGenerator = self.generateRandom(x)
+            self.stepGenerator = self.stepRandom()
+        elif self.strategy == self.NEXT:
+            self.neighborGenerator = self.generateSingle(x)
+            self.stepGenerator = self.stepNext(x)
+        elif self.strategy == self.BEST:
+            self.neighborGenerator = self.generateSingle(x)
+            self.stepGenerator = self.stepBest(x)
+        
+    def stepBest(self, x):
+        improved = False
+        proposed = self._chooseNext()
+        while proposed != None:
+            if self.evaluator.compareStrict(proposed, x):
+                improved = True
                 x = proposed
-        return x
-    return f
+            proposed = self._chooseNext()
+        if improved:
+            yield x
+        else:
+            return
         
+    def stepNext(self, x):
+        proposed = self._chooseNext()
+        while proposed != None:
+            if self.evaluator.compareStrict(proposed, x):
+                yield proposed
+            proposed = self._chooseNext()
+        return
+    
+    def stepRandom(self):
+        while True:
+            yield self._chooseNext()
         
-
-def stepFunctionBestImprovment(neighborhood, x):
-    for n in range(1, neighborhood.size(x)):
-        proposed = neighborhood.choose(n)
-        if neighborhood.evaluator.compare(proposed, x):
-            x = proposed
-    return x
-  
-def stepFunctionNextImprovment(neighborhood, x):
-    for n in range(1, neighborhood.size(x)):
-        proposed = neighborhood.choose(n)
-        if neighborhood.evaluator.compare(proposed, x):
-            return proposed
-    return x
+    def generateRandom(self, x):
+        yield from ()
+    
+    def generateSingle(self, x):
+        yield from ()

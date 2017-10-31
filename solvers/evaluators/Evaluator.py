@@ -11,11 +11,11 @@ class Evaluator(object):
     def compare(self, proposed, current):
         return self.evaluate(proposed) <= self.evaluate(current)
     
-    def checkImprovment(self, proposed, current):
-        pass
+    def compareStrict(self, proposed, current):
+        return self.evaluate(proposed) < self.evaluate(current)
     
     def criteriaReached(self, x):
-        raise Exception("Abstract: not implemented")
+        return False
     
      
      
