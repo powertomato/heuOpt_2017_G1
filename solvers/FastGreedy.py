@@ -1,7 +1,5 @@
-from solvers.helper import _edges
-
 def constructSolutionFast(graph):
-    unassigned = list(_edges(graph.pages))
+    unassigned = graph.getEdges()
     graph.pages = {}
     graph.pageNumber = 0
     for edge in unassigned:

@@ -1,7 +1,6 @@
 import unittest
 from model.graph  import Graph
 from solvers.DepthFirstVertexOrder import *
-from solvers.helper import _edges
 
 class graphTester(unittest.TestCase):
 
@@ -9,6 +8,7 @@ class graphTester(unittest.TestCase):
         self.inputfile = "./instances/automatic-0.txt"
         self.graph = Graph()
         self.graph.read(self.inputfile)
+
 
     def test_read(self):
         self.assertEqual(len(self.graph.nodes), 4)
@@ -20,20 +20,26 @@ class graphTester(unittest.TestCase):
 
         self.assertEqual(len(edges), 7)
 
-    def test_edges_helper(self):
-        edges = list()
-        for edge in _edges(self.graph.pages):
-            edges.append(edge)
-        self.assertEqual(len(edges), 7)
-
-        edges = list()
-        for edge in _edges(self.graph.pages[0:1]):
-            edges.append(edge)
-        self.assertEqual(len(edges), 4)
-
+    def test_move(self):
+        edge = self.graph.getEdges()[2]
+        self.graph.moveEdgeToPage(edge, 1)
+        self.assertEqual(edge.page, 1)
+        self.graph.moveEdgeToPage(edge, 0)
+        self.assertEqual(edge.page, 0)
 
     def test_DFS(self):
         constructVertexOrderDFS(self.graph)
+        self.assertEqual(1, 1)
+
+    def test_Crossings(self):
+        self.assertEqual(self.graph.numCrossings(), 0)
+        edge = self.graph.getEdges()[1]
+        self.graph.moveEdgeToPage(edge, 0)
+        self.assertEqual(self.graph.numCrossings(), 1)
+        self.graph.moveEdgeToPage(edge, 1)
+        self.assertEqual(self.graph.numCrossings(), 0)
+        self.graph.moveEdgeToPage(edge, 0)
+        self.assertEqual(self.graph.numCrossings(), 1)
 
 if __name__ == '__main__':
     unittest.main()

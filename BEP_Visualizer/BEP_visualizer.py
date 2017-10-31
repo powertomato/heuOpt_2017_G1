@@ -36,16 +36,20 @@ class View():
         node_positions = np.arange(top_inset, top_inset+line_height, line_height/(nnodes-1))
         node_positions = np.append(node_positions, top_inset + line_height)
 
+        idx = 0
         for pos in node_positions:
+            id = graph.getNodeByIndex(idx).id
             self.canvas.create_oval(left_inset-5, pos-5, left_inset+5, pos+5)
+            self.canvas.create_text(left_inset-10, pos-10, text=str(id))
+            idx += 1
 
         # draw edges
         for edge in graph.getEdges():
-            n1 = edge[0]
-            n2 = edge[1]
-            p = edge[2]
+            n1 = edge.node1
+            n2 = edge.node2
+            p = edge.page
 
-            pagecolor = colorsys.hsv_to_rgb(359 / graph.pageNumber * p, 1, 1)
+            pagecolor = colorsys.hsv_to_rgb(359 / graph.pageNumber * p, 1, .9)
             pagecolor = tuple(int(x * 255) for x in pagecolor)
             tk_rgb = "#%02x%02x%02x" % pagecolor
 
@@ -69,6 +73,13 @@ class View():
                 dash = (12, 8, 4, 8)
 
             self.canvas.create_arc(left_inset-width, pos1, left_inset+width, pos2, style=tk.ARC, start=start, extent = 180, outline=tk_rgb, width = 3, dash=dash)
+
+            mid = (pos1 + pos2) / 2
+            text_x = left_inset + width
+            if start == 90:
+                text_x = left_inset - width
+
+            self.canvas.create_text(text_x+10, mid, text=str(edge.id), fill=tk_rgb)
 
 
 
