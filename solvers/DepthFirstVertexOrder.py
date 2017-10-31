@@ -1,4 +1,3 @@
-from solvers.helper import _edges
 from model.graph import *
 
 def constructVertexOrderDFS(graph):
@@ -29,28 +28,29 @@ def constructVertexOrderDFS(graph):
     return nodes
 
 def constructSolutionGreedyLeastCrossings(graph):
-    unassigned = list(_edges(graph.pages))
-    graph.pages = {}
-    for i in range(graph.pageNumber):
-        graph.pages[i] = set()
+    unassigned = graph.getEdges()
     count = 0
     for edge in unassigned:
         count +=1
         page = 0
         lp = leastCrossingPage(graph, edge)
-        #print(lp, count, len(unassigned))
-        graph.addEdge(edge[0],edge[1],lp)
+        if(count % 100 == 0):
+            print(count)
+        graph.moveEdgeToPage(edge, lp)
 
     print("crossings:", graph.numCrossings())
 
 def leastCrossingPage(graph, edge):
     page = 0
-    minimum = graph.numCrossingsIfAddedToPage(edge[0],edge[1], page)
-    for p in graph.pages:
-        candidate = graph.numCrossingsIfAddedToPage(edge[0],edge[1], p)
-        if candidate < minimum:
-            minimum = candidate
+
+    numCrossings = graph.numCrossingsIfAddedToPage(edge, page)
+    for p in range(graph.pageNumber):
+        numCr = graph.numCrossingsIfAddedToPage(edge, p)
+        numCrossings = min(numCrossings, numCr)
+        if numCr == numCrossings:
             page = p
+        if numCr == 0:
+            return page
 
     return page
 
