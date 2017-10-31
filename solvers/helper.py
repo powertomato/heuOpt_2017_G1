@@ -1,4 +1,4 @@
 def _edges(pages):
-    for pageIdx in pages:
-        for edge in pages[pageIdx]:
+    for page in pages:
+        for edge in page.getAllEdges():
             yield edge

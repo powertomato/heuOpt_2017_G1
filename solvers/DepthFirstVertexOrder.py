@@ -30,9 +30,6 @@ def constructVertexOrderDFS(graph):
 
 def constructSolutionGreedyLeastCrossings(graph):
     unassigned = list(_edges(graph.pages))
-    graph.pages = {}
-    for i in range(graph.pageNumber):
-        graph.pages[i] = set()
     count = 0
     for edge in unassigned:
         count +=1

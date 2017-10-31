@@ -1,12 +1,14 @@
 import csv
 import os
+import numpy as np
 
 class Graph(object):
     def __init__(self):
         self.nodes = list()
         self.nodeIdToIndex = {}
-        self.pages = {}
-        self.pageNumber = 1
+        self.pages = list()
+        self.pageNumber = 0
+        self.edgeMatrix = None
 
     def addNode(self,id):
         node = Node(self, id)
@@ -25,25 +27,27 @@ class Graph(object):
             n1Id = n2Id
             n2Id = tmp
         return n1Id,n2Id
-    def addEdge(self,n1Id,n2Id,p):
-        self.pageNumber = max(self.pageNumber, p)
 
-        if not p in self.pages:
-            self.pages[p] = set()
+    def addEdge(self,n1Id,n2Id,p):
         page = self.pages[p]
 
         n1Id,n2Id = self._normalizeEdge(n1Id,n2Id)
 
-        if self.hasEdge(n1Id,n2Id):
-            return
-
-        page.add((n1Id, n2Id))
+        page.addEdge(n1Id, n2Id)
 
         n1 = self.getNodeByID(n1Id)
         n1.neighbours.add(n2Id)
 
         n2 = self.getNodeByID(n2Id)
         n2.neighbours.add(n1Id)
+
+    def setEdgeCrossings(self, n1Id, n2Id, p):
+        edges = self.pages[p].edges
+
+        for edge in edges:
+
+
+        self.edgeMatrix[(n1Id, n2Id)]
 
     def areEdgesCrossing(self, e1, e2):
         e1Idx = (self.getNodeIndex(e1[0]), self.getNodeIndex(e1[1]))
@@ -53,17 +57,6 @@ class Graph(object):
             e1Idx = e2Idx
             e2Idx = tmp
         return e1Idx[0] < e2Idx[0] < e1Idx[1] < e2Idx[1]
-
-    def canAddToPage(self,n1Id, n2Id, p):
-        if not p in self.pages:
-            return True
-        toCheck = self._normalizeEdge(n1Id,n2Id)
-        if toCheck in self.pages[p]:
-            return False
-        for edge in self.pages[p]:
-            if self.areEdgesCrossing(toCheck, edge):
-                return False
-        return True
 
     def numCrossingsIfAddedToPage(self, n1Id, n2Id, p):
         crossings = 0
@@ -90,9 +83,12 @@ class Graph(object):
         return crossings / 2
 
     def getEdges(self):
+        count = 0
         for page in self.pages:
-            for edge in self.pages[page]:
-                yield (edge[0], edge[1], page)
+            for key, edges in page.edges.items():
+                for edge in edges:
+                    yield (key, edge, count)
+            count += 1
 
     def getNodeByID(self,id):
         return self.nodes[self.nodeIdToIndex[id]]
@@ -118,7 +114,7 @@ class Graph(object):
         for edge in edges:
             copiedEdges.append(edge)
 
-        self.pages = {}
+        self.pages = list()
 
         for edge in copiedEdges:
             self.addEdge(edge[0], edge[1], 0)
@@ -131,6 +127,10 @@ class Graph(object):
             tmp = next(reader)
             tmp = next(reader)
             self.pageNumber = int(next(reader)[0])
+            for _ in range(self.pageNumber):
+                self.pages.append(Page())
+
+            numEdges = 0
             for row in reader:
                 if row[0][0] is '#':
                     continue
@@ -138,6 +138,9 @@ class Graph(object):
                     self.addNode(int(row[0])) 
                 else:
                     self.addEdge(int(row[0]), int(row[1]),int(row[2][1:-1]))
+                    numEdges += 1
+
+            self.edgeMatrix = np.zeros((numEdges, numEdges), dtype=np.byte)
     
     def write(self, filepath):
         with open(filepath,"w") as writefile:
@@ -232,17 +235,28 @@ class Node(object):
     
     def __ne__(self, other):
         return not self == other
-    
+
+class Edge(object):
+
+    def __init__(self, id, n1Id, n2Id):
+        self.id = id
+        self.node1 = min(n1Id, n2Id)
+        self.node2 = max(n1Id, n2Id)
+        self.page = 0
+
 class Page(object):
     
     def __init__(self):
         self.edges = {}
         self.redges = {}
+        self.crossings = 0
         
     def addEdge(self,id1,id2):
         id1,id2 = self._normalizeEdge(id1, id2)
         if not id1 in self.edges:
             self.edges[id1] = set()
+
+        if not id2 in self.redges:
             self.redges[id2] = set()
             
         self.edges[id1].add(id2)
@@ -253,13 +267,9 @@ class Page(object):
         if id1 in self.edges:
             myset = self.edges[id1]
             del myset[id2]
-            if len(myset)==0:
-                del self.edges
                 
             myset = self.redges[id2]    
             del myset[id1]
-            if len(myset)==0:
-                del self.edges
                         
     def getAllEdges(self):
         for id1 in self.edges:
