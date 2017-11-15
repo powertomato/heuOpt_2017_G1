@@ -1,0 +1,27 @@
+edge -> andere page:
+incremental evaluation:
+1. X-crossings(akt. page)+crossings(neu page)
+pro edge: ein set pro page mit anderen edges die gekreuzt werden
+-> .getCrossings(pageNum, edgeId) konstant, set wird zurückgegeben
+
+graph update:
+für alle crossings der edge -> update crossings der gekreuzten edge (von alter oapage auf neue)
+
+node verschieben:
+eval:
+x = greph.numCrossings
+
+for edge in movenode.edges:
+  for crossing in edge.crossing auf aktueller page:
+    if crossing nicht mehr da:
+      x-=1
+
+for i in range(idToIndex(node), newIndex): # (OBDA idToIndex < newIndex)
+  node = getNodeByPosition(i)  
+     for edge1 in node
+       for edge2 in movenode:
+         if cross edge1 edge2?:
+           x+=1
+
+graph update:
+  wie eval nur crossings updaten, liste und index

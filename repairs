@@ -1,0 +1,46 @@
+add node:
+	graph:
+		add node to nodelist
+		set id to index entry
+
+	node: set id
+		
+		
+add edge:
+	graph:
+		add edge to list
+	edge:
+		set page
+	page:
+		add edge
+	for each node:
+		add neighbour
+		
+reorderNodes:
+	update id to index, throw out edges, rebuild graph completely
+	
+evalMoveNode:
+	x = graph.numCrossings
+	for moveNode.edges:
+		for crossing in edge.crossings:
+			if crossing nicht mehr da: x-= 1
+			
+	for i in range(idToIndex(node), newIndex): # (OBDA idToIndex < newIndex)
+		  node = getNodeByPosition(i)  
+			 for edge1 in node
+			   for edge2 in movenode:
+				 if cross edge1 edge2?:	
+				   x+=1
+				   
+moveNode:
+	x = graph.numCrossings
+	for moveNode.edges:
+		for crossing in edge.crossings:
+			if crossing nicht mehr da: x-= 1
+			
+	for i in range(idToIndex(node), newIndex): # (OBDA idToIndex < newIndex)
+		  node = getNodeByPosition(i)  
+			 for edge1 in node
+			   for edge2 in movenode:
+				 if cross edge1 edge2?:	
+				   x+=1
