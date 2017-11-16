@@ -7,31 +7,6 @@ class Node(object):
         self.id = id
         self.graph = graph
         self.neighbours = set()
-        self.neighboursMarked = set()
-        
-    def markNeighbour(self, n):
-        if n in self.neighbours:
-            e = self.neighbours
-            self.neighboursMarked.add(n)
-            self.neighbours.remove(n)
-            
-    def clearMarkings(self, n):
-        self.neighbours.update(self.neighboursMarked)
-        self.neighboursMarked.clear()
-        
-    def getDistances(self, onlyUnmarked=True): 
-        distances = []
-        for otherId in self.neighbours:
-            dist = self.getDistance(otherId,id)
-            distances.Add((otherId, dist))
-            self._insertionSort(distances)
-        if not onlyUnmarked:
-            for otherId in self.neighboursNarked:
-                dist = self.getDistance(otherId,id)
-                distances.Add((otherId, dist))
-                self._insertionSort(distances)
-                
-        return distances
 
     def getNeighbours(self):
         neighbours = list()

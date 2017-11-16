@@ -33,7 +33,7 @@ class View():
 
         self.canvas.create_oval(left_inset, top_inset, left_inset, top_inset+line_height)
 
-        node_positions = np.arange(top_inset, top_inset+line_height, line_height/(nnodes-1))
+        node_positions = np.linspace(top_inset, top_inset+line_height-(line_height/nnodes), nnodes-1)
         node_positions = np.append(node_positions, top_inset + line_height)
 
         idx = 0
@@ -47,7 +47,7 @@ class View():
         for edge in graph.getEdges():
             n1 = edge.node1
             n2 = edge.node2
-            p = edge.page
+            p = edge.pageId
 
             pagecolor = colorsys.hsv_to_rgb(359 / graph.pageNumber * p, 1, .9)
             pagecolor = tuple(int(x * 255) for x in pagecolor)

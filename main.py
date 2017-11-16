@@ -6,11 +6,14 @@ import os
 
 from argparse import ArgumentParser
 from argparse import RawDescriptionHelpFormatter
-from model.graph  import Graph
+from model.graph import Graph
 from BEP_Visualizer.BEP_visualizer import View
 from solvers.GreedyLongestChain import *
 from solvers.FastGreedy import *
 from solvers.DepthFirstVertexOrder import *
+from model.node import Node
+from model.edge import Edge
+from model.page import Page
 
 import tkinter as tk
 from tkinter import *

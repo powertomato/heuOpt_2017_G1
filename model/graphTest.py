@@ -18,26 +18,30 @@ class graphTester(unittest.TestCase):
         for edge in self.graph.getEdges():
             edges.append(edge)
 
-        self.assertEqual(len(edges), 7)
+        self.assertEqual(len(edges), 6)
 
     def test_move(self):
         edge = self.graph.getEdges()[2]
         self.graph.moveEdgeToPage(edge, 1)
-        self.assertEqual(edge.page, 1)
+        self.assertEqual(edge.pageId, 1)
         self.graph.moveEdgeToPage(edge, 0)
-        self.assertEqual(edge.page, 0)
+        self.assertEqual(edge.pageId, 0)
 
     def test_DFS(self):
         constructVertexOrderDFS(self.graph)
         self.assertEqual(1, 1)
 
     def test_Crossings(self):
-        self.assertEqual(self.graph.numCrossings(), 0)
+        self.assertEqual(self.graph.numCrossings(), 1)
         edge = self.graph.getEdges()[1]
         self.graph.moveEdgeToPage(edge, 0)
-        self.assertEqual(self.graph.numCrossings(), 1)
-        self.graph.moveEdgeToPage(edge, 1)
         self.assertEqual(self.graph.numCrossings(), 0)
+        self.graph.moveEdgeToPage(edge, 1)
+        self.assertEqual(self.graph.numCrossings(), 1)
+        self.graph.moveEdgeToPage(edge, 0)
+        self.assertEqual(self.graph.numCrossings(), 0)
+
+        edge = self.graph.getEdges()[4]
         self.graph.moveEdgeToPage(edge, 0)
         self.assertEqual(self.graph.numCrossings(), 1)
 
