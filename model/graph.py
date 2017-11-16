@@ -61,12 +61,19 @@ class Graph(object):
 
     def areEdgesCrossing(self, e1, e2):
         e1Idx = (self.getNodeIndex(e1.node1), self.getNodeIndex(e1.node2))
+        sortedE1Idx = e1Idx
+        if(e1Idx[0] > e1Idx[1]):
+            sortedE1Idx = (e1Idx[1], e1Idx[0])
         e2Idx = (self.getNodeIndex(e2.node1), self.getNodeIndex(e2.node2))
-        if e1Idx[0]>e2Idx[0]:
+        sortedE2Idx = e2Idx
+        if(e2Idx[0] > e2Idx[1]):
+            sortedE2Idx = (e2Idx[1], e2Idx[0])
+        if sortedE1Idx[0]>sortedE2Idx[0]:
             tmp = e1Idx
-            e1Idx = e2Idx
-            e2Idx = tmp
-        return e1Idx[0] < e2Idx[0] < e1Idx[1] < e2Idx[1]
+            sortedE1Idx = sortedE2Idx
+            sortedE2Idx = tmp
+
+        return sortedE1Idx[0] < sortedE2Idx[0] < sortedE1Idx[1] < sortedE2Idx[1]
 
     def numCrossingsIfAddedToPage(self, edge, p):
         crossings = 0

@@ -67,6 +67,7 @@ USAGE
             elif args.construction.lower() == "dfs":
                 print("Creating initial vertex order using dfs method")
                 constructVertexOrderDFS(graph)
+                print("crossings:", graph.numCrossings())
                 
         if args.output:
             graph.write(args.output)
