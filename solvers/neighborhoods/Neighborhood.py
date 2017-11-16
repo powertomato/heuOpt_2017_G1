@@ -63,7 +63,7 @@ class Neighborhood(object):
         proposed = self._chooseNext()
         while proposed != None:
             if self.evaluator.compareStrict(proposed, x):
-                yield proposed
+                yield proposed.
             proposed = self._chooseNext()
         return
     
