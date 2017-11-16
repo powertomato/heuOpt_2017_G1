@@ -18,7 +18,7 @@ class GVNS(object):
             l = 0
             while l<len(self.neighborhoods):
                 x_prim = self.neighborhoods[l].chooseNext(x)
-                
+
                 self.setStrategy(x_prim, Neighborhood.BEST)
                 search = VND(self.neighborhoods, self.evaluator)
                 x_prim = search.optimize(x_prim)

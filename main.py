@@ -6,11 +6,14 @@ import os
 
 from argparse import ArgumentParser
 from argparse import RawDescriptionHelpFormatter
-from model.graph  import Graph
+from model.graph import Graph
 from BEP_Visualizer.BEP_visualizer import View
 from solvers.GreedyLongestChain import *
 from solvers.FastGreedy import *
 from solvers.DepthFirstVertexOrder import *
+from model.node import Node
+from model.edge import Edge
+from model.page import Page
 
 try:
     import tkinter as tk
@@ -70,6 +73,7 @@ USAGE
             elif args.construction.lower() == "dfs":
                 print("Creating initial vertex order using dfs method")
                 constructVertexOrderDFS(graph)
+                print("crossings:", graph.numCrossings())
                 
         if args.output:
             graph.write(args.output)

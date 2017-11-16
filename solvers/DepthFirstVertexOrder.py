@@ -38,8 +38,6 @@ def constructSolutionGreedyLeastCrossings(graph):
             print(count)
         graph.moveEdgeToPage(edge, lp)
 
-    print("crossings:", graph.numCrossings())
-
 def leastCrossingPage(graph, edge):
     page = 0
 
