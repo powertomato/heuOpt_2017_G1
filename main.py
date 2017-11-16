@@ -15,8 +15,13 @@ from model.node import Node
 from model.edge import Edge
 from model.page import Page
 
-import tkinter as tk
-from tkinter import *
+try:
+    import tkinter as tk
+    from tkinter import *
+    VIEW=True
+except:
+    VIEW=False
+
 
 DEBUG = True
 
@@ -48,8 +53,9 @@ USAGE
         parser.add_argument('input', metavar='input-file', type=str, nargs=1, help="Book embedding input")
         parser.add_argument('output', metavar='output-file', type=str, nargs='?', help="Book embedding output file")
         parser.add_argument("-s", "--solve", dest="solve", action="store_true", help="Calculate solution")
-        parser.add_argument("-v", "--view", dest="view", action="store_true", help="View input file")
-        parser.add_argument("-c", "--construction", dest="construction", action="store", default="dfs", help="Choose construction heuristic")
+        if VIEW:
+            parser.add_argument("-v", "--view", dest="view", action="store_true", help="View input file")
+        parser.add_argument("-c", "--construction", dest="construction", action="store", default="none", help="Choose construction heuristic")
 
         # Process arguments
         args = parser.parse_args()
@@ -67,11 +73,12 @@ USAGE
             elif args.construction.lower() == "dfs":
                 print("Creating initial vertex order using dfs method")
                 constructVertexOrderDFS(graph)
+                print("crossings:", graph.numCrossings())
                 
         if args.output:
             graph.write(args.output)
             
-        if args.view:
+        if VIEW and args.view:
             root = Tk()
             view = View(root)
 

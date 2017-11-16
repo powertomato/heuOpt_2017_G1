@@ -1,6 +1,11 @@
-import tkinter as tk
-from tkinter import *
-from tkinter.filedialog import askdirectory
+try:
+    import tkinter as tk
+    from tkinter import *
+    from tkinter.filedialog import askdirectory
+except:
+    pass
+
+
 import numpy as np
 import colorsys
 

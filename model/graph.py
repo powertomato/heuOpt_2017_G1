@@ -61,12 +61,19 @@ class Graph(object):
 
     def areEdgesCrossing(self, e1, e2):
         e1Idx = (self.getNodeIndex(e1.node1), self.getNodeIndex(e1.node2))
+        sortedE1Idx = e1Idx
+        if(e1Idx[0] > e1Idx[1]):
+            sortedE1Idx = (e1Idx[1], e1Idx[0])
         e2Idx = (self.getNodeIndex(e2.node1), self.getNodeIndex(e2.node2))
-        if e1Idx[0]>e2Idx[0]:
+        sortedE2Idx = e2Idx
+        if(e2Idx[0] > e2Idx[1]):
+            sortedE2Idx = (e2Idx[1], e2Idx[0])
+        if sortedE1Idx[0]>sortedE2Idx[0]:
             tmp = e1Idx
-            e1Idx = e2Idx
-            e2Idx = tmp
-        return e1Idx[0] < e2Idx[0] < e1Idx[1] < e2Idx[1]
+            sortedE1Idx = sortedE2Idx
+            sortedE2Idx = tmp
+
+        return sortedE1Idx[0] < sortedE2Idx[0] < sortedE1Idx[1] < sortedE2Idx[1]
 
     def numCrossingsIfAddedToPage(self, edge, p):
         crossings = 0
@@ -121,7 +128,7 @@ class Graph(object):
         for edge in self.edgeList:
             self.initCrossingsForEdge(edge)
     
-    def read(self, filepath):
+    def read(self, filepath, updateCrossings=True):
         with open(filepath, newline='') as csvfile:
             reader = csv.reader(csvfile, delimiter=' ')
             tmp = next(reader)
@@ -142,13 +149,13 @@ class Graph(object):
                     edges.append(edge)
 
             for edge in edges:
-                self.addEdge(edge.node1, edge.node2, edge.pageId, True)
+                self.addEdge(edge.node1, edge.node2, edge.pageId, updateCrossings)
                 print("c", edge.id)
     
     def write(self, filepath):
         with open(filepath,"w") as writefile:
-            writefile.write("# cathegory: solved")
-            writefile.write("# problem: no problem")
+            writefile.write("# cathegory: solved\n")
+            writefile.write("# problem: no problem\n")
             writefile.write("%d\n" % len(self.nodes))
             writefile.write("%d\n" % self.pageNumber)
             
@@ -156,7 +163,7 @@ class Graph(object):
                 writefile.write("%d\n" % node.id)
             
             for edge in self.getEdges():
-                writefile.write("%d %d [%d]\n" % edge)
+                writefile.write("%d %d [%d]\n" % edge.toTuple())
     
     def copy(self):
         ret = Graph()
