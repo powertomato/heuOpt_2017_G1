@@ -128,7 +128,7 @@ class Graph(object):
         for edge in self.edgeList:
             self.initCrossingsForEdge(edge)
     
-    def read(self, filepath):
+    def read(self, filepath, updateCrossings=True):
         with open(filepath, newline='') as csvfile:
             reader = csv.reader(csvfile, delimiter=' ')
             tmp = next(reader)
@@ -149,7 +149,7 @@ class Graph(object):
                     edges.append(edge)
 
             for edge in edges:
-                self.addEdge(edge.node1, edge.node2, edge.pageId, True)
+                self.addEdge(edge.node1, edge.node2, edge.pageId, updateCrossings)
                 print("c", edge.id)
     
     def write(self, filepath):
