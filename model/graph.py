@@ -154,8 +154,8 @@ class Graph(object):
     
     def write(self, filepath):
         with open(filepath,"w") as writefile:
-            writefile.write("# cathegory: solved")
-            writefile.write("# problem: no problem")
+            writefile.write("# cathegory: solved\n")
+            writefile.write("# problem: no problem\n")
             writefile.write("%d\n" % len(self.nodes))
             writefile.write("%d\n" % self.pageNumber)
             
@@ -163,7 +163,7 @@ class Graph(object):
                 writefile.write("%d\n" % node.id)
             
             for edge in self.getEdges():
-                writefile.write("%d %d [%d]\n" % edge)
+                writefile.write("%d %d [%d]\n" % edge.toTuple())
     
     def copy(self):
         ret = Graph()

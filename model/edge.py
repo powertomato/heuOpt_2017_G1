@@ -41,6 +41,9 @@ class Edge(object):
 
         return self.perPageCrossedEdges[pageId]
 
+    def toTuple(self):
+        return (self.node1, self.node2, self.pageId)
+
     def __eq__(self, other):
         return self.id == other.id
 
