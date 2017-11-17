@@ -17,6 +17,10 @@ def constructVertexOrderDFS(graph):
             if child.id not in nodes:
                 stack.insert(0, child)
 
+    for n in graph.nodes:
+        if n.id not in nodes:
+            nodes.append(n.id)
+
     graph.reorder(nodes)
 
     return nodes
