@@ -25,20 +25,20 @@ class MoveNodeCandidate(object):
         return idx
     
     def _calcEdgeIndexAfterMove(self, edge):
-        return ( self._calcIndexAfterMove(self.getNodeIndex(edge.node1)), 
-                self._calcIndexAfterMove(self.getNodeIndex(edge.node2)) )
+        return ( self._calcIndexAfterMove(self.graph.getNodeIndex(edge.node1)), 
+                self._calcIndexAfterMove(self.graph.getNodeIndex(edge.node2)) )
         
     def numCrossings(self):
         numNewCrossings = 0
         numResolvedCrossings = 0
         movenode = self.graph.nodes[self.nodeIdx]
         
-        for edgeId in movenode.edges:
-            edge = self.graph.edgeList[edgeId]
+        for edge in movenode.edges:
+            edgeId = edge.id
             e1Idx = self._calcEdgeIndexAfterMove(edge) 
-            page = self.graph.getPageByEdge(edgeId)
+            page = edge.pageId
             
-            for edgeId2 in self.graph.getCrossings(page,edgeId):
+            for edgeId2 in self.graph.getCrossingSetForPage(page,edgeId):
                 edge2 = self.graph.edgeList[edgeId2]
             
                 e2Idx = self._calcEdgeIndexAfterMove(edge2) 
@@ -56,15 +56,15 @@ class MoveNodeCandidate(object):
         for nodeIdx in noderange:
             node = self.graph.getNodeByIndex(nodeIdx)
                       
-            for edgeId in movenode.edges:
-                edge = self.graph.edgeList[edgeId]
+            for edge in movenode.edges:
+                edgeId = edge.id
                 e1Idx = self._calcEdgeIndexAfterMove(edge)
-                page = self.graph.getPageByEdge(edgeId)
+                page = edge.pageId
                 
-                for edgeId2 in node.edges:
-                    edge2 = self.graph.edgeList[edgeId2]
+                for edge2 in node.edges:
+                    edge2Id = edge2.id
                     
-                    if page != self.graph.getPageByEdge(edgeId2):
+                    if page != edge2.pageId:
                         continue
                     e2Idx = self._calcEdgeIndexAfterMove(edge2) 
                     
@@ -76,26 +76,28 @@ class MoveNodeCandidate(object):
     def graphUpdate(self):
         movenode = self.graph.nodes[self.nodeIdx]
         
-        for edgeId in movenode.edges:
-            edge = self.graph.edgeList[edgeId]
-            e1Idx = ( self._calcIndexAfterMove(self.getNodeIndex(edge.node1)), 
-                      self._calcIndexAfterMove(self.getNodeIndex(edge.node2)) )
-            page = self.graph.getPageByEdge(edgeId)
-            crossings = self.graph.getCrossings(page,edgeId)
+        for edge in movenode.edges:
+            edgeId = edge.id
+            e1Idx = ( self._calcIndexAfterMove(self.graph.getNodeIndex(edge.node1)), 
+                      self._calcIndexAfterMove(self.graph.getNodeIndex(edge.node2)) )
+            page = edge.pageId
+            crossings = self.graph.getCrossingSetForPage(page,edgeId)
             
+            toremove = set()
             for edgeId2 in crossings:
                 edge2 = self.graph.edgeList[edgeId2]
             
-                e2Idx = ( self._calcIndexAfterMove(self.getNodeIndex(edge2.node1)), 
-                          self._calcIndexAfterMove(self.getNodeIndex(edge2.node2)) )
+                e2Idx = ( self._calcIndexAfterMove(self.graph.getNodeIndex(edge2.node1)), 
+                          self._calcIndexAfterMove(self.graph.getNodeIndex(edge2.node2)) )
                 
-                crossings2 = self.graph.getCrossings(page,edgeId2)
+                crossings2 = self.graph.getCrossingSetForPage(page,edgeId2)
                 
                 if e1Idx[0]>e2Idx[0]:
                     e1Idx, e2Idx = e2Idx, e1Idx
                 if not e1Idx[0] < e2Idx[0] < e1Idx[1] < e2Idx[1]: #crossing nicht mehr da
-                    crossings.remove(edgeId2)
+                    toremove.add(edgeId2)
                     crossings2.remove(edgeId)
+            crossings.difference_update(toremove)
                     
         if self.nodeIdx < self.target:
             noderange = range(self.nodeIdx+1, self.target+1)
@@ -105,22 +107,22 @@ class MoveNodeCandidate(object):
         for nodeIdx in noderange:
             node = self.graph.getNodeByIndex(nodeIdx)
                       
-            for edgeId in movenode.edges:
-                edge = self.graph.edgeList[edgeId]
-                e1Idx = ( self._calcIndexAfterMove(self.getNodeIndex(edge.node1)), 
-                      self._calcIndexAfterMove(self.getNodeIndex(edge.node2)) )
-                page = self.graph.getPageByEdge(edgeId)
-                crossings = self.graph.getCrossings(page,edgeId)
+            for edge in movenode.edges:
+                edgeId = edge.id
+                e1Idx = ( self._calcIndexAfterMove(self.graph.getNodeIndex(edge.node1)), 
+                      self._calcIndexAfterMove(self.graph.getNodeIndex(edge.node2)) )
+                page = edge.pageId
+                crossings = self.graph.getCrossingSetForPage(page,edgeId)
                 
-                for edgeId2 in node.edges:
-                    edge2 = self.graph.edgeList[edgeId2]
+                for edge2 in node.edges:
+                    edge2Id = edge2.id
                     
-                    if page != self.graph.getPageByEdge(edgeId2):
+                    if page != edge2.pageId:
                         continue
-                    e2Idx = ( self._calcIndexAfterMove(self.getNodeIndex(edge2.node1)), 
-                              self._calcIndexAfterMove(self.getNodeIndex(edge2.node2)) )
+                    e2Idx = ( self._calcIndexAfterMove(self.graph.getNodeIndex(edge2.node1)), 
+                              self._calcIndexAfterMove(self.graph.getNodeIndex(edge2.node2)) )
                     
-                    crossings2 = self.graph.getCrossings(page,edgeId2)
+                    crossings2 = self.graph.getCrossingSetForPage(page,edgeId2)
                     
                     if e1Idx[0] < e2Idx[0] < e1Idx[1] < e2Idx[1]:
                         crossings.add(edgeId2)
@@ -137,9 +139,9 @@ class MoveNodeCandidate(object):
             node = self.graph.nodes[i]
             self.graph.nodeIdToIndex[node.id] = i+indexShift
 
-class EdgePageMove(Neighborhood):
+class MoveNode(Neighborhood):
     def __init__(self, strategy, evaluator):
-        super(EdgePageMove, self).__init__(strategy, evaluator)
+        super(MoveNode, self).__init__(strategy, evaluator)
         
     def generateRandom(self, x):
         while True:

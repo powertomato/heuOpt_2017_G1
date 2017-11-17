@@ -1,6 +1,7 @@
 import csv
 import os
 import numpy as np
+import copy
 from model.node import *
 from model.edge import *
 from model.page import *
@@ -38,9 +39,11 @@ class Graph(object):
 
         n1 = self.getNodeByID(n1Id)
         n1.neighbours.add(n2Id)
+        n1.edges.add(edge)
 
         n2 = self.getNodeByID(n2Id)
         n2.neighbours.add(n1Id)
+        n2.edges.add(edge)
 
 
 
@@ -174,16 +177,7 @@ class Graph(object):
                 writefile.write("%d %d [%d]\n" % edge.toTuple())
     
     def copy(self):
-        ret = Graph()
-        
-        ret.nodes = list()
-        for node in self.nodes:
-            new = node.copy(ret)
-        ret.nodeIdToIndex = dict(self.nodeIdToIndex)
-        ret.pages = {}
-        for pageIdx in self.pages:
-            ret.pages[pageIdx] = dict(self.pages[pageIdx])
-        ret.pageNumber = ret.pageNumber
+        copy.deepcopy(self)
     
     def __eq__(self, other):
         if type(other)==Graph:

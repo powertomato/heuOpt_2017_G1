@@ -7,6 +7,7 @@ class Node(object):
         self.id = id
         self.graph = graph
         self.neighbours = set()
+        self.edges = set()
 
     def getNeighbours(self):
         neighbours = list()
