@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb7cb830-110f-4114-9d96-f9d82a9b2c21" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/page.py" afterPath="$PROJECT_DIR$/model/page.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solvers/DepthFirstVertexOrder.py" afterPath="$PROJECT_DIR$/solvers/DepthFirstVertexOrder.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,11 +14,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DepthFirstVertexOrder.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DepthFirstVertexOrder.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/solvers/DepthFirstVertexOrder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+            <state relative-caret-position="357">
+              <caret line="21" column="29" lean-forward="false" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -103,10 +102,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="graph.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="graph.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/graph.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
+            <state relative-caret-position="2550">
               <caret line="150" column="30" lean-forward="true" selection-start-line="150" selection-start-column="30" selection-end-line="150" selection-end-column="30" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -190,13 +189,13 @@
         <option value="$PROJECT_DIR$/solvers/LeastPageGreedy.py" />
         <option value="$PROJECT_DIR$/solvers/neighborhoods/EdgePageMove.py" />
         <option value="$PROJECT_DIR$/solvers/neighborhoods/SwitchTwoNodes.py" />
-        <option value="$PROJECT_DIR$/solvers/DepthFirstVertexOrder.py" />
         <option value="$PROJECT_DIR$/solvers/RandomEdgeAssignment.py" />
         <option value="$PROJECT_DIR$/BEP_Visualizer/BEP_visualizer.py" />
         <option value="$PROJECT_DIR$/solvers/RandomVertexOrder.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/model/page.py" />
         <option value="$PROJECT_DIR$/model/graph.py" />
+        <option value="$PROJECT_DIR$/solvers/DepthFirstVertexOrder.py" />
       </list>
     </option>
   </component>
@@ -401,7 +400,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="heuOpt_2017_G1" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-      <option name="PARAMETERS" value="./instances/instance-11.txt -s -v -c dfs" />
+      <option name="PARAMETERS" value="./instances/instance-05.txt -s -v -c dfs" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
@@ -531,6 +530,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15416667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -538,7 +538,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284055" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26821542" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26821542" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -869,14 +869,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/solvers/DepthFirstVertexOrder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/solvers/GreedyLeastPage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -935,11 +927,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/graph.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
+        <state relative-caret-position="2550">
           <caret line="150" column="30" lean-forward="true" selection-start-line="150" selection-start-column="30" selection-end-line="150" selection-end-column="30" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solvers/DepthFirstVertexOrder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="29" lean-forward="false" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
