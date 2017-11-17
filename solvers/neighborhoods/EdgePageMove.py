@@ -12,20 +12,13 @@ class EdgePageMoveCandidate(object):
         self.newpage = newpage
         
     def numCrossings(self):
-        crossingsOld = self.graph.getCrossings(self.oldpage, self.id)
-        crossingsNew = self.graph.getCrossings(self.newpage, self.id) 
+        crossingsOld = self.graph.getCrossingSetForPage(self.oldpage, self.id)
+        crossingsNew = self.graph.getCrossingSetForPage(self.newpage, self.id) 
         return self.graph.numCrossings() - len(crossingsOld) + len(crossingsNew)
     
     def graphUpdate(self):
-        self.graph.pages[self.oldpage].removeEdge(self.id)
-        self.graph.pages[self.newpage].addEdge(self.id)
-        for page in range(self.graph.pageNumber):
-            crossings = self.graph.getCrossings(page,self.id)
-            for edgeId in crossings:
-                crossingsOld = self.graph.getCrossings(self.oldpage,edgeId)
-                crossingsNew = self.graph.getCrossings(self.oldpage,edgeId)
-                crossingsOld.remove( self.id )
-                crossingsNew.add( self.id )
+        self.graph.pages[self.oldpage].removeEdge(self.graph.getEdge(self.id))
+        self.graph.pages[self.newpage].addEdge(self.graph.getEdge(self.id))
         return self.graph
         
 
@@ -45,8 +38,9 @@ class EdgePageMove(Neighborhood):
         
     def generateSingle(self, x):
         for p1, page1 in enumerate(x.pages):
-            for edgeId in page1.edges:
+            for edgeId in range(len(page1.edges)):
                 for p2,page2 in enumerate(x.pages):
                     if p1==p2:
                         continue
                     yield EdgePageMoveCandidate(x, edgeId, p1, p2)
+                    
