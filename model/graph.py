@@ -131,10 +131,12 @@ class Graph(object):
     def read(self, filepath):
         with open(filepath, newline='') as csvfile:
             reader = csv.reader(csvfile, delimiter=' ')
-            tmp = next(reader)
-            tmp = next(reader)
-            tmp = next(reader)
-            self.pageNumber = int(next(reader)[0])
+            first = next(reader)
+            while first[0] == "#":
+                first = next(reader)
+
+            first = next(reader) # skip node number
+            self.pageNumber = int(first[0])
             for _ in range(self.pageNumber):
                 self.pages.append(Page(self, _))
 

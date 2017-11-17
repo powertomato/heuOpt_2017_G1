@@ -1,0 +1,4 @@
+todo:
+Sietzen: random construction implementieren
+		leastPage crossing heuristic abdrehen vor point reordering!
+		bei aufbau: erst alle edges auf page 0 setzen und crossings berechnen, dann erst mit heuristik den pages zuordnen und crossings verschieben.
