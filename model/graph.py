@@ -89,7 +89,7 @@ class Graph(object):
         num = 0
         for page in self.pages:
             num += page.numCrossings()
-            print("page:", page.id, "crossings:", page.numCrossings())
+            #print("page:", page.id, "crossings:", page.numCrossings())
 # 
 #         numEdgelist = 0
 #         for edge in self.edgeList:
@@ -124,7 +124,6 @@ class Graph(object):
         return abs(i1-i2)
 
     def reorder(self, newOrdering):
-        print(newOrdering)
         self.nodes = [self.nodes[i] for i in newOrdering]
         for i in range(len(self.nodes)):
             self.nodeIdToIndex[self.nodes[i].id] = i
@@ -177,14 +176,12 @@ class Graph(object):
     def copy(self):
         ret = Graph()
         
-        ret.nodes = list()
-        for node in self.nodes:
-            new = node.copy(ret)
+        ret.nodes = self.nodes
         ret.nodeIdToIndex = dict(self.nodeIdToIndex)
-        ret.pages = {}
-        for pageIdx in self.pages:
-            ret.pages[pageIdx] = dict(self.pages[pageIdx])
-        ret.pageNumber = ret.pageNumber
+        ret.pages = self.pages
+        ret.pageNumber = self.pageNumber
+        ret.edgeList = self.edgeList
+        return ret
     
     def __eq__(self, other):
         return self.pages == other.pages

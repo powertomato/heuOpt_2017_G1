@@ -1,14 +1,13 @@
 from model.graph import *
+from numpy import random
 
 def constructSolutionGreedyLeastCrossings(graph):
-    unassigned = graph.getEdges()
+    unassigned = random.permutation(graph.getEdges())
     count = 0
     for edge in unassigned:
         count +=1
         page = 0
         lp = leastCrossingPage(graph, edge)
-        if(count % 100 == 0):
-            print(count)
         graph.moveEdgeToPage(edge, lp)
 
 def leastCrossingPage(graph, edge):

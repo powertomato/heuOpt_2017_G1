@@ -3,6 +3,7 @@
 
 import sys
 import os
+import copy
 
 from argparse import ArgumentParser
 from argparse import RawDescriptionHelpFormatter
@@ -80,11 +81,24 @@ USAGE
 
                 print("crossings:", graph.numCrossings())
             elif args.construction.lower() == "rnd":
-                print("Creating initial vertex order using rnd method")
-                constructVertexOrderRandom(graph)
-                constructRandomEdgeAssignment(graph)
+                numCr = 1000000000
+                outGr = None
+                constructVertexOrderDFS(graph)
+                for _ in range(5000):
+                    #constructVertexOrderRandom(graph)
+                    #constructRandomEdgeAssignment(graph)
+                    constructSolutionGreedyLeastCrossings(graph)
+                    nc = graph.numCrossings()
+                    if nc < numCr:
+                        numCr = nc
+                        print(numCr)
+                        outGr = copy.deepcopy(graph)
 
-                print("crossings:", graph.numCrossings())
+                    if _ % 1000 == 0:
+                        print(_)
+
+                graph = outGr
+
         if args.output:
             graph.write(args.output)
             
