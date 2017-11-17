@@ -19,7 +19,7 @@ class MoveNodeCandidate(object):
             if idx > self.nodeIdx and idx <= self.target:
                 return idx - 1
         else:
-            if idx < self.nodeInx and idx >= self.target:
+            if idx < self.nodeIdx and idx >= self.target:
                 return idx + 1
             
         return idx
@@ -63,18 +63,22 @@ class MoveNodeCandidate(object):
             node = self.graph.getNodeByIndex(nodeIdx)
                       
             for edge in movenode.edges:
-                edgeId = edge.id
                 e1Idx = self._calcEdgeIndexAfterMove(edge)
+                sortedE1Idx = e1Idx
+                if (e1Idx[0] > e1Idx[1]):
+                    sortedE1Idx = (e1Idx[1], e1Idx[0])
+
                 page = edge.pageId
                 
                 for edge2 in node.edges:
-                    edge2Id = edge2.id
-                    
                     if page != edge2.pageId:
                         continue
                     e2Idx = self._calcEdgeIndexAfterMove(edge2)
+                    sortedE2Idx = e2Idx
+                    if (e2Idx[0] > e2Idx[1]):
+                        sortedE2Idx = (e2Idx[1], e2Idx[0])
                     
-                    if e1Idx[0] < e2Idx[0] < e1Idx[1] < e2Idx[1]:
+                    if sortedE1Idx[0] < sortedE2Idx[0] < sortedE1Idx[1] < sortedE2Idx[1]:
                         numNewCrossings+=1
         
         return self.graph.numCrossings() - numResolvedCrossings + numNewCrossings
@@ -132,7 +136,7 @@ class MoveNodeCandidate(object):
                 crossings = self.graph.getCrossingSetForPage(page,edgeId)
                 
                 for edge2 in node.edges:
-                    edge2Id = edge2.id
+                    edgeId2 = edge2.id
                     
                     if page != edge2.pageId:
                         continue
@@ -151,20 +155,26 @@ class MoveNodeCandidate(object):
         if self.nodeIdx < self.target:
             noderange = range(self.nodeIdx+1, self.target+1)
             indexShift = -1
+        else:
+            noderange = range(self.target, self.nodeIdx)
+            indexShift = 1
+        for i in noderange:
+            node = self.graph.getNodeByIndex(i)
+            self.graph.nodeIdToIndex[node.id] = i+indexShift
+
+        node = self.graph.getNodeByIndex(self.nodeIdx)
+        self.graph.nodeIdToIndex[node.id] = self.target
+
+        if self.nodeIdx < self.target:
             a = self.graph.nodes
             i = self.nodeIdx
             t = self.target
             self.graph.nodes = a[0:i] + a[i+1:t+1] + [a[i]] + a[t+1:]
         else:
-            noderange = range(self.target, self.nodeIdx)
-            indexShift = 1
             a = self.graph.nodes
             i = self.nodeIdx
             t = self.target
             self.graph.nodes = a[0:t] + [a[i]] + a[t:i] + a[i+1:]
-        for i in noderange:
-            node = self.graph.getNodeByIndex(nodeIdx)
-            self.graph.nodeIdToIndex[node.id] = i+indexShift
 
 class MoveNode(Neighborhood):
     def __init__(self, strategy, evaluator):

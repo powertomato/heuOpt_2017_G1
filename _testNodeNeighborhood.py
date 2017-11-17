@@ -30,18 +30,19 @@ g1 = Graph()
 g1.read( os.path.join(os.getcwd(), "instances", "testinstances", "testMove01.txt"), True )
 candidate = MoveNodeCandidate(g1, 1, 2)
 assert( candidate.numCrossings()==0 )
-g2 = g1.copy()
 candidate.graphUpdate()
-
-graphs = [g1,g2]
-i=0
+assert( g1.numCrossings()==0 )
 
 g3 = Graph()
 g3.read( os.path.join(os.getcwd(), "instances", "testinstances", "testMove02.txt"), True )
-a = MoveNodeCandidate(g3, 4, 0)
+a = MoveNodeCandidate(g3, 3, 0)
 print(a.numCrossings())
-#a.graphUpdate()
-# print(graph.numCrossings())
+g4 = g3.copy()
+a.graphUpdate()
+print(g3.numCrossings())
+
+graphs = [g3, g4]
+i=0
 
 root = Tk()
 view = View(root)
