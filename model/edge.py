@@ -45,7 +45,9 @@ class Edge(object):
         return (self.node1, self.node2, self.pageId)
 
     def __eq__(self, other):
-        return self.id == other.id
+        if type(other)==Edge:
+            otherid=other.id
+        return self.id == other
 
     def __hash__(self):
         return self.id

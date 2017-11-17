@@ -55,7 +55,7 @@ class Neighborhood(object):
                 x = proposed
             proposed = self._chooseNext()
         if improved:
-            yield x
+            yield x.graphUpdate()
         else:
             return
         
@@ -63,7 +63,7 @@ class Neighborhood(object):
         proposed = self._chooseNext()
         while proposed != None:
             if self.evaluator.compareStrict(proposed, x):
-                yield proposed
+                yield proposed.graphUpdate()
             proposed = self._chooseNext()
         return
     

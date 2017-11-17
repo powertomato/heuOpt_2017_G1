@@ -27,8 +27,14 @@ class Graph(object):
 
         page = self.pages[p]
 
-        page.addEdge(edge)
         self.edgeList.append(edge)
+        if(updateCrossings):
+            self.crossings_valid = True
+            self.initCrossingsForEdge(edge)
+        else:
+            self.crossings_valid = False
+    
+        page.addEdge(edge)
 
         n1 = self.getNodeByID(n1Id)
         n1.neighbours.add(n2Id)
@@ -36,11 +42,7 @@ class Graph(object):
         n2 = self.getNodeByID(n2Id)
         n2.neighbours.add(n1Id)
 
-        if(updateCrossings):
-            self.crossings_valid = True
-            self.initCrossingsForEdge(edge)
-        else:
-            self.crossings_valid = False
+
 
     # use only for initialisation!
     def initCrossingsForEdge(self, edge):
@@ -87,19 +89,25 @@ class Graph(object):
         num = 0
         for page in self.pages:
             num += page.numCrossings()
-            print("page:", page.id, "crossings:", page.numCrossings())
-
-        numEdgelist = 0
-        for edge in self.edgeList:
-            page = edge.pageId
-            numEdgelist += len(edge.perPageCrossedEdges[page])
-
-        assert numEdgelist == num
-        assert num % 2 == 0
-        return num//2
+#             print("page:", page.id, "crossings:", page.numCrossings())
+# 
+#         numEdgelist = 0
+#         for edge in self.edgeList:
+#             page = edge.pageId
+#             numEdgelist += len(edge.perPageCrossedEdges[page])
+# 
+#         assert numEdgelist == num
+#         assert num % 2 == 0
+        return num
+    
+    def getCrossingSetForPage(self, pageid, edgeid):
+        return self.edgeList[edgeid].getCrossingSetForPage(pageid)
 
     def getEdges(self):
         return self.edgeList
+    
+    def getEdge(self, id):
+        return self.edgeList[id]
 
     def getNodeByID(self,id):
         return self.nodes[self.nodeIdToIndex[id]]
@@ -128,7 +136,7 @@ class Graph(object):
         for edge in self.edgeList:
             self.initCrossingsForEdge(edge)
     
-    def read(self, filepath):
+    def read(self, filepath, updateCrossings=True):
         with open(filepath, newline='') as csvfile:
             reader = csv.reader(csvfile, delimiter=' ')
             first = next(reader)
@@ -151,7 +159,7 @@ class Graph(object):
                     edges.append(edge)
 
             for edge in edges:
-                self.addEdge(edge.node1, edge.node2, edge.pageId, True)
+                self.addEdge(edge.node1, edge.node2, edge.pageId, updateCrossings)
                 print("c", edge.id)
     
     def write(self, filepath):

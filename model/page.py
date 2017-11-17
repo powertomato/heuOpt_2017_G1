@@ -9,23 +9,23 @@ class Page(object):
         self.id = id
         self.graph = graph
         self.edges = set()
-        self.doubled_crossings = 0
-        self.doubled_crossings_valid = True
+        self.crossings = 0
+        self.crossings_valid = True
         
     def addEdge(self, edge):
         self.edges.add(edge)
-        self.doubled_crossings += len(edge.getCrossingSetForPage(self.id))
+        self.crossings += len(edge.getCrossingSetForPage(self.id))
 
     def removeEdge(self, edge):
         self.edges.remove(edge)
-        self.doubled_crossings -= len(edge.getCrossingSetForPage(self.id))
+        self.crossings -= len(edge.getCrossingSetForPage(self.id))
 
     def numCrossings(self):
-        doubledCrossings = 0
-        for edge in self.edges:
-            doubledCrossings += len(edge.getCrossingSetForPage(self.id))
-
-        return doubledCrossings
+#         doubledCrossings = 0
+#         for edge in self.edges:
+#             doubledCrossings += len(edge.getCrossingSetForPage(self.id))
+#       return doubledCrossings
+        return self.crossings
 
     def getEdges(self):
         return self.edges
