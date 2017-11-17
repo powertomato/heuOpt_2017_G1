@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bb7cb830-110f-4114-9d96-f9d82a9b2c21" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_testNodeNeighborhood.py" afterPath="$PROJECT_DIR$/_testNodeNeighborhood.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solvers/neighborhoods/MoveNode.py" afterPath="$PROJECT_DIR$/solvers/neighborhoods/MoveNode.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/testEdgeNeighborhood.py" afterPath="$PROJECT_DIR$/_testEdgeNeighborhood.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/testNodeNeighborhood.py" afterPath="$PROJECT_DIR$/_testNodeNeighborhood.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -95,11 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_testNodeNeighborhood.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="_testNodeNeighborhood.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_testNodeNeighborhood.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="33" column="18" lean-forward="true" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -107,12 +106,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MoveNode.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MoveNode.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/solvers/neighborhoods/MoveNode.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-17">
-              <caret line="124" column="89" lean-forward="true" selection-start-line="124" selection-start-column="89" selection-end-line="124" selection-end-column="89" />
-              <folding />
+            <state relative-caret-position="187">
+              <caret line="136" column="44" lean-forward="true" selection-start-line="136" selection-start-column="44" selection-end-line="136" selection-end-column="44" />
+              <folding>
+                <marker date="1510938261605" expanded="true" signature="163:6767" ph="..." />
+                <marker date="1510938261605" expanded="true" signature="939:1031" ph="..." />
+                <marker date="1510938261605" expanded="true" signature="6843:6903" ph="..." />
+                <marker date="1510938261605" expanded="true" signature="6945:7177" ph="..." />
+                <marker date="1510938261605" expanded="true" signature="6965:7177" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,8 +125,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="87" column="21" lean-forward="false" selection-start-line="87" selection-start-column="21" selection-end-line="87" selection-end-column="21" />
+            <state relative-caret-position="265">
+              <caret line="93" column="36" lean-forward="true" selection-start-line="93" selection-start-column="36" selection-end-line="93" selection-end-column="36" />
               <folding>
                 <element signature="e#38#48#0" expanded="true" />
               </folding>
@@ -200,9 +205,9 @@
         <option value="$PROJECT_DIR$/solvers/GreedyLeastPage.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/testNodeNeighborhood.py" />
-        <option value="$PROJECT_DIR$/_testNodeNeighborhood.py" />
         <option value="$PROJECT_DIR$/model/graph.py" />
         <option value="$PROJECT_DIR$/solvers/neighborhoods/MoveNode.py" />
+        <option value="$PROJECT_DIR$/_testNodeNeighborhood.py" />
       </list>
     </option>
   </component>
@@ -929,31 +934,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_testNodeNeighborhood.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="18" lean-forward="true" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/solvers/neighborhoods/EdgePageMove.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="87" column="21" lean-forward="false" selection-start-line="87" selection-start-column="21" selection-end-line="87" selection-end-column="21" />
-          <folding>
-            <element signature="e#38#48#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -997,9 +982,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/solvers/neighborhoods/MoveNode.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="124" column="89" lean-forward="true" selection-start-line="124" selection-start-column="89" selection-end-line="124" selection-end-column="89" />
-          <folding />
+        <state relative-caret-position="187">
+          <caret line="136" column="44" lean-forward="true" selection-start-line="136" selection-start-column="44" selection-end-line="136" selection-end-column="44" />
+          <folding>
+            <marker date="1510938261605" expanded="true" signature="163:6767" ph="..." />
+            <marker date="1510938261605" expanded="true" signature="939:1031" ph="..." />
+            <marker date="1510938261605" expanded="true" signature="6843:6903" ph="..." />
+            <marker date="1510938261605" expanded="true" signature="6945:7177" ph="..." />
+            <marker date="1510938261605" expanded="true" signature="6965:7177" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="93" column="36" lean-forward="true" selection-start-line="93" selection-start-column="36" selection-end-line="93" selection-end-column="36" />
+          <folding>
+            <element signature="e#38#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_testNodeNeighborhood.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
