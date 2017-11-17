@@ -1,17 +1,13 @@
-try:
-    import tkinter as tk
-    from tkinter import *
-    from tkinter.filedialog import askdirectory
-except:
-    pass
-
-
+import tkinter as tk
+from tkinter import *
+from tkinter.filedialog import askdirectory
 import numpy as np
 import colorsys
 
 import csv
 import os
 from model.graph import Graph
+
 
 class View():
     def __init__(self, root):
@@ -36,16 +32,16 @@ class View():
         p1 = (left_inset, top_inset)
         p2 = (left_inset, top_inset + line_height)
 
-        self.canvas.create_oval(left_inset, top_inset, left_inset, top_inset+line_height)
+        self.canvas.create_oval(left_inset, top_inset, left_inset, top_inset + line_height)
 
-        node_positions = np.linspace(top_inset, top_inset+line_height-(line_height/nnodes), nnodes-1)
+        node_positions = np.linspace(top_inset, top_inset + line_height - (line_height / nnodes), nnodes - 1)
         node_positions = np.append(node_positions, top_inset + line_height)
 
         idx = 0
         for pos in node_positions:
             id = graph.getNodeByIndex(idx).id
-            self.canvas.create_oval(left_inset-5, pos-5, left_inset+5, pos+5)
-            self.canvas.create_text(left_inset-10, pos-10, text=str(id))
+            self.canvas.create_oval(left_inset - 5, pos - 5, left_inset + 5, pos + 5)
+            self.canvas.create_text(left_inset - 10, pos - 10, text=str(id))
             idx += 1
 
         # draw edges
@@ -64,42 +60,43 @@ class View():
             pos1 = node_positions[in1]
             pos2 = node_positions[in2]
 
-            width = graph.getDistance(n1,n2) * line_height/(nnodes-1)
+            width = graph.getDistance(n1, n2) * line_height / (nnodes - 1)
             width /= 2
 
             start = 270
-            if p%2 is 1:
+            if p % 2 == 1:
                 start = 90
 
             dash = None
-            if p%3 is 1:
+            if p % 3 == 1:
                 dash = (8, 8, 16)
-            elif p%3 is 2:
+            elif p % 3 == 2:
                 dash = (12, 8, 4, 8)
 
-            self.canvas.create_arc(left_inset-width, pos1, left_inset+width, pos2, style=tk.ARC, start=start, extent = 180, outline=tk_rgb, width = 3, dash=dash)
+            self.canvas.create_arc(left_inset - width, pos1, left_inset + width, pos2, style=tk.ARC, start=start,
+                                   extent=180, outline=tk_rgb, width=3, dash=dash)
 
             mid = (pos1 + pos2) / 2
             text_x = left_inset + width
             if start == 90:
                 text_x = left_inset - width
 
-            self.canvas.create_text(text_x+10, mid, text=str(edge.id), fill=tk_rgb)
-
+            self.canvas.create_text(text_x + 10, mid, text=str(edge.id), fill=tk_rgb)
 
 
 if __name__ == "__main__":
-    def load_and_draw( event):
+    def load_and_draw(event):
         graph = Graph()
         graph.read('../instances/automatic-0.txt')
-    
+
         view.draw(graph)
-    
+
+
     root = Tk()
     view = View(root)
-    
+
     view.canvas.bind("<Button-1>", load_and_draw)
-    
-    root.title="BEP Visualizer"
+
+    root.title = "BEP Visualizer"
     root.deiconify()
     root.mainloop()

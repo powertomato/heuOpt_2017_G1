@@ -11,6 +11,9 @@ from BEP_Visualizer.BEP_visualizer import View
 from solvers.GreedyLongestChain import *
 from solvers.FastGreedy import *
 from solvers.DepthFirstVertexOrder import *
+from solvers.GreedyLeastPage import *
+from solvers.RandomEdgeAssignment import *
+from solvers.RandomVertexOrder import *
 from model.node import Node
 from model.edge import Edge
 from model.page import Page
@@ -73,8 +76,15 @@ USAGE
             elif args.construction.lower() == "dfs":
                 print("Creating initial vertex order using dfs method")
                 constructVertexOrderDFS(graph)
+                constructSolutionGreedyLeastCrossings(graph)
+
                 print("crossings:", graph.numCrossings())
-                
+            elif args.construction.lower() == "rnd":
+                print("Creating initial vertex order using rnd method")
+                constructVertexOrderRandom(graph)
+                constructRandomEdgeAssignment(graph)
+
+                print("crossings:", graph.numCrossings())
         if args.output:
             graph.write(args.output)
             

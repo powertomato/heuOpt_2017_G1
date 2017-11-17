@@ -89,7 +89,7 @@ class Graph(object):
         num = 0
         for page in self.pages:
             num += page.numCrossings()
-#             print("page:", page.id, "crossings:", page.numCrossings())
+            print("page:", page.id, "crossings:", page.numCrossings())
 # 
 #         numEdgelist = 0
 #         for edge in self.edgeList:
@@ -131,12 +131,11 @@ class Graph(object):
 
         for edge in self.edgeList:
             edge.perPageCrossedEdges = dict()
-            print(edge.id, "p:", edge.pageId)
 
         for edge in self.edgeList:
             self.initCrossingsForEdge(edge)
     
-    def read(self, filepath, updateCrossings=True):
+    def read(self, filepath, updateCrossings=False):
         with open(filepath, newline='') as csvfile:
             reader = csv.reader(csvfile, delimiter=' ')
             first = next(reader)
