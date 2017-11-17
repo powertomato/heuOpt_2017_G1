@@ -16,8 +16,7 @@ class SimpleLocalSearch(object):
                 break
             
             if self.evaluator.compare(x_prim, x):
-                x = x_prim
+                x = x_prim.graphUpdate()
                 self.neighborhood.reset(x)
-                print(x)
         return x
                 
