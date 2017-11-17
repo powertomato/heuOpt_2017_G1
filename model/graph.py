@@ -1,6 +1,7 @@
 import csv
 import os
 import numpy as np
+import copy
 from model.node import *
 from model.edge import *
 from model.page import *
@@ -38,9 +39,11 @@ class Graph(object):
 
         n1 = self.getNodeByID(n1Id)
         n1.neighbours.add(n2Id)
+        n1.edges.add(edge)
 
         n2 = self.getNodeByID(n2Id)
         n2.neighbours.add(n1Id)
+        n2.edges.add(edge)
 
 
 
@@ -90,6 +93,7 @@ class Graph(object):
         for page in self.pages:
             num += page.numCrossings()
             #print("page:", page.id, "crossings:", page.numCrossings())
+
 # 
 #         numEdgelist = 0
 #         for edge in self.edgeList:
@@ -98,7 +102,7 @@ class Graph(object):
 # 
 #         assert numEdgelist == num
 #         assert num % 2 == 0
-        return num
+        return num//2
     
     def getCrossingSetForPage(self, pageid, edgeid):
         return self.edgeList[edgeid].getCrossingSetForPage(pageid)
@@ -158,7 +162,7 @@ class Graph(object):
 
             for edge in edges:
                 self.addEdge(edge.node1, edge.node2, edge.pageId, updateCrossings)
-                print("c", edge.id)
+                #print("c", edge.id)
     
     def write(self, filepath):
         with open(filepath,"w") as writefile:
@@ -174,17 +178,12 @@ class Graph(object):
                 writefile.write("%d %d [%d]\n" % edge.toTuple())
     
     def copy(self):
-        ret = Graph()
-        
-        ret.nodes = self.nodes
-        ret.nodeIdToIndex = dict(self.nodeIdToIndex)
-        ret.pages = self.pages
-        ret.pageNumber = self.pageNumber
-        ret.edgeList = self.edgeList
-        return ret
+        return copy.deepcopy(self)
     
     def __eq__(self, other):
-        return self.pages == other.pages
+        if type(other)==Graph:
+            return self.pages == other.pages
+        return False
     
     def __ne__(self, other):
         return not self == other
