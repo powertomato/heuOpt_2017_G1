@@ -31,7 +31,7 @@ class MoveNodeCandidate(object):
     def numCrossings(self):
         numNewCrossings = 0
         numResolvedCrossings = 0
-        movenode = self.graph.nodes[self.nodeIdx]
+        movenode = self.graph.getNodeByIndex(self.nodeIdx)
         
         for edge in movenode.edges:
             edgeId = edge.id
@@ -74,7 +74,7 @@ class MoveNodeCandidate(object):
         return self.graph.numCrossings() - numResolvedCrossings + numNewCrossings
     
     def graphUpdate(self):
-        movenode = self.graph.nodes[self.nodeIdx]
+        movenode = self.graph.getNodeByIndex(self.nodeIdx)
         
         for edge in movenode.edges:
             edgeId = edge.id
@@ -131,12 +131,19 @@ class MoveNodeCandidate(object):
         if self.nodeIdx < self.target:
             noderange = range(self.nodeIdx+1, self.target+1)
             indexShift = -1
+            a = self.graph.nodes
+            i = self.nodeIdx
+            t = self.target
+            self.graph.nodes = a[0:i] + a[i+1:t+1] + [a[i]] + a[t+1:]
         else:
             noderange = range(self.target, self.nodeIdx)
             indexShift = 1
-            
+            a = self.graph.nodes
+            i = self.nodeIdx
+            t = self.target
+            self.graph.nodes = a[0:t] + [a[i]] + a[t:i] + a[i+1:]
         for i in noderange:
-            node = self.graph.nodes[i]
+            node = self.graph.getNodeByIndex(nodeIdx)
             self.graph.nodeIdToIndex[node.id] = i+indexShift
 
 class MoveNode(Neighborhood):

@@ -9,7 +9,7 @@ from solvers.evaluators.Evaluator import Evaluator
 from model.graph import Graph
 import random
 import os,sys
-
+import copy
 
 import tkinter as tk
 from tkinter import *
@@ -39,9 +39,10 @@ def draw( event):
     view.draw(graph)
     
 def click(event):
-    global i
+    global i, graph
     i=(i+1) % len(graphs)
-    graph = graphs[i] 
+    graph = graphs[i]
+    
     draw(None)
 
 root.bind("<Configure>", draw)
