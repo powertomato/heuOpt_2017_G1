@@ -28,6 +28,18 @@ class MoveNodeCandidate(object):
         return ( self._calcIndexAfterMove(self.graph.getNodeIndex(edge.node1)), 
                 self._calcIndexAfterMove(self.graph.getNodeIndex(edge.node2)) )
         
+    def _areEdgesCrossing(self, e1Idx, e2Idx):
+        if (e1Idx[0] > e1Idx[1]):
+            e1Idx = (e1Idx[1], e1Idx[0])
+        
+        if (e2Idx[0] > e2Idx[1]):
+            e2Idx = (e2Idx[1], e2Idx[0])
+        
+        if e1Idx[0]>e2Idx[0]:
+            e1Idx, e2Idx = e2Idx, e1Idx
+            
+        return e1Idx[0] < e2Idx[0] < e1Idx[1] < e2Idx[1]
+        
     def numCrossings(self):
         numNewCrossings = 0
         numResolvedCrossings = 0
@@ -36,22 +48,14 @@ class MoveNodeCandidate(object):
         for edge in movenode.edges:
             edgeId = edge.id
             e1Idx = self._calcEdgeIndexAfterMove(edge)
-            sortedE1Idx = e1Idx
-            if (e1Idx[0] > e1Idx[1]):
-                sortedE1Idx = (e1Idx[1], e1Idx[0])
             page = edge.pageId
             
             for edgeId2 in self.graph.getCrossingSetForPage(page,edgeId):
                 edge2 = self.graph.edgeList[edgeId2]
             
                 e2Idx = self._calcEdgeIndexAfterMove(edge2)
-                sortedE2Idx = e2Idx
-                if (e2Idx[0] > e2Idx[1]):
-                    sortedE2Idx = (e2Idx[1], e2Idx[0])
 
-                if sortedE1Idx[0]>sortedE2Idx[0]:
-                    sortedE1Idx, sortedE2Idx = sortedE2Idx, sortedE1Idx
-                if not sortedE1Idx[0] < sortedE2Idx[0] < sortedE1Idx[1] < sortedE2Idx[1]: #crossing nicht mehr da
+                if not self._areEdgesCrossing(e1Idx,e2Idx):
                     numResolvedCrossings+=1
                     
         if self.nodeIdx < self.target:
@@ -64,9 +68,6 @@ class MoveNodeCandidate(object):
                       
             for edge in movenode.edges:
                 e1Idx = self._calcEdgeIndexAfterMove(edge)
-                sortedE1Idx = e1Idx
-                if (e1Idx[0] > e1Idx[1]):
-                    sortedE1Idx = (e1Idx[1], e1Idx[0])
 
                 page = edge.pageId
                 
@@ -74,11 +75,8 @@ class MoveNodeCandidate(object):
                     if page != edge2.pageId:
                         continue
                     e2Idx = self._calcEdgeIndexAfterMove(edge2)
-                    sortedE2Idx = e2Idx
-                    if (e2Idx[0] > e2Idx[1]):
-                        sortedE2Idx = (e2Idx[1], e2Idx[0])
                     
-                    if sortedE1Idx[0] < sortedE2Idx[0] < sortedE1Idx[1] < sortedE2Idx[1]:
+                    if self._areEdgesCrossing(e1Idx,e2Idx):
                         numNewCrossings+=1
         
         return self.graph.numCrossings() - numResolvedCrossings + numNewCrossings
@@ -88,11 +86,7 @@ class MoveNodeCandidate(object):
         
         for edge in movenode.edges:
             edgeId = edge.id
-            e1Idx = ( self._calcIndexAfterMove(self.graph.getNodeIndex(edge.node1)), 
-                      self._calcIndexAfterMove(self.graph.getNodeIndex(edge.node2)) )
-            sortedE1Idx = e1Idx
-            if (e1Idx[0] > e1Idx[1]):
-                sortedE1Idx = (e1Idx[1], e1Idx[0])
+            e1Idx = self._calcEdgeIndexAfterMove(edge)
 
             page = edge.pageId
             crossings = self.graph.getCrossingSetForPage(page,edgeId)
@@ -101,19 +95,14 @@ class MoveNodeCandidate(object):
             for edgeId2 in crossings:
                 edge2 = self.graph.edgeList[edgeId2]
             
-                e2Idx = ( self._calcIndexAfterMove(self.graph.getNodeIndex(edge2.node1)), 
-                          self._calcIndexAfterMove(self.graph.getNodeIndex(edge2.node2)) )
-                sortedE2Idx = e2Idx
-                if (e2Idx[0] > e2Idx[1]):
-                    sortedE2Idx = (e2Idx[1], e2Idx[0])
+                e2Idx = self._calcEdgeIndexAfterMove(edge2)
                 
                 crossings2 = self.graph.getCrossingSetForPage(page,edgeId2)
                 
-                if sortedE1Idx[0]>sortedE2Idx[0]:
-                    sortedE1Idx, sortedE2Idx = sortedE2Idx, sortedE1Idx
-                if not sortedE1Idx[0] < sortedE2Idx[0] < sortedE1Idx[1] < sortedE2Idx[1]: #crossing nicht mehr da
+                if not  self._areEdgesCrossing(e1Idx,e2Idx):
                     toremove.add(edgeId2)
                     crossings2.remove(edgeId)
+                    
             crossings.difference_update(toremove)
                     
         if self.nodeIdx < self.target:
@@ -126,11 +115,7 @@ class MoveNodeCandidate(object):
                       
             for edge in movenode.edges:
                 edgeId = edge.id
-                e1Idx = ( self._calcIndexAfterMove(self.graph.getNodeIndex(edge.node1)), 
-                      self._calcIndexAfterMove(self.graph.getNodeIndex(edge.node2)) )
-                sortedE1Idx = e1Idx
-                if (e1Idx[0] > e1Idx[1]):
-                    sortedE1Idx = (e1Idx[1], e1Idx[0])
+                e1Idx = self._calcEdgeIndexAfterMove(edge)
 
                 page = edge.pageId
                 crossings = self.graph.getCrossingSetForPage(page,edgeId)
@@ -140,15 +125,11 @@ class MoveNodeCandidate(object):
                     
                     if page != edge2.pageId:
                         continue
-                    e2Idx = ( self._calcIndexAfterMove(self.graph.getNodeIndex(edge2.node1)), 
-                              self._calcIndexAfterMove(self.graph.getNodeIndex(edge2.node2)) )
-                    sortedE2Idx = e2Idx
-                    if (e2Idx[0] > e2Idx[1]):
-                        sortedE2Idx = (e2Idx[1], e2Idx[0])
+                    e2Idx = self._calcEdgeIndexAfterMove(edge2)
                     
                     crossings2 = self.graph.getCrossingSetForPage(page,edgeId2)
                     
-                    if sortedE1Idx[0] < sortedE2Idx[0] < sortedE1Idx[1] < sortedE2Idx[1]:
+                    if self._areEdgesCrossing(e1Idx,e2Idx):
                         crossings.add(edgeId2)
                         crossings2.add(edgeId)
         

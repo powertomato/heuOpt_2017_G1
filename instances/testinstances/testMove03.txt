@@ -1,5 +1,5 @@
 # category: automatic
-# problem: crossings 1 -> move (6,1) 0 crossings; -> move (5,1) 3 crossings
+# problem: crossings 1 -> move (1,6) 0 crossings; -> move (5,1) 2 crossings
 8
 1
 0
@@ -10,7 +10,7 @@
 5
 6
 7
-1 7 [0]
 0 6 [0]
-1 2 [0]
-1 3 [0]
+1 7 [0]
+4 6 [0]
+5 6 [0]
