@@ -25,8 +25,8 @@ class MoveNodeCandidate(object):
         return idx
     
     def _calcEdgeIndexAfterMove(self, edge):
-        return ( self._calcIndexAfterMove(self.graph.getNodeIndex(edge.node1)), 
-                self._calcIndexAfterMove(self.graph.getNodeIndex(edge.node2)) )
+        return ( self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge.node1]), 
+                self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge.node2]) )
         
     def _areEdgesCrossing(self, e1Idx, e2Idx):
         if (e1Idx[0] > e1Idx[1]):

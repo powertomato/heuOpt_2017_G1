@@ -65,7 +65,7 @@ USAGE
         args = parser.parse_args()
         
         graph = Graph()
-        graph.read(args.input[0])
+        graph.read(args.input[0], False)
         
         if args.solve:
             if  args.construction.lower() == "greedylongestchain":
@@ -84,7 +84,7 @@ USAGE
                 numCr = 1000000000
                 outGr = None
                 constructVertexOrderDFS(graph)
-                for _ in range(5000):
+                for _ in range(1):
                     #constructVertexOrderRandom(graph)
                     #constructRandomEdgeAssignment(graph)
                     constructSolutionGreedyLeastCrossings(graph)

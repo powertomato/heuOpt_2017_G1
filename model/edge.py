@@ -11,19 +11,24 @@ class Edge(object):
         self.node2 = max(n1Id, n2Id)
         self.pageId = pageId
         self.perPageCrossedEdges = dict()
+        self.resetCrossings()
+        
+    def resetCrossings(self):
+        for page in range(len(self.graph.pages)):
+            self.perPageCrossedEdges[page] = set()
 
     def addCrossing(self, otherEdgeId):
-        totalDiff = 0
+        #totalDiff = 0
         otherEdge = self.graph.edgeList[otherEdgeId]
         pageId = otherEdge.pageId
-        if not otherEdgeId in self.getCrossingSetForPage(pageId):
-            self.getCrossingSetForPage(pageId).add(otherEdgeId)
-            totalDiff += 1
-        if not self.id in otherEdge.getCrossingSetForPage(pageId):
-            otherEdge.getCrossingSetForPage(self.pageId).add(self.id)
-            totalDiff += 1
+        #if not otherEdgeId in self.getCrossingSetForPage(pageId):
+        self.perPageCrossedEdges[pageId].add(otherEdgeId)
+        #totalDiff += 1
+        #if not self.id in otherEdge.getCrossingSetForPage(pageId):
+        otherEdge.perPageCrossedEdges[self.pageId].add(self.id)
+        #totalDiff += 1
 
-        return totalDiff
+        #return totalDiff
 
     def moveToPage(self, oldPageId, newPageId):
         for page, crossings in self.perPageCrossedEdges.items():
@@ -44,10 +49,10 @@ class Edge(object):
     def toTuple(self):
         return (self.node1, self.node2, self.pageId)
 
-    def __eq__(self, other):
-        if type(other)==Edge:
-            otherid=other.id
-        return self.id == other
+#     def __eq__(self, other):
+#         if type(other)==Edge:
+#             otherid=other.id
+#         return self.id == other
 
     def __hash__(self):
         return self.id

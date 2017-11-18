@@ -54,8 +54,8 @@ class View():
             pagecolor = tuple(int(x * 255) for x in pagecolor)
             tk_rgb = "#%02x%02x%02x" % pagecolor
 
-            in1 = graph.getNodeIndex(n1)
-            in2 = graph.getNodeIndex(n2)
+            in1 = graph.nodeIdToIndex[n1]
+            in2 = graph.nodeIdToIndex[n2]
 
             pos1 = node_positions[in1]
             pos2 = node_positions[in2]
