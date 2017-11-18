@@ -92,34 +92,37 @@ USAGE
             threads = []
             lock = mp.Lock()
 
-            for _ in range(4):
-                tr1 = ThreadRunner(_*2+0, graph.copy(), best_solution, ThreadRunner.N_DFS, ThreadRunner.E_GRD, 0, 100, lock)
-                tr2 = ThreadRunner(_*2+1, graph.copy(), best_solution, ThreadRunner.N_RND, ThreadRunner.E_GRD, 0, 100, lock)
+            for _ in range(2):
+                tr1 = ThreadRunner(_*3+0, graph.copy(), best_solution, ThreadRunner.N_DFS, ThreadRunner.E_GRD, 1, lock, local_search=ThreadRunner.LS_VND, step=Neighborhood.BEST, neighborhood=ThreadRunner.LS_NODEMOVE)
+                tr2 = ThreadRunner(_*3+1, graph.copy(), best_solution, ThreadRunner.N_RND, ThreadRunner.E_GRD, 1, lock, local_search=ThreadRunner.LS_VND, step=Neighborhood.NEXT, neighborhood=ThreadRunner.LS_EDGEMOVE)
+                tr3 = ThreadRunner(_ * 3 + 2, graph.copy(), best_solution, ThreadRunner.N_DFS, ThreadRunner.E_GRD, 1, lock, local_search=ThreadRunner.LS_VND, step=Neighborhood.NEXT, neighborhood=ThreadRunner.LS_EDGEMOVE)
 
                 # Start new Threads
                 tr1.start()
                 tr2.start()
+                tr3.start()
 
                 # Add threads to thread list
                 threads.append(tr1)
                 threads.append(tr2)
+                threads.append(tr3)
 
             for t in threads:
                 t.join()
 
             print("best:", best_solution[0])
 
-            graph = best_solution[1]
+            best = best_solution[1]
 
         if args.output:
-            graph.write(args.output)
+            best.write(args.output)
             
         if VIEW and args.view:
             root = Tk()
             view = View(root)
 
             def draw( event):
-                view.draw(graph)
+                view.draw(best)
     
             root.bind("<Configure>", draw)
             

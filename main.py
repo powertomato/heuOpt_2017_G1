@@ -80,18 +80,21 @@ USAGE
         
         graph = Graph()
         if args.construction.lower() == "none":
-            graph.read(args.input[0], True)
+            print("Reading graph...")
+            graph.read(args.input[0], False)
         else:
-            graph.read(args.input[0], True)
+            print("Reading graph...")
+            graph.read(args.input[0], False)
         
         if args.solve:
             if args.construction.lower() == "dfs":
-                print("Creating initial vertex order using dfs method")
+                print("Constructing using dfs method")
                 constructVertexOrderDFS(graph)
                 constructSolutionGreedyLeastCrossings(graph, False)
 
                 print("crossings:", graph.numCrossings())
             elif args.construction.lower() == "rnd":
+                print("Constructing using rnd method")
                 constructVertexOrderDFS(graph)            
                 constructSolutionGreedyLeastCrossings(graph, True)
 
