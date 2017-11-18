@@ -85,28 +85,13 @@ USAGE
             if args.construction.lower() == "dfs":
                 print("Creating initial vertex order using dfs method")
                 constructVertexOrderDFS(graph)
-                constructSolutionGreedyLeastCrossings(graph)
+                constructSolutionGreedyLeastCrossings(graph, False)
 
                 print("crossings:", graph.numCrossings())
             elif args.construction.lower() == "rnd":
-                numCr = 1000000000
-                outGr = None
+                constructVertexOrderDFS(graph)            
+                constructSolutionGreedyLeastCrossings(graph, True)
 
-                constructVertexOrderDFS(graph)
-                for _ in range(1):
-                    #constructVertexOrderRandom(graph)
-                    #constructRandomEdgeAssignment(graph)
-                    constructSolutionGreedyLeastCrossings(graph)
-                    nc = graph.numCrossings()
-                    if nc < numCr:
-                        numCr = nc
-                        print(numCr)
-                        outGr = copy.deepcopy(graph)
-
-                    if _ % 1000 == 0:
-                        print(_)
-
-                graph = outGr
             elif args.construction:
                 print("possible construction heuristics: depth first search (dfs), randomized (rnd)")
                 sys.exit(1)

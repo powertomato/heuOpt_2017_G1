@@ -1,6 +1,4 @@
 from solvers.neighborhoods.Neighborhood import Neighborhood
-from solvers.neighborhoods.SwitchTwoNodes import SwitchTwoNodes
-from solvers.neighborhoods.SwitchNNodes import SwitchNNodes
 
 from solvers.neighborhoods.EdgePageMove import EdgePageMove
 from solvers.neighborhoods.EdgePageMove import EdgePageMoveCandidate

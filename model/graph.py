@@ -66,7 +66,7 @@ class Graph(object):
                 if e1Idx[0]>e2Idx[0]:
                     if e2Idx[0] < e1Idx[0] < e2Idx[1] < e1Idx[1]:
                         edge.addCrossing(other.id)
-                elif e2Idx[0] < e1Idx[0] < e2Idx[1] < e1Idx[1]:
+                elif e1Idx[0] < e2Idx[0] < e1Idx[1] < e2Idx[1]:
                     edge.addCrossing(other.id)
                     
     def moveEdgeToPage(self, edge, pageId):
@@ -106,7 +106,7 @@ class Graph(object):
             if e1Idx[0]>e2Idx[0]:
                 if e2Idx[0] < e1Idx[0] < e2Idx[1] < e1Idx[1]:
                     crossings += 1
-            elif e2Idx[0] < e1Idx[0] < e2Idx[1] < e1Idx[1]:
+            elif e1Idx[0] < e2Idx[0] < e1Idx[1] < e2Idx[1]:
                 crossings += 1
 
         return crossings

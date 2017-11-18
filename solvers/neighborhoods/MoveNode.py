@@ -11,7 +11,6 @@ class MoveNodeCandidate(object):
         self.graph = graph
     
     def _calcIndexAfterMove(self, idx):
-        
         if idx == self.nodeIdx:
                 return self.target
         
@@ -20,25 +19,8 @@ class MoveNodeCandidate(object):
                 return idx - 1
         else:
             if idx < self.nodeIdx and idx >= self.target:
-                return idx + 1
-            
+                return idx + 1   
         return idx
-    
-    def _calcEdgeIndexAfterMove(self, edge):
-        return ( self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge.node1]), 
-                self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge.node2]) )
-        
-    def _areEdgesCrossing(self, e1Idx, e2Idx):
-        if (e1Idx[0] > e1Idx[1]):
-            e1Idx = (e1Idx[1], e1Idx[0])
-        
-        if (e2Idx[0] > e2Idx[1]):
-            e2Idx = (e2Idx[1], e2Idx[0])
-        
-        if e1Idx[0]>e2Idx[0]:
-            e1Idx, e2Idx = e2Idx, e1Idx
-            
-        return e1Idx[0] < e2Idx[0] < e1Idx[1] < e2Idx[1]
         
     def numCrossings(self):
         numNewCrossings = 0
@@ -47,16 +29,27 @@ class MoveNodeCandidate(object):
         
         for edge in movenode.edges:
             edgeId = edge.id
-            e1Idx = self._calcEdgeIndexAfterMove(edge)
+            e1Idx = ( self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge.node1]), 
+                      self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge.node2]) )
+            if (e1Idx[0] > e1Idx[1]):
+                e1Idx = (e1Idx[1], e1Idx[0])
             page = edge.pageId
             
-            for edgeId2 in self.graph.getCrossingSetForPage(page,edgeId):
+            for edgeId2 in edge.perPageCrossedEdges[page]:
                 edge2 = self.graph.edgeList[edgeId2]
             
-                e2Idx = self._calcEdgeIndexAfterMove(edge2)
+                e2Idx = ( self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge2.node1]), 
+                          self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge2.node2]) )
 
-                if not self._areEdgesCrossing(e1Idx,e2Idx):
-                    numResolvedCrossings+=1
+                #edges not crossing
+                if (e2Idx[0] > e2Idx[1]):
+                    e2Idx = (e2Idx[1], e2Idx[0])
+                if e1Idx[0]>e2Idx[0]:
+                    if not (e2Idx[0] < e1Idx[0] < e2Idx[1] < e1Idx[1]):
+                        numResolvedCrossings+=1
+                else:
+                    if not (e1Idx[0] < e2Idx[0] < e1Idx[1] < e2Idx[1]):    
+                        numResolvedCrossings+=1
                     
         if self.nodeIdx < self.target:
             noderange = range(self.nodeIdx+1, self.target+1)
@@ -67,17 +60,27 @@ class MoveNodeCandidate(object):
             node = self.graph.getNodeByIndex(nodeIdx)
                       
             for edge in movenode.edges:
-                e1Idx = self._calcEdgeIndexAfterMove(edge)
-
+                e1Idx = ( self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge.node1]), 
+                          self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge.node2]) )
+                if (e1Idx[0] > e1Idx[1]):
+                    e1Idx = (e1Idx[1], e1Idx[0])
                 page = edge.pageId
                 
                 for edge2 in node.edges:
                     if page != edge2.pageId:
                         continue
-                    e2Idx = self._calcEdgeIndexAfterMove(edge2)
+                    e2Idx = ( self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge2.node1]), 
+                              self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge2.node2]) )
                     
-                    if self._areEdgesCrossing(e1Idx,e2Idx):
-                        numNewCrossings+=1
+                    #edges crossing
+                    if (e2Idx[0] > e2Idx[1]):
+                        e2Idx = (e2Idx[1], e2Idx[0])
+                    if e1Idx[0]>e2Idx[0]:
+                        if e2Idx[0] < e1Idx[0] < e2Idx[1] < e1Idx[1]: 
+                            numNewCrossings+=1
+                    else:
+                        if e1Idx[0] < e2Idx[0] < e1Idx[1] < e2Idx[1]:   
+                            numNewCrossings+=1
         
         return self.graph.numCrossings() - numResolvedCrossings + numNewCrossings
     
@@ -86,24 +89,34 @@ class MoveNodeCandidate(object):
         
         for edge in movenode.edges:
             edgeId = edge.id
-            e1Idx = self._calcEdgeIndexAfterMove(edge)
+            e1Idx = ( self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge.node1]), 
+                      self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge.node2]) )
+            
+            if (e1Idx[0] > e1Idx[1]):
+                e1Idx = (e1Idx[1], e1Idx[0])
 
             page = edge.pageId
-            crossings = self.graph.getCrossingSetForPage(page,edgeId)
             
             toremove = set()
-            for edgeId2 in crossings:
+            for edgeId2 in edge.perPageCrossedEdges[page]:
                 edge2 = self.graph.edgeList[edgeId2]
             
-                e2Idx = self._calcEdgeIndexAfterMove(edge2)
+                e2Idx = ( self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge2.node1]), 
+                          self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge2.node2]) )
                 
-                crossings2 = self.graph.getCrossingSetForPage(page,edgeId2)
-                
-                if not  self._areEdgesCrossing(e1Idx,e2Idx):
-                    toremove.add(edgeId2)
-                    crossings2.remove(edgeId)
+                #edges not crossing
+                if (e2Idx[0] > e2Idx[1]):
+                    e2Idx = (e2Idx[1], e2Idx[0])
+                if e1Idx[0]>e2Idx[0]:
+                    if not (e2Idx[0] < e1Idx[0] < e2Idx[1] < e1Idx[1]):
+                        toremove.add(edgeId2)
+                        edge2.perPageCrossedEdges[page].remove(edgeId)
+                else:
+                    if not (e1Idx[0] < e2Idx[0] < e1Idx[1] < e2Idx[1]):    
+                        toremove.add(edgeId2)
+                        edge2.perPageCrossedEdges[page].remove(edgeId)
                     
-            crossings.difference_update(toremove)
+            edge.perPageCrossedEdges[page].difference_update(toremove)
                     
         if self.nodeIdx < self.target:
             noderange = range(self.nodeIdx+1, self.target+1)
@@ -115,23 +128,32 @@ class MoveNodeCandidate(object):
                       
             for edge in movenode.edges:
                 edgeId = edge.id
-                e1Idx = self._calcEdgeIndexAfterMove(edge)
+                e1Idx = ( self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge.node1]), 
+                          self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge.node2]) )
+                if (e1Idx[0] > e1Idx[1]):
+                    e1Idx = (e1Idx[1], e1Idx[0])
 
                 page = edge.pageId
-                crossings = self.graph.getCrossingSetForPage(page,edgeId)
                 
                 for edge2 in node.edges:
                     edgeId2 = edge2.id
                     
                     if page != edge2.pageId:
                         continue
-                    e2Idx = self._calcEdgeIndexAfterMove(edge2)
+                    e2Idx = ( self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge2.node1]), 
+                              self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge2.node2]) )
                     
-                    crossings2 = self.graph.getCrossingSetForPage(page,edgeId2)
-                    
-                    if self._areEdgesCrossing(e1Idx,e2Idx):
-                        crossings.add(edgeId2)
-                        crossings2.add(edgeId)
+                    #edges not crossing
+                    if (e2Idx[0] > e2Idx[1]):
+                        e2Idx = (e2Idx[1], e2Idx[0])                    
+                    if e1Idx[0]>e2Idx[0]:
+                        if e2Idx[0] < e1Idx[0] < e2Idx[1] < e1Idx[1]:
+                            edge.perPageCrossedEdges[page].add(edgeId2)
+                            edge2.perPageCrossedEdges[page].add(edgeId)
+                    else:
+                        if e1Idx[0] < e2Idx[0] < e1Idx[1] < e2Idx[1]:    
+                            edge.perPageCrossedEdges[page].add(edgeId2)
+                            edge2.perPageCrossedEdges[page].add(edgeId)
         
         if self.nodeIdx < self.target:
             noderange = range(self.nodeIdx+1, self.target+1)

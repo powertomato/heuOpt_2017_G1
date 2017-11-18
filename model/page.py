@@ -19,7 +19,7 @@ class Page(object):
     def numCrossings(self):
         doubledCrossings = 0
         for edge in self.edges:
-            doubledCrossings += len(edge.getCrossingSetForPage(self.id))
+            doubledCrossings += len(edge.perPageCrossedEdges[self.id])
         return doubledCrossings
 
     def getEdges(self):

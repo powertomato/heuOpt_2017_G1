@@ -37,13 +37,10 @@ class Edge(object):
                 other.moveCrossing(self.id, oldPageId, newPageId)
 
     def moveCrossing(self, edgeId, oldPageId, newPageId):
-        self.getCrossingSetForPage(oldPageId).remove(edgeId)
-        self.getCrossingSetForPage(newPageId).add(edgeId)
+        self.perPageCrossedEdges[oldPageId].remove(edgeId)
+        self.perPageCrossedEdges[newPageId].add(edgeId)
 
     def getCrossingSetForPage(self, pageId):
-        if pageId not in self.perPageCrossedEdges:
-            self.perPageCrossedEdges[pageId] = set()
-
         return self.perPageCrossedEdges[pageId]
 
     def toTuple(self):

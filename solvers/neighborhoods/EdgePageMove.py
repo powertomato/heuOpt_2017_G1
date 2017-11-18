@@ -12,8 +12,8 @@ class EdgePageMoveCandidate(object):
         self.newpage = newpage
         
     def numCrossings(self):
-        crossingsOld = self.graph.getCrossingSetForPage(self.oldpage, self.id)
-        crossingsNew = self.graph.getCrossingSetForPage(self.newpage, self.id) 
+        crossingsOld = self.graph.edgeList[self.id].perPageCrossedEdges[self.oldpage]
+        crossingsNew = self.graph.edgeList[self.id].perPageCrossedEdges[self.newpage] 
         return self.graph.numCrossings() - len(crossingsOld) + len(crossingsNew)
     
     def graphUpdate(self):
