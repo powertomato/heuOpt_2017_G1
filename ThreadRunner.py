@@ -1,4 +1,4 @@
-import threading
+from multiprocessing import Process, Lock
 import sys
 import os
 import copy
@@ -17,7 +17,7 @@ from model.page import Page
 from solvers.LocalSearch.VariableNeighborhoodDescent import *
 from solvers.evaluators.Evaluator import *
 
-class ThreadRunner(threading.Thread):
+class ThreadRunner():
 
     N_DFS = 1
     N_RND = 2
@@ -30,7 +30,6 @@ class ThreadRunner(threading.Thread):
     LS_GVNS = 3
 
     def __init__(self, threadID, graph, best_solution, node_construction, edge_construction, local_search, iterations, lock):
-        threading.Thread.__init__(self)
         self.threadID = threadID
         self.graph = graph
         self.best_solution = best_solution
@@ -38,7 +37,14 @@ class ThreadRunner(threading.Thread):
         self.edge_construction = edge_construction
         self.local_search = local_search
         self.iterations = iterations
+        self.process = Process(target=self.run, args=())
         self.lock = lock
+
+    def start(self):
+        self.process.start()
+
+    def join(self):
+        self.process.join()
 
     def run(self):
         for _ in range(self.iterations):
@@ -61,4 +67,5 @@ class ThreadRunner(threading.Thread):
             self.best_solution[0] = num
             self.best_solution[1] = self.graph.copy()
             print("new best:", num, "on thread:", self.threadID)
+
         self.lock.release()

@@ -29,7 +29,8 @@ from model.page import Page
 from solvers.LocalSearch.VariableNeighborhoodDescent import *
 from solvers.evaluators.Evaluator import *
 from ThreadRunner import *
-import threading
+import multiprocessing as mp
+from multiprocessing import Process, Lock, Manager
 
 try:
     import tkinter as tk
@@ -83,27 +84,32 @@ USAGE
         graph = Graph()
         graph.read(args.input[0], False)
 
-        best_solution = [1000000000, graph]
-        threadLock = threading.Lock()
+        with Manager() as manager:
+            best_solution = manager.list()
+            best_solution.append(100000000)
+            best_solution.append(None)
 
-        threads = []
+            threads = []
+            lock = mp.Lock()
 
-        for _ in range(8):
-            tr1 = ThreadRunner(_*2+0, graph.copy(), best_solution, ThreadRunner.N_DFS, ThreadRunner.E_GRD, 0, 1000, threadLock)
-            tr2 = ThreadRunner(_*2+1, graph.copy(), best_solution, ThreadRunner.N_RND, ThreadRunner.E_GRD, 0, 1000, threadLock)
-    
-            # Start new Threads
-            tr1.start()
-            tr2.start()
+            for _ in range(4):
+                tr1 = ThreadRunner(_*2+0, graph.copy(), best_solution, ThreadRunner.N_DFS, ThreadRunner.E_GRD, 0, 100, lock)
+                tr2 = ThreadRunner(_*2+1, graph.copy(), best_solution, ThreadRunner.N_RND, ThreadRunner.E_GRD, 0, 100, lock)
 
-            # Add threads to thread list
-            threads.append(tr1)
-            threads.append(tr2)
+                # Start new Threads
+                tr1.start()
+                tr2.start()
 
-        for t in threads:
-            t.join()
-        print("best:", best_solution[0])
-        graph = best_solution[1]
+                # Add threads to thread list
+                threads.append(tr1)
+                threads.append(tr2)
+
+            for t in threads:
+                t.join()
+
+            print("best:", best_solution[0])
+
+            graph = best_solution[1]
 
         if args.output:
             graph.write(args.output)
