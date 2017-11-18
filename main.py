@@ -79,7 +79,10 @@ USAGE
         args = parser.parse_args()
         
         graph = Graph()
-        graph.read(args.input[0], False)
+        if args.construction.lower() == "none":
+            graph.read(args.input[0], True)
+        else:
+            graph.read(args.input[0], True)
         
         if args.solve:
             if args.construction.lower() == "dfs":
@@ -124,7 +127,18 @@ USAGE
                 print("before search %d" % graph.numCrossings())
                 x = search.optimize(graph)
                 print("after search %d" % x.numCrossings())
+            
+            if args.heuristic.lower() == "vnd":
+                evaluator = Evaluator()
+                print("using VND")
                 
+                n1 = EdgePageMove(Neighborhood.BEST, evaluator)
+                n2 = MoveNode(Neighborhood.BEST, evaluator)
+                vndsearch = VND([n1,n2], evaluator)
+                
+                print("before search %d" % graph.numCrossings())
+                x = vndsearch.optimize(graph)                
+                print("after search %d" % x.numCrossings())
 
         if args.output:
             graph.write(args.output)

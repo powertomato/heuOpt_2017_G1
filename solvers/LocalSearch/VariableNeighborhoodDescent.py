@@ -12,7 +12,7 @@ class VND(object):
         
         l = 0
         while l<len(self.neighborhoods):
-            x_prim = self.neighborhoods[l].chooseNext(x)
+            x_prim = self.neighborhoods[l].step()
             
             if x_prim == None:
                 #neighborhood exhausted!
@@ -21,10 +21,10 @@ class VND(object):
             
             if self.evaluator.compare(x_prim, x):
                 x = x_prim.graphUpdate()
-                self.neighborhood.reset(x)
                 for i in range(l+1):
                     self.neighborhoods[i].reset(x)
                 l = 0
+        return x
                 
     def setStrategy(self,x):
         for neighb in self.neighborhoods:
