@@ -1,19 +1,27 @@
 import csv
 import os
 import numpy as np
+import operator
                     
 class Node(object):
     def __init__(self, graph, id):
         self.id = id
         self.graph = graph
-        self.neighbours = set()
+        self.neighbours = dict()
         self.edges = set()
 
     def getNeighbours(self):
         neighbours = list()
-        for otherId in self.neighbours:
+        for otherId, len in self.neighbours.items():
             neighbours.append(self.graph.getNodeByID(otherId))
         return neighbours
+
+    def getNeighboursSorted(self):
+        out = list()
+        for key, value in sorted(self.neighbours.items(), key=operator.itemgetter(1)):
+            out.append(self.graph.getNodeByID(key))
+
+        return out
             
     def _insertionSort(self,alist):
         for index in range(1,len(alist)):

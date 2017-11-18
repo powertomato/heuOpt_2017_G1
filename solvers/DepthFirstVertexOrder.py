@@ -11,7 +11,7 @@ def constructVertexOrderDFS(graph):
         if cur_node.id not in nodes:
             nodes.append(cur_node.id)
 
-        rev = cur_node.getNeighbours()
+        rev = cur_node.getNeighboursSorted()
         rev.reverse()
         for child in rev:
             if child.id not in nodes:

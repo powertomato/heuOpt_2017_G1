@@ -1,8 +1,13 @@
 from model.graph import *
 from numpy import random
 
-def constructSolutionGreedyLeastCrossings(graph):
-    unassigned = random.permutation(graph.getEdges())
+def constructSolutionGreedyLeastCrossings(graph, randomized):
+    unassigned = None
+    if(randomized):
+        unassigned = random.permutation(graph.getEdges())
+    else:
+        unassigned = graph.getEdges()
+
     count = 0
     for edge in unassigned:
         count +=1

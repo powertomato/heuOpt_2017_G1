@@ -37,12 +37,16 @@ class Graph(object):
     
         page.addEdge(edge)
 
+        n1Idx = self.nodeIdToIndex[n1Id]
+        n2Idx = self.nodeIdToIndex[n2Id]
+        dist = abs(n2Idx - n1Idx)
+
         n1 = self.getNodeByID(n1Id)
-        n1.neighbours.add(n2Id)
+        n1.neighbours[n2Id] = dist
         n1.edges.add(edge)
 
         n2 = self.getNodeByID(n2Id)
-        n2.neighbours.add(n1Id)
+        n2.neighbours[n1Id] = dist
         n2.edges.add(edge)
 
 
@@ -185,6 +189,7 @@ class Graph(object):
         with open(filepath,"w") as writefile:
             writefile.write("# cathegory: solved\n")
             writefile.write("# problem: no problem\n")
+            writefile.write("# numcrossings:", self.numCrossings())
             writefile.write("%d\n" % len(self.nodes))
             writefile.write("%d\n" % self.pageNumber)
             

@@ -18,6 +18,9 @@ from solvers.RandomVertexOrder import *
 from model.node import Node
 from model.edge import Edge
 from model.page import Page
+from solvers.LocalSearch.VariableNeighborhoodDescent import *
+from solvers.neighborhoods.SwitchTwoNodes import *
+from solvers.evaluators.Evaluator import *
 
 try:
     import tkinter as tk
@@ -83,6 +86,11 @@ USAGE
             elif args.construction.lower() == "rnd":
                 numCr = 1000000000
                 outGr = None
+
+                evaluator = TimedEvaluator(100)
+                neighborhoods = [SwitchTwoNodes(Neighborhood.RANDOM, evaluator)]
+                vnd = VND(neighborhoods, evaluator)
+
                 constructVertexOrderDFS(graph)
                 for _ in range(1):
                     #constructVertexOrderRandom(graph)
