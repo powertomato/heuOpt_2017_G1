@@ -156,6 +156,7 @@ class MoveNodeCandidate(object):
             i = self.nodeIdx
             t = self.target
             self.graph.nodes = a[0:t] + [a[i]] + a[t:i] + a[i+1:]
+        return self.graph
 
 class MoveNode(Neighborhood):
     def __init__(self, strategy, evaluator):
