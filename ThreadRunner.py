@@ -7,17 +7,14 @@ from argparse import ArgumentParser
 from argparse import RawDescriptionHelpFormatter
 from model.graph import Graph
 from BEP_Visualizer.BEP_visualizer import View
-from solvers.GreedyLongestChain import *
-from solvers.FastGreedy import *
-from solvers.DepthFirstVertexOrder import *
-from solvers.GreedyLeastPage import *
-from solvers.RandomEdgeAssignment import *
-from solvers.RandomVertexOrder import *
+from solvers.construction.DepthFirstVertexOrder import *
+from solvers.construction.GreedyLeastPage import *
+from solvers.construction.RandomEdgeAssignment import *
+from solvers.construction.RandomVertexOrder import *
 from model.node import Node
 from model.edge import Edge
 from model.page import Page
 from solvers.LocalSearch.VariableNeighborhoodDescent import *
-from solvers.neighborhoods.SwitchTwoNodes import *
 from solvers.evaluators.Evaluator import *
 
 class ThreadRunner(threading.Thread):
@@ -51,10 +48,10 @@ class ThreadRunner(threading.Thread):
                 constructVertexOrderRandom(self.graph)
 
             if(self.edge_construction == ThreadRunner.E_GRD):
-                constructSolutionGreedyLeastCrossings(self.graph)
+                constructSolutionGreedyLeastCrossings(self.graph, True)
             elif(self.edge_construction == ThreadRunner.E_RND):
                 constructRandomEdgeAssignment(self.graph)
-    
+
             self.compare_to_best()
 
     def compare_to_best(self):
@@ -62,4 +59,6 @@ class ThreadRunner(threading.Thread):
         self.lock.acquire()
         if(num < self.best_solution[0]):
             self.best_solution[0] = num
-        self.lock().release()
+            self.best_solution[1] = self.graph.copy()
+            print("new best:", num, "on thread:", self.threadID)
+        self.lock.release()

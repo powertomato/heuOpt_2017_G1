@@ -28,6 +28,8 @@ from model.edge import Edge
 from model.page import Page
 from solvers.LocalSearch.VariableNeighborhoodDescent import *
 from solvers.evaluators.Evaluator import *
+from ThreadRunner import *
+import threading
 
 try:
     import tkinter as tk
@@ -80,66 +82,28 @@ USAGE
         
         graph = Graph()
         graph.read(args.input[0], False)
-        
-        if args.solve:
-            if args.construction.lower() == "dfs":
-                print("Creating initial vertex order using dfs method")
-                constructVertexOrderDFS(graph)
-                constructSolutionGreedyLeastCrossings(graph)
 
-                print("crossings:", graph.numCrossings())
-            elif args.construction.lower() == "rnd":
-                numCr = 1000000000
-                outGr = None
+        best_solution = [1000000000, graph]
+        threadLock = threading.Lock()
 
-                constructVertexOrderDFS(graph)
-                for _ in range(1):
-                    #constructVertexOrderRandom(graph)
-                    #constructRandomEdgeAssignment(graph)
-                    constructSolutionGreedyLeastCrossings(graph)
-                    nc = graph.numCrossings()
-                    if nc < numCr:
-                        numCr = nc
-                        print(numCr)
-                        outGr = copy.deepcopy(graph)
+        threads = []
 
-                    if _ % 1000 == 0:
-                        print(_)
+        for _ in range(8):
+            tr1 = ThreadRunner(_*2+0, graph.copy(), best_solution, ThreadRunner.N_DFS, ThreadRunner.E_GRD, 0, 1000, threadLock)
+            tr2 = ThreadRunner(_*2+1, graph.copy(), best_solution, ThreadRunner.N_RND, ThreadRunner.E_GRD, 0, 1000, threadLock)
+    
+            # Start new Threads
+            tr1.start()
+            tr2.start()
 
-                graph = outGr
-            elif args.construction:
-                print("possible construction heuristics: depth first search (dfs), randomized (rnd)")
-                sys.exit(1)
-                
-                
-            if args.heuristic.lower() == "localsearch":
-                evaluator = Evaluator()
-                print("using localsearch")
-                if args.step.lower()=="best":
-                    step = Neighborhood.BEST
-                    print("using best-improvment step function")
-                if args.step.lower()=="next":
-                    step = Neighborhood.NEXT
-                    print("using next-improvment step function")
-                elif args.step.lower()=="random":
-                    step = Neighborhood.RANDOM
-                    print("using random step function")
-                
-                if args.neighborhood=="edgemove":
-                    neighborhood = EdgePageMove(step, evaluator)
-                    print("using Edge-Move neighborhood")
-                elif args.neighborhood=="nodemove":
-                    neighborhood = MoveNode(step, evaluator)
-                    print("using Node-Move neighborhood")
-                else:
-                    print("localsearch needs neighborhood and stopping criter")
-                
-                search = SimpleLocalSearch(neighborhood, evaluator)
-                neighborhood.reset(graph, step)
-                print("before search %d" % graph.numCrossings())
-                x = search.optimize(graph)
-                print("after search %d" % x.numCrossings())
-                
+            # Add threads to thread list
+            threads.append(tr1)
+            threads.append(tr2)
+
+        for t in threads:
+            t.join()
+        print("best:", best_solution[0])
+        graph = best_solution[1]
 
         if args.output:
             graph.write(args.output)

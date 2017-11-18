@@ -189,7 +189,7 @@ class Graph(object):
         with open(filepath,"w") as writefile:
             writefile.write("# cathegory: solved\n")
             writefile.write("# problem: no problem\n")
-            writefile.write("# numcrossings:", self.numCrossings())
+            writefile.write("# numcrossings:"+ str(self.numCrossings())+"\n")
             writefile.write("%d\n" % len(self.nodes))
             writefile.write("%d\n" % self.pageNumber)
             
