@@ -20,9 +20,10 @@ class VND(object):
                 continue
             
             if self.evaluator.compare(x_prim, x):
-                x = x_prim
-                for neighb in self.neighborhoods:
-                    neighb.reset(x)
+                x = x_prim.graphUpdate()
+                self.neighborhood.reset(x)
+                for i in range(l+1):
+                    self.neighborhoods[i].reset(x)
                 l = 0
                 
     def setStrategy(self,x):
