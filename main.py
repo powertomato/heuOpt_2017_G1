@@ -9,12 +9,10 @@ from argparse import ArgumentParser
 from argparse import RawDescriptionHelpFormatter
 from model.graph import Graph
 from BEP_Visualizer.BEP_visualizer import View
-from solvers.GreedyLongestChain import *
-from solvers.FastGreedy import *
-from solvers.DepthFirstVertexOrder import *
-from solvers.GreedyLeastPage import *
-from solvers.RandomEdgeAssignment import *
-from solvers.RandomVertexOrder import *
+from solvers.construction.DepthFirstVertexOrder import *
+from solvers.construction.GreedyLeastPage import *
+from solvers.construction.RandomEdgeAssignment import *
+from solvers.construction.RandomVertexOrder import *
 from model.node import Node
 from model.edge import Edge
 from model.page import Page
@@ -68,13 +66,7 @@ USAGE
         graph.read(args.input[0], False)
         
         if args.solve:
-            if  args.construction.lower() == "greedylongestchain":
-                print("Creating initial solution using greedy longest chain method")
-                constructSolutionGreedyLongestChain(graph)
-            elif args.construction.lower() == "fastgreedy":
-                print("Creating initial solution using fast greedy method")
-                constructSolutionFast(graph)
-            elif args.construction.lower() == "dfs":
+            if args.construction.lower() == "dfs":
                 print("Creating initial vertex order using dfs method")
                 constructVertexOrderDFS(graph)
                 constructSolutionGreedyLeastCrossings(graph)
