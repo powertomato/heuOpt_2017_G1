@@ -1,12 +1,31 @@
 from model.graph import *
 from numpy import random
+import operator
 
 def constructSolutionGreedyLeastCrossings(graph, randomized):
     unassigned = None
+
     if(randomized):
         unassigned = random.permutation(graph.getEdges())
     else:
-        unassigned = graph.getEdges()
+        # edge sorting (testing showed no clear improvement)
+        # lengths = {}
+        # i = 0
+        # for edge in graph.getEdges():
+        #     lengths[i] = edge.length()
+        #     i += 1
+        #
+        # sorted_lengths = sorted(lengths.items(), key=operator.itemgetter(1))
+        # sorted_lengths.reverse()
+        #
+        # unassigned = []
+        # edges = graph.getEdges()
+        # for l in sorted_lengths:
+        #     unassigned.append(edges[l[0]])
+        #     print(l[0], l[1])
+
+        unassigned = graph.getEdges() # dont sort
+
 
     count = 0
     for edge in unassigned:

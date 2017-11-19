@@ -93,9 +93,9 @@ USAGE
             lock = mp.Lock()
 
             for _ in range(2):
-                tr1 = ThreadRunner(_*3+0, graph.copy(), best_solution, ThreadRunner.N_DFS, ThreadRunner.E_GRD, 1, lock, local_search=ThreadRunner.LS_VND, step=Neighborhood.BEST, neighborhood=ThreadRunner.LS_NODEMOVE)
-                tr2 = ThreadRunner(_*3+1, graph.copy(), best_solution, ThreadRunner.N_RND, ThreadRunner.E_GRD, 1, lock, local_search=ThreadRunner.LS_VND, step=Neighborhood.NEXT, neighborhood=ThreadRunner.LS_EDGEMOVE)
-                tr3 = ThreadRunner(_ * 3 + 2, graph.copy(), best_solution, ThreadRunner.N_DFS, ThreadRunner.E_GRD, 1, lock, local_search=ThreadRunner.LS_VND, step=Neighborhood.NEXT, neighborhood=ThreadRunner.LS_EDGEMOVE)
+                tr1 = ThreadRunner(_*3+0, graph.copy(), best_solution, ThreadRunner.N_DFS, ThreadRunner.E_GRD, 1, lock, local_search=ThreadRunner.LS_LS, step=Neighborhood.NEXT, neighborhood=ThreadRunner.LS_EDGEMOVE)
+                tr2 = ThreadRunner(_*3+1, graph.copy(), best_solution, ThreadRunner.N_DFS, ThreadRunner.E_GRD, 1, lock, local_search=ThreadRunner.LS_LS, step=Neighborhood.NEXT, neighborhood=ThreadRunner.LS_EDGEMOVE)
+                tr3 = ThreadRunner(_ * 3 + 2, graph.copy(), best_solution, ThreadRunner.N_DFS, ThreadRunner.E_GRD, 1, lock, local_search=ThreadRunner.LS_LS, step=Neighborhood.NEXT, neighborhood=ThreadRunner.LS_EDGEMOVE)
 
                 # Start new Threads
                 tr1.start()

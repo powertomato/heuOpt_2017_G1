@@ -30,6 +30,7 @@ class ThreadRunner():
 
     E_GRD = 1
     E_RND = 2
+    E_GRD_RND = 3
 
     LS_LS = 1
     LS_VND = 2
@@ -66,9 +67,11 @@ class ThreadRunner():
                 constructVertexOrderRandom(self.graph)
 
             if(self.edge_construction == ThreadRunner.E_GRD):
-                constructSolutionGreedyLeastCrossings(self.graph, True)
+                constructSolutionGreedyLeastCrossings(self.graph, False)
             elif(self.edge_construction == ThreadRunner.E_RND):
                 constructRandomEdgeAssignment(self.graph)
+            elif(self.edge_construction == ThreadRunner.E_GRD_RND):
+                constructSolutionGreedyLeastCrossings(self.graph, True)
 
             if(self.local_search == ThreadRunner.LS_LS):
                 evaluator = Evaluator()
