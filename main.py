@@ -14,7 +14,7 @@ from solvers.construction.GreedyLeastPage import *
 from solvers.construction.RandomEdgeAssignment import *
 from solvers.construction.RandomVertexOrder import *
 
-from solvers.evaluators.Evaluator import Evaluator
+from solvers.evaluators.Evaluator import *
 from solvers.LocalSearch.SimpleLocalSearch import SimpleLocalSearch
 
 from solvers.neighborhoods.Neighborhood import Neighborhood
@@ -26,6 +26,8 @@ from solvers.neighborhoods.EdgePageMove import EdgePageMoveCandidate
 from model.node import Node
 from model.edge import Edge
 from model.page import Page
+
+from solvers.LocalSearch.GeneralVariableNeighborhoodSearch import *
 from solvers.LocalSearch.VariableNeighborhoodDescent import *
 from solvers.evaluators.Evaluator import *
 
@@ -98,13 +100,13 @@ USAGE
                 constructVertexOrderDFS(graph)            
                 constructSolutionGreedyLeastCrossings(graph, True)
 
-            elif args.construction:
+            elif args.construction and args.construction.lower() != "none":
                 print("possible construction heuristics: depth first search (dfs), randomized (rnd)")
                 sys.exit(1)
                 
                 
             if args.heuristic.lower() == "localsearch":
-                evaluator = Evaluator()
+                evaluator = TimedEvaluator(datetime.timedelta(minutes=15))
                 print("using localsearch")
                 if args.step.lower()=="best":
                     step = Neighborhood.BEST
@@ -132,12 +134,23 @@ USAGE
                 print("after search %d" % x.numCrossings())
             
             if args.heuristic.lower() == "vnd":
-                evaluator = Evaluator()
+                evaluator = TimedEvaluator(datetime.timedelta(minutes=15))
                 print("using VND")
                 
                 n1 = EdgePageMove(Neighborhood.BEST, evaluator)
                 n2 = MoveNode(Neighborhood.BEST, evaluator)
                 vndsearch = VND([n1,n2], evaluator)
+                
+                print("before search %d" % graph.numCrossings())
+                x = vndsearch.optimize(graph)                
+                print("after search %d" % x.numCrossings())
+            if args.heuristic.lower() == "gvns":
+                evaluator = TimedEvaluator(datetime.timedelta(seconds=10))
+                print("using GVND")
+                
+                n1 = EdgePageMove(Neighborhood.BEST, evaluator)
+                n2 = MoveNode(Neighborhood.BEST, evaluator)
+                vndsearch = GVNS([n2], evaluator)
                 
                 print("before search %d" % graph.numCrossings())
                 x = vndsearch.optimize(graph)                
