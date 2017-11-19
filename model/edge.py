@@ -46,6 +46,9 @@ class Edge(object):
     def toTuple(self):
         return (self.node1, self.node2, self.pageId)
 
+    def length(self):
+        return abs(self.graph.nodeIdToIndex[self.node1] - self.graph.nodeIdToIndex[self.node2])
+
 #     def __eq__(self, other):
 #         if type(other)==Edge:
 #             otherid=other.id
