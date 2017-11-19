@@ -81,7 +81,7 @@ USAGE
         graph = Graph()
         if args.construction.lower() == "none":
             print("Reading graph...")
-            graph.read(args.input[0], False)
+            graph.read(args.input[0], True)
         else:
             print("Reading graph...")
             graph.read(args.input[0], False)
@@ -142,7 +142,8 @@ USAGE
                 print("before search %d" % graph.numCrossings())
                 x = vndsearch.optimize(graph)                
                 print("after search %d" % x.numCrossings())
-
+        else:
+            print("number of crossings: %d" % graph.numCrossings())
         if args.output:
             graph.write(args.output)
             
