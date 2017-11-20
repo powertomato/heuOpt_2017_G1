@@ -79,65 +79,73 @@ USAGE
         parser.add_argument("-n", "--neighborhood", dest="neighborhood", action="store", default="edgemove", help="Choose neighborhood (only for local search)")
         parser.add_argument("-t", "--step", dest="step", action="store", default="best", help="step function (only for local search)")
 
-        # Process arguments
-        args = parser.parse_args()
-        
-        graph = Graph()
-        graph.read(args.input[0], False)
 
-        with Manager() as manager:
-            best_solution = manager.list()
-            best_solution.append(100000000)
-            best_solution.append(None)
-            best_solution.append(-1)
+        #setup runs
+        template = ("./instances/instance-01.txt ./results/greedy_rnd/instance-01.txt -s -v -c rnd")
+        argstrings = []
+        for i in range(1, 16):
+            argstrings.append(template.replace("01", str(i).zfill(2)))
 
-            crossing_nums = manager.list()
+        for argstring in argstrings:
+            # Process arguments
+            args = parser.parse_args(argstring)
 
-            threads = []
-            lock = mp.Lock()
+            graph = Graph()
+            graph.read(args.input[0], False)
 
-            for _ in range(4):
-                tr1 = ThreadRunner(_*2+0, graph.copy(), best_solution, crossing_nums, ThreadRunner.N_DFS, ThreadRunner.E_GRD_RND, 100, lock, local_search=0, step=Neighborhood.NEXT, neighborhood=ThreadRunner.LS_EDGEMOVE)
-                tr2 = ThreadRunner(_*2+1, graph.copy(), best_solution, crossing_nums, ThreadRunner.N_DFS, ThreadRunner.E_GRD_RND, 100, lock, local_search=0, step=Neighborhood.NEXT, neighborhood=ThreadRunner.LS_EDGEMOVE)
+            with Manager() as manager:
+                best_solution = manager.list()
+                best_solution.append(100000000)
+                best_solution.append(None)
+                best_solution.append(-1)
 
-                # Start new Threads
-                tr1.start()
-                tr2.start()
+                crossing_nums = manager.list()
 
-                # Add threads to thread list
-                threads.append(tr1)
-                threads.append(tr2)
+                threads = []
+                lock = mp.Lock()
 
-            for t in threads:
-                t.join()
+                for _ in range(4):
+                    tr1 = ThreadRunner(_*2+0, graph.copy(), best_solution, crossing_nums, ThreadRunner.N_DFS, ThreadRunner.E_GRD_RND, 100, lock, local_search=0, step=Neighborhood.NEXT, neighborhood=ThreadRunner.LS_EDGEMOVE)
+                    tr2 = ThreadRunner(_*2+1, graph.copy(), best_solution, crossing_nums, ThreadRunner.N_DFS, ThreadRunner.E_GRD_RND, 100, lock, local_search=0, step=Neighborhood.NEXT, neighborhood=ThreadRunner.LS_EDGEMOVE)
 
-            print("best:", best_solution[0], "on thread", best_solution[2])
+                    # Start new Threads
+                    tr1.start()
+                    tr2.start()
 
-            best = best_solution[1]
+                    # Add threads to thread list
+                    threads.append(tr1)
+                    threads.append(tr2)
 
-            np_nums = np.array(crossing_nums)
-            print("mean:", np.mean(np_nums), "stddev:", np.std(np_nums))
+                for t in threads:
+                    t.join()
 
-            if args.output:
-                best.write(args.output)
-                stat_name = os.path.splitext(args.output)[0]+"_meanstd.txt"
-                with open(stat_name, "w") as stat_file:
-                    outstring = "best: %f, mean: %f, stddev: %f" % (best_solution[0], np.mean(np_nums), np.std(np_nums))
-                    stat_file.write(outstring)
-            
-        if VIEW and args.view:
-            root = Tk()
-            view = View(root)
+                print("best:", best_solution[0], "on thread", best_solution[2])
 
-            def draw( event):
-                view.draw(best)
-    
-            root.bind("<Configure>", draw)
-            
-            root.title="BEP Visualizer"
-            root.deiconify()
-            root.mainloop()
-        return 0
+                best = best_solution[1]
+
+                np_nums = np.array(crossing_nums)
+                print("mean:", np.mean(np_nums), "stddev:", np.std(np_nums))
+
+                if args.output:
+                    best.write(args.output)
+                    stat_name = os.path.splitext(args.output)[0]+"_meanstd.txt"
+                    with open(stat_name, "w") as stat_file:
+                        outstring = "best: %f, mean: %f, stddev: %f" % (best_solution[0], np.mean(np_nums), np.std(np_nums))
+                        stat_file.write(outstring)
+
+            if VIEW and args.view:
+                root = Tk()
+                view = View(root)
+
+                def draw( event):
+                    view.draw(best)
+
+                root.bind("<Configure>", draw)
+
+                root.title="BEP Visualizer"
+                root.deiconify()
+                root.mainloop()
+            return 0
     except KeyboardInterrupt:
         ### handle keyboard interrupt ###
         return 0
