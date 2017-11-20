@@ -30,6 +30,7 @@ from solvers.LocalSearch.VariableNeighborhoodDescent import *
 from solvers.evaluators.Evaluator import *
 from ThreadRunner import *
 import multiprocessing as mp
+import numpy as np
 from multiprocessing import Process, Lock, Manager
 
 try:
@@ -90,20 +91,22 @@ USAGE
             best_solution.append(None)
             best_solution.append(-1)
 
+            crossing_nums = manager.list()
+
             threads = []
             lock = mp.Lock()
 
-            for _ in range(1):
-                tr1 = ThreadRunner(_*2+0, graph.copy(), best_solution, ThreadRunner.N_DFS, ThreadRunner.E_GRD_RND, 1, lock, local_search=0, step=Neighborhood.NEXT, neighborhood=ThreadRunner.LS_EDGEMOVE)
-                #tr2 = ThreadRunner(_*2+1, graph.copy(), best_solution, ThreadRunner.N_DFS, ThreadRunner.E_GRD_RND, 1, lock, local_search=0, step=Neighborhood.NEXT, neighborhood=ThreadRunner.LS_EDGEMOVE)
+            for _ in range(4):
+                tr1 = ThreadRunner(_*2+0, graph.copy(), best_solution, crossing_nums, ThreadRunner.N_DFS, ThreadRunner.E_GRD_RND, 100, lock, local_search=0, step=Neighborhood.NEXT, neighborhood=ThreadRunner.LS_EDGEMOVE)
+                tr2 = ThreadRunner(_*2+1, graph.copy(), best_solution, crossing_nums, ThreadRunner.N_DFS, ThreadRunner.E_GRD_RND, 100, lock, local_search=0, step=Neighborhood.NEXT, neighborhood=ThreadRunner.LS_EDGEMOVE)
 
                 # Start new Threads
                 tr1.start()
-                #tr2.start()
+                tr2.start()
 
                 # Add threads to thread list
                 threads.append(tr1)
-                #threads.append(tr2)
+                threads.append(tr2)
 
             for t in threads:
                 t.join()
@@ -112,8 +115,15 @@ USAGE
 
             best = best_solution[1]
 
-        if args.output:
-            best.write(args.output)
+            np_nums = np.array(crossing_nums)
+            print("mean:", np.mean(np_nums), "stddev:", np.std(np_nums))
+
+            if args.output:
+                best.write(args.output)
+                stat_name = os.path.splitext(args.output)[0]+"_meanstd.txt"
+                with open(stat_name, "w") as stat_file:
+                    outstring = "best: %f, mean: %f, stddev: %f" % (best_solution[0], np.mean(np_nums), np.std(np_nums))
+                    stat_file.write(outstring)
             
         if VIEW and args.view:
             root = Tk()

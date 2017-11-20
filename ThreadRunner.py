@@ -23,6 +23,7 @@ from solvers.neighborhoods.MoveNode import MoveNodeCandidate
 from solvers.neighborhoods.MoveNode import MoveNode
 from solvers.neighborhoods.EdgePageMove import EdgePageMove
 from solvers.neighborhoods.EdgePageMove import EdgePageMoveCandidate
+import time
 class ThreadRunner():
 
     N_DFS = 1
@@ -39,10 +40,11 @@ class ThreadRunner():
     LS_NODEMOVE = 1
     LS_EDGEMOVE = 2
 
-    def __init__(self, threadID, graph, best_solution, node_construction, edge_construction, iterations, lock, local_search=0, step=0, neighborhood=0):
+    def __init__(self, threadID, graph, best_solution, crossing_nums, node_construction, edge_construction, iterations, lock, local_search=0, step=0, neighborhood=0):
         self.threadID = threadID
         self.graph = graph
         self.best_solution = best_solution
+        self.crossing_nums = crossing_nums
         self.node_construction = node_construction
         self.edge_construction = edge_construction
         self.local_search = local_search
@@ -51,6 +53,10 @@ class ThreadRunner():
         self.iterations = iterations
         self.process = Process(target=self.run, args=())
         self.lock = lock
+        self.start_time = time.clock()
+
+    def stop(self):
+        self.should_stop = True
 
     def start(self):
         self.process.start()
@@ -59,8 +65,9 @@ class ThreadRunner():
         self.process.join()
 
     def run(self):
-        for _ in range(self.iterations):
-            print("Thread:", self.threadID, "iteration:", _)
+        #for _ in range(self.iterations):
+        while time.clock() - self.start_time < 900:
+            #print("Thread:", self.threadID, "iteration:", _)
             if(self.node_construction == ThreadRunner.N_DFS):
                 constructVertexOrderDFS(self.graph)
             elif(self.node_construction == ThreadRunner.N_RND):
@@ -96,8 +103,9 @@ class ThreadRunner():
                 return
 
     def compare_to_best(self):
-        num = self.graph.numCrossings()
         self.lock.acquire()
+        num = self.graph.numCrossings()
+        self.crossing_nums.append(num)
         if(num < self.best_solution[0]):
             self.best_solution[0] = num
             self.best_solution[1] = self.graph.copy()
