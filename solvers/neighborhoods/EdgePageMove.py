@@ -31,7 +31,7 @@ class EdgePageMove(Neighborhood):
             id = random.randint(0, len(x.edgeList)-1)
             p2 = x.edgeList[id].pageId
             
-            yield EdgePageMoveCandidate(x, id, p1, p2)
+            yield EdgePageMoveCandidate(x, id, p2, p1)
         
     def generateSingle(self, x):
         for edge in x.edgeList:

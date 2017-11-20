@@ -101,6 +101,7 @@ class ThreadRunner():
         if(num < self.best_solution[0]):
             self.best_solution[0] = num
             self.best_solution[1] = self.graph.copy()
+            self.best_solution[2] = self.threadID
             print("new best:", num, "on thread:", self.threadID)
 
         if(self.best_solution[0] == 0):
