@@ -185,7 +185,7 @@ class Graph(object):
 
                 #print("c", edge.id)
     
-    def write(self, filepath):
+    def write(self, filepath,normal=True):
         with open(filepath,"w") as writefile:
             writefile.write("# cathegory: solved\n")
             writefile.write("# problem: no problem\n")
@@ -196,8 +196,18 @@ class Graph(object):
             for node in self.nodes:
                 writefile.write("%d\n" % node.id)
             
-            for edge in self.getEdges():
-                writefile.write("%d %d [%d]\n" % edge.toTuple())
+            if normal:
+                for edge in self.getEdges():
+                    writefile.write("%d %d [%d]\n" % edge.toTuple())
+            else:
+                for edge in self.getEdges():
+                    writefile.write("{%d}: %d %d [%d] {" % (edge.id, edge.node1, edge.node2, edge.pageId))
+                    for page, crossings in edge.perPageCrossedEdges.items():
+                        writefile.write("(%d:" %page)
+                        for crossing in crossings:
+                            writefile.write("%d " % crossing)
+                        writefile.write(") ")
+                    writefile.write("}\n")
     
     def copy(self):
         return copy.deepcopy(self)
