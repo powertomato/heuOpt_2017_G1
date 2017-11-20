@@ -49,7 +49,7 @@ class Neighborhood(object):
     def stepBest(self, x):
         improved = False
         proposed = self._chooseNext()
-        while proposed != None:
+        while proposed != None and not self.evaluator.criteriaReached(x):
             if self.evaluator.compareStrict(proposed, x):
                 improved = True
                 x = proposed
