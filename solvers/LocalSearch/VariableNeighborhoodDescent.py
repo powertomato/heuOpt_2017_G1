@@ -19,7 +19,7 @@ class VND(object):
                 l+=1
                 continue
             
-            if self.evaluator.compare(x_prim, x):
+            if self.evaluator.compareStrict(x_prim, x):
                 x = x_prim.graphUpdate()
                 for i in range(l+1):
                     self.neighborhoods[i].reset(x)

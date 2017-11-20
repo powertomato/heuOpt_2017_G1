@@ -5,35 +5,38 @@ from solvers.evaluators.Evaluator import Evaluator
 
 class GVNS(object):
     
-    def __init__(self, neighborhoods, evaluator, searchStrategy):
+    def __init__(self, neighborhoods, evaluator):
         self.neighborhoods = neighborhoods
         self.evaluator = evaluator
-        self.searchStrategy = searchStrategy
         self.nocriteriaEvaluator = Evaluator()
             
     def optimize(self, x):
-        self.setStrategy(x, Neighborhood.RANDOM)
+        #self.setStrategy(x, Neighborhood.RANDOM)
         
         while not self.evaluator.criteriaReached(x):
             l = 0
             while l<len(self.neighborhoods):
-                x_prim = self.neighborhoods[l].chooseNext(x)
+                x_prim = x.copy()
+                self.neighborhoods[l].reset(x_prim, Neighborhood.RANDOM)
+                x_candidate = self.neighborhoods[l].step()
+                x_candidate.graphUpdate()
 
-                self.setStrategy(x_prim, Neighborhood.BEST)
-                search = VND(self.neighborhoods, self.evaluator)
+                search = VND(self.neighborhoods, self.nocriteriaEvaluator)
                 x_prim = search.optimize(x_prim)
-                self.setStrategy(x, Neighborhood.RANDOM)
                 
                 if x_prim == None:
                     #neighborhood exhausted!
                     l+=1
                     continue
                 
-                if self.evaluator.compare(x_prim, x):
+                if self.evaluator.compareStrict(x_prim, x):
+                    #print("%d %d" %(x.numCrossings(), x_prim.numCrossings()))
                     x = x_prim
-                    for neighb in self.neighborhoods:
-                        neighb.reset(x)
+                    for i in range(l+1):
+                        self.neighborhoods[i].reset(x)
                     l = 0
+                else:
+                    l+=1
         return x
     
     def setStrategy(self,x, strategy):
