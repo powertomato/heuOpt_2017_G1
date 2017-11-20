@@ -53,7 +53,6 @@ class ThreadRunner():
         self.iterations = iterations
         self.process = Process(target=self.run, args=())
         self.lock = lock
-        self.start_time = time.clock()
 
     def stop(self):
         self.should_stop = True
@@ -65,6 +64,7 @@ class ThreadRunner():
         self.process.join()
 
     def run(self):
+        self.start_time = time.clock()
         #for _ in range(self.iterations):
         while time.clock() - self.start_time < 900:
             #print("Thread:", self.threadID, "iteration:", _)
@@ -106,6 +106,8 @@ class ThreadRunner():
         self.lock.acquire()
         num = self.graph.numCrossings()
         self.crossing_nums.append(num)
+        self.best_solution[3] += 1
+        self.best_solution[4] = time.clock() - self.start_time
         if(num < self.best_solution[0]):
             self.best_solution[0] = num
             self.best_solution[1] = self.graph.copy()
