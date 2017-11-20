@@ -82,9 +82,9 @@ USAGE
 
         #setup runs
 
-        template = ("./instances/instance-01.txt ./results/vnd/instance-01.txt -s -c rnd")
+        template = ("./results/greedy_rnd/instance-01.txt ./results/vnd/instance-01.txt -s -c rnd")
         argstrings = []
-        for i in range(1, 16):
+        for i in range(1, 11):
             argstrings.append(template.replace("01", str(i).zfill(2)))
 
         for argstring in argstrings:
@@ -92,7 +92,7 @@ USAGE
             args = parser.parse_args(argstring.split())
 
             graph = Graph()
-            graph.read(args.input[0], False)
+            graph.read(args.input[0], True)
 
             with Manager() as manager:
                 best_solution = manager.list()
@@ -130,7 +130,7 @@ USAGE
                 #print("mean:", np.mean(np_nums), "stddev:", np.std(np_nums), "total runs:", best_solution[3])
 
                 if args.output:
-                    #best.write(args.output)
+                    best.write(args.output)
                     #stat_name = os.path.splitext(args.output)[0]+"_meanstd.txt"
                     stat_name = os.path.splitext(args.output)[0]+"_time.txt"
                     with open(stat_name, "w") as stat_file:

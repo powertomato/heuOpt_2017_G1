@@ -2,39 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb7cb830-110f-4114-9d96-f9d82a9b2c21" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/heuOpt_2017_G1.iml" afterPath="$PROJECT_DIR$/.idea/heuOpt_2017_G1.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/results/vnd/instance-06.txt&#13;" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThreadRunner.py" afterPath="$PROJECT_DIR$/ThreadRunner.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main_threads.py" afterPath="$PROJECT_DIR$/main_threads.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy/instance-01.txt" afterPath="$PROJECT_DIR$/results/greedy/instance-01.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy/instance-02.txt" afterPath="$PROJECT_DIR$/results/greedy/instance-02.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy/instance-03.txt" afterPath="$PROJECT_DIR$/results/greedy/instance-03.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy/instance-04.txt" afterPath="$PROJECT_DIR$/results/greedy/instance-04.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy/instance-05.txt" afterPath="$PROJECT_DIR$/results/greedy/instance-05.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy/instance-06.txt" afterPath="$PROJECT_DIR$/results/greedy/instance-06.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy/instance-07.txt" afterPath="$PROJECT_DIR$/results/greedy/instance-07.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy/instance-08.txt" afterPath="$PROJECT_DIR$/results/greedy/instance-08.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy/instance-09.txt" afterPath="$PROJECT_DIR$/results/greedy/instance-09.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy/instance-10.txt" afterPath="$PROJECT_DIR$/results/greedy/instance-10.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy/instance-11.txt" afterPath="$PROJECT_DIR$/results/greedy/instance-11.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy/instance-12.txt" afterPath="$PROJECT_DIR$/results/greedy/instance-12.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy/instance-13.txt" afterPath="$PROJECT_DIR$/results/greedy/instance-13.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy/instance-14.txt" afterPath="$PROJECT_DIR$/results/greedy/instance-14.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy/instance-15.txt" afterPath="$PROJECT_DIR$/results/greedy/instance-15.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy_rnd/instance-02.txt" afterPath="$PROJECT_DIR$/results/greedy_rnd/instance-02.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy_rnd/instance-03.txt" afterPath="$PROJECT_DIR$/results/greedy_rnd/instance-03.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy_rnd/instance-05.txt" afterPath="$PROJECT_DIR$/results/greedy_rnd/instance-05.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy_rnd/instance-06.txt" afterPath="$PROJECT_DIR$/results/greedy_rnd/instance-06.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy_rnd/instance-07.txt" afterPath="$PROJECT_DIR$/results/greedy_rnd/instance-07.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy_rnd/instance-08.txt" afterPath="$PROJECT_DIR$/results/greedy_rnd/instance-08.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy_rnd/instance-09.txt" afterPath="$PROJECT_DIR$/results/greedy_rnd/instance-09.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy_rnd/instance-10.txt" afterPath="$PROJECT_DIR$/results/greedy_rnd/instance-10.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy_rnd/instance-11.txt" afterPath="$PROJECT_DIR$/results/greedy_rnd/instance-11.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy_rnd/instance-12.txt" afterPath="$PROJECT_DIR$/results/greedy_rnd/instance-12.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy_rnd/instance-13.txt" afterPath="$PROJECT_DIR$/results/greedy_rnd/instance-13.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy_rnd/instance-14.txt" afterPath="$PROJECT_DIR$/results/greedy_rnd/instance-14.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/greedy_rnd/instance-15.txt" afterPath="$PROJECT_DIR$/results/greedy_rnd/instance-15.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/vnd/instance-03.txt" afterPath="$PROJECT_DIR$/results/vnd/instance-03.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/vnd/instance-04.txt" afterPath="$PROJECT_DIR$/results/vnd/instance-04.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/vnd/instance-07.txt" afterPath="$PROJECT_DIR$/results/vnd/instance-07.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,7 +24,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1242">
               <caret line="69" column="25" lean-forward="false" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
-              <folding />
+              <folding>
+                <marker date="1511200213643" expanded="true" signature="43:2388" ph="..." />
+                <marker date="1511200213643" expanded="true" signature="1551:1645" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -68,7 +45,7 @@
       <file leaf-file-name="MoveNode.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/solvers/neighborhoods/MoveNode.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4068">
+            <state relative-caret-position="891">
               <caret line="229" column="0" lean-forward="false" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
               <folding />
             </state>
@@ -78,8 +55,8 @@
       <file leaf-file-name="main_threads.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main_threads.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="141" column="27" lean-forward="true" selection-start-line="141" selection-start-column="27" selection-end-line="141" selection-end-column="27" />
+            <state relative-caret-position="175">
+              <caret line="86" column="28" lean-forward="false" selection-start-line="86" selection-start-column="28" selection-end-line="86" selection-end-column="28" />
               <folding>
                 <element signature="e#38#48#0" expanded="true" />
               </folding>
@@ -87,21 +64,23 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="graph.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/graph.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="155" column="33" lean-forward="true" selection-start-line="155" selection-start-column="33" selection-end-line="155" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="859">
-              <caret line="119" column="16" lean-forward="false" selection-start-line="119" selection-start-column="16" selection-end-line="119" selection-end-column="16" />
+            <state relative-caret-position="49">
+              <caret line="77" column="76" lean-forward="true" selection-start-line="77" selection-start-column="76" selection-end-line="77" selection-end-column="76" />
               <folding>
                 <element signature="e#38#48#0" expanded="true" />
-                <marker date="1511195274896" expanded="true" signature="1562:7427" ph="..." />
-                <marker date="1511195274896" expanded="true" signature="1785:7092" ph="..." />
-                <marker date="1511195274896" expanded="true" signature="3299:6612" ph="..." />
-                <marker date="1511195274896" expanded="true" signature="5518:5581" ph="..." />
-                <marker date="1511195274896" expanded="true" signature="6799:7075" ph="..." />
-                <marker date="1511195274896" expanded="true" signature="6884:6917" ph="..." />
-                <marker date="1511195274896" expanded="true" signature="7122:7181" ph="..." />
-                <marker date="1511195274896" expanded="true" signature="7208:7427" ph="..." />
               </folding>
             </state>
           </provider>
@@ -110,11 +89,21 @@
       <file leaf-file-name="ThreadRunner.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ThreadRunner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-27">
-              <caret line="68" column="49" lean-forward="false" selection-start-line="68" selection-start-column="49" selection-end-line="68" selection-end-column="49" />
+            <state relative-caret-position="927">
+              <caret line="96" column="47" lean-forward="true" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="47" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Evaluator.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/solvers/evaluators/Evaluator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="369">
+              <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -124,16 +113,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="36">
               <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SimpleLocalSearch.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/solvers/LocalSearch/SimpleLocalSearch.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="18" column="18" lean-forward="false" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -153,16 +132,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EdgePageMove.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/solvers/neighborhoods/EdgePageMove.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="16" column="80" lean-forward="false" selection-start-line="16" selection-start-column="80" selection-end-line="16" selection-end-column="80" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -174,8 +143,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>nodeId</find>
-      <find>nodeIdt</find>
       <find>nodeIdto</find>
       <find>nodeIdToIndex</find>
       <find>reord</find>
@@ -194,7 +161,6 @@
       <find>node</find>
       <find>graph</find>
       <find>nodeIdx</find>
-      <find>read</find>
       <find>g</find>
       <find>gen</find>
       <find>gener</find>
@@ -204,6 +170,9 @@
       <find>generater</find>
       <find>constructVertexOrderDFS</find>
       <find>generateRandom</find>
+      <find>def read\(self\, filepath\, updateCrossings\=False\)\:\n</find>
+      <find>read</find>
+      <find>VND neighborhood done</find>
     </findStrings>
     <dirStrings>
       <dir>E:\UNI\WS2017\HOT\heuOpt_2017_G1</dir>
@@ -267,7 +236,22 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="heuOpt_2017_G1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="heuOpt_2017_G1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="heuOpt_2017_G1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="heuOpt_2017_G1" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scratches" />
     </panes>
   </component>
@@ -527,6 +511,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11382765" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284055" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26606876" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -540,7 +525,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284055" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -674,13 +658,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/graph.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/page.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -695,25 +672,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/solvers/evaluators/Evaluator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/solvers/LocalSearch/SimpleLocalSearch.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="18" column="18" lean-forward="false" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/solvers/neighborhoods/MoveNode.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4068">
-          <caret line="229" column="0" lean-forward="false" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -742,7 +704,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1242">
           <caret line="69" column="25" lean-forward="false" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
-          <folding />
+          <folding>
+            <marker date="1511200213643" expanded="true" signature="43:2388" ph="..." />
+            <marker date="1511200213643" expanded="true" signature="1551:1645" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -762,28 +727,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/solvers/neighborhoods/MoveNode.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="891">
+          <caret line="229" column="0" lean-forward="false" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solvers/evaluators/Evaluator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/graph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="155" column="33" lean-forward="true" selection-start-line="155" selection-start-column="33" selection-end-line="155" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="859">
-          <caret line="119" column="16" lean-forward="false" selection-start-line="119" selection-start-column="16" selection-end-line="119" selection-end-column="16" />
+        <state relative-caret-position="49">
+          <caret line="77" column="76" lean-forward="true" selection-start-line="77" selection-start-column="76" selection-end-line="77" selection-end-column="76" />
           <folding>
             <element signature="e#38#48#0" expanded="true" />
-            <marker date="1511195274896" expanded="true" signature="1562:7427" ph="..." />
-            <marker date="1511195274896" expanded="true" signature="1785:7092" ph="..." />
-            <marker date="1511195274896" expanded="true" signature="3299:6612" ph="..." />
-            <marker date="1511195274896" expanded="true" signature="5518:5581" ph="..." />
-            <marker date="1511195274896" expanded="true" signature="6799:7075" ph="..." />
-            <marker date="1511195274896" expanded="true" signature="6884:6917" ph="..." />
-            <marker date="1511195274896" expanded="true" signature="7122:7181" ph="..." />
-            <marker date="1511195274896" expanded="true" signature="7208:7427" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ThreadRunner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
-          <caret line="68" column="49" lean-forward="false" selection-start-line="68" selection-start-column="49" selection-end-line="68" selection-end-column="49" />
+        <state relative-caret-position="927">
+          <caret line="96" column="47" lean-forward="true" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="47" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -792,8 +773,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main_threads.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="141" column="27" lean-forward="true" selection-start-line="141" selection-start-column="27" selection-end-line="141" selection-end-column="27" />
+        <state relative-caret-position="175">
+          <caret line="86" column="28" lean-forward="false" selection-start-line="86" selection-start-column="28" selection-end-line="86" selection-end-column="28" />
           <folding>
             <element signature="e#38#48#0" expanded="true" />
           </folding>

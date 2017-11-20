@@ -15,7 +15,7 @@ from model.node import Node
 from model.edge import Edge
 from model.page import Page
 from solvers.LocalSearch.VariableNeighborhoodDescent import *
-from solvers.evaluators.Evaluator import Evaluator
+from solvers.evaluators.Evaluator import Evaluator, TimedEvaluator
 from solvers.LocalSearch.SimpleLocalSearch import SimpleLocalSearch
 
 from solvers.neighborhoods.Neighborhood import Neighborhood
@@ -65,11 +65,12 @@ class ThreadRunner():
 
     def run(self):
         self.start_time = time.clock()
-        #for _ in range(self.iterations):
-        while time.clock() - self.start_time < 900:
+        for _ in range(self.iterations):
+        #while time.clock() - self.start_time < 900:
             #print("Thread:", self.threadID, "iteration:", _)
             if(self.node_construction == ThreadRunner.N_DFS):
-                constructVertexOrderDFS(self.graph)
+                #constructVertexOrderDFS(self.graph)
+                pass
             elif(self.node_construction == ThreadRunner.N_RND):
                 constructVertexOrderRandom(self.graph)
 
@@ -78,7 +79,8 @@ class ThreadRunner():
             elif(self.edge_construction == ThreadRunner.E_RND):
                 constructRandomEdgeAssignment(self.graph)
             elif(self.edge_construction == ThreadRunner.E_GRD_RND):
-                constructSolutionGreedyLeastCrossings(self.graph, True)
+                #constructSolutionGreedyLeastCrossings(self.graph, True)
+                pass
 
             if(self.local_search == ThreadRunner.LS_LS):
                 evaluator = Evaluator()
@@ -92,7 +94,7 @@ class ThreadRunner():
                 x = search.optimize(self.graph)
 
             elif(self.local_search == ThreadRunner.LS_VND):
-                evaluator = Evaluator()
+                evaluator = TimedEvaluator(900)
 
                 n1 = EdgePageMove(Neighborhood.BEST, evaluator)
                 n2 = MoveNode(Neighborhood.BEST, evaluator)
