@@ -56,3 +56,13 @@ class Edge(object):
 
     def __hash__(self):
         return self.id
+    
+    def __lt__(self,other):
+        if self.graph.nodeIdToIndex[self.node1] == self.graph.nodeIdToIndex[other.node1]:
+            return self.graph.nodeIdToIndex[self.node2] < self.graph.nodeIdToIndex[other.node2]
+        return self.graph.nodeIdToIndex[self.node1] < self.graph.nodeIdToIndex[other.node1]
+        
+    def __gt__(self,other):
+        if self.graph.nodeIdToIndex[self.node1] == self.graph.nodeIdToIndex[other.node1]:
+            return self.graph.nodeIdToIndex[self.node2] > self.graph.nodeIdToIndex[other.node2]
+        return self.graph.nodeIdToIndex[self.node1] > self.graph.nodeIdToIndex[other.node1]

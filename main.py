@@ -83,7 +83,7 @@ USAGE
         graph = Graph()
         if args.construction.lower() == "none":
             print("Reading graph...")
-            graph.read(args.input[0], True)
+            graph.read(args.input[0], False)
         else:
             print("Reading graph...")
             graph.read(args.input[0], False)
@@ -145,16 +145,18 @@ USAGE
                 x = vndsearch.optimize(graph)                
                 print("after search %d" % x.numCrossings())
             if args.heuristic.lower() == "gvns":
-                evaluator = TimedEvaluator(datetime.timedelta(seconds=10))
+                evaluator = TimedEvaluator(datetime.timedelta(seconds=120))
                 print("using GVND")
                 
                 n1 = EdgePageMove(Neighborhood.BEST, evaluator)
+
                 n2 = MoveNode(Neighborhood.BEST, evaluator)
-                vndsearch = GVNS([n2], evaluator)
+                vndsearch = GVNS([n2,n1], evaluator)
                 
                 print("before search %d" % graph.numCrossings())
                 x = vndsearch.optimize(graph)                
                 print("after search %d" % x.numCrossings())
+                graph = x
         else:
             print("number of crossings: %d" % graph.numCrossings())
         if args.output:
