@@ -14,7 +14,7 @@ class VND(object):
         self.setStrategy(x)
         
         l = 0
-        while l<len(self.neighborhoods):
+        while l<len(self.neighborhoods) and not self.evaluator.criteriaReached(x):
             x_prim = self.neighborhoods[l].step()
             
             if x_prim == None:

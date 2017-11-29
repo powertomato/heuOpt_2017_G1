@@ -6,6 +6,7 @@ class SimpleLocalSearch(object):
     def __init__(self, neighborhood, evaluator):
         self.neighborhood = neighborhood
         self.evaluator = evaluator
+        self.step = 0
         
     def optimize(self, x):
         while not self.evaluator.criteriaReached(x):
@@ -16,7 +17,9 @@ class SimpleLocalSearch(object):
                 break
             
             if self.evaluator.compare(x_prim, x):
+                self.step += 1
                 x = x_prim.graphUpdate()
                 self.neighborhood.reset(x)
+        print("local search steps: %d" % self.step)
         return x
                 

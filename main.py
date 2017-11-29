@@ -134,7 +134,7 @@ USAGE
                 print("after search %d" % x.numCrossings())
             
             if args.heuristic.lower() == "vnd":
-                evaluator = TimedEvaluator(datetime.timedelta(minutes=15))
+                evaluator = TimedEvaluator(datetime.timedelta(seconds=120))
                 print("using VND")
                 
                 n1 = EdgePageMove(Neighborhood.BEST, evaluator)
@@ -151,7 +151,7 @@ USAGE
                 n1 = EdgePageMove(Neighborhood.BEST, evaluator)
 
                 n2 = MoveNode(Neighborhood.BEST, evaluator)
-                vndsearch = GVNS([n2,n1], evaluator)
+                vndsearch = GVNS([n1,n2], evaluator)
                 
                 print("before search %d" % graph.numCrossings())
                 x = vndsearch.optimize(graph)                

@@ -2,6 +2,8 @@
 from solvers.neighborhoods.Neighborhood import Neighborhood
 from solvers.LocalSearch.VariableNeighborhoodDescent import VND
 from solvers.evaluators.Evaluator import Evaluator
+import sys
+from model.graph import *
 
 class GVNS(object):
     
@@ -15,7 +17,7 @@ class GVNS(object):
         
         while not self.evaluator.criteriaReached(x):
             l = 0
-            while l<len(self.neighborhoods):
+            while l<len(self.neighborhoods) and not self.evaluator.criteriaReached(x):
                 x_prim = x.copy()
                 self.neighborhoods[l].reset(x_prim, Neighborhood.RANDOM)
                 x_candidate = self.neighborhoods[l].step()
@@ -30,6 +32,8 @@ class GVNS(object):
                     continue
                 
                 if self.evaluator.compareStrict(x_prim, x):
+                    
+                    print("GVNS new best " + str(x_prim.numCrossings()))
                     #print("%d %d" %(x.numCrossings(), x_prim.numCrossings()))
                     x = x_prim
                     for i in range(l+1):

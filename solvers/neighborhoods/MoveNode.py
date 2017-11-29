@@ -2,6 +2,7 @@
 from solvers.neighborhoods.Neighborhood import Neighborhood
 import math
 import itertools, random
+import copy
 from collections import Counter
 
 class MoveNodeCandidate(object):
@@ -23,6 +24,7 @@ class MoveNodeCandidate(object):
         return idx
         
     def numCrossings(self):
+
         numNewCrossings = 0
         numResolvedCrossings = 0
         movenode = self.graph.getNodeByIndex(self.nodeIdx)
@@ -58,6 +60,7 @@ class MoveNodeCandidate(object):
         
         for nodeIdx in noderange:
             node = self.graph.getNodeByIndex(nodeIdx)
+                           
                       
             for edge in movenode.edges:
                 e1Idx = ( self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge.node1]), 
@@ -69,6 +72,10 @@ class MoveNodeCandidate(object):
                 for edge2 in node.edges:
                     if page != edge2.pageId:
                         continue
+                    
+                    if edge2.id in edge.perPageCrossedEdges[page]:
+                        continue     
+                    
                     e2Idx = ( self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge2.node1]), 
                               self._calcIndexAfterMove(self.graph.nodeIdToIndex[edge2.node2]) )
                     
@@ -85,6 +92,41 @@ class MoveNodeCandidate(object):
         return self.graph.numCrossings() - numResolvedCrossings + numNewCrossings
     
     def graphUpdate(self):
+        
+        #print("movenode %d %d" % (self.nodeIdx, self.target)) 
+        
+        if self.nodeIdx < self.target:
+            noderange = range(self.nodeIdx+1, self.target+1)
+            indexShift = -1
+        else:
+            noderange = range(self.target, self.nodeIdx)
+            indexShift = 1
+        for i in noderange:
+            node = self.graph.getNodeByIndex(i)
+            self.graph.nodeIdToIndex[node.id] = i+indexShift
+
+        node = self.graph.getNodeByIndex(self.nodeIdx)
+        self.graph.nodeIdToIndex[node.id] = self.target
+        
+        if self.nodeIdx < self.target:
+            a = self.graph.nodes
+            i = self.nodeIdx
+            t = self.target            
+            self.graph.nodes = a[0:i] + a[i+1:t+1] + [a[i]] + a[t+1:]
+        else:
+            a = self.graph.nodes
+            i = self.nodeIdx
+            t = self.target
+            self.graph.nodes = a[0:t] + [a[i]] + a[t:i] + a[i+1:]
+            
+        for edge in self.graph.edgeList:
+            edge.resetCrossings()
+
+        for edge in self.graph.edgeList:
+            self.graph.initCrossingsForEdge(edge)
+            
+        return self.graph
+
         movenode = self.graph.getNodeByIndex(self.nodeIdx)
         
         for edge in movenode.edges:
@@ -171,13 +213,14 @@ class MoveNodeCandidate(object):
         if self.nodeIdx < self.target:
             a = self.graph.nodes
             i = self.nodeIdx
-            t = self.target
+            t = self.target            
             self.graph.nodes = a[0:i] + a[i+1:t+1] + [a[i]] + a[t+1:]
         else:
             a = self.graph.nodes
             i = self.nodeIdx
             t = self.target
             self.graph.nodes = a[0:t] + [a[i]] + a[t:i] + a[i+1:]
+        
         return self.graph
 
 class MoveNode(Neighborhood):
@@ -188,7 +231,7 @@ class MoveNode(Neighborhood):
         while True:
             n1 = random.randint(0, len(x.nodes)-1)
             n2 = -1
-            while n1==n2:
+            while n1==n2 or n2==-1:
                 n2 = random.randint(0, len(x.nodes)-1)
             
             yield MoveNodeCandidate(x, n1, n2)
