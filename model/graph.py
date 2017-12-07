@@ -55,10 +55,6 @@ class Graph(object):
         n2.edges.add(edge)
         #bisect.insort(n2.getNeighborIdx(p),n1Idx)
 
-    def initEdgeIds(self):
-        for i,edge in enumerate(self.edgeList):
-            edge.id = i
-
     # use only for initialisation!
     def initCrossingsForEdge(self, edge):
         for other in self.edgeList:
@@ -142,8 +138,7 @@ class Graph(object):
                     toAdd.append(idx2)
                 for idx2 in toAdd:
                     bisect.insort(ends,idx2)
-                
-                        
+                    
         return num
 #         num = 0
 #         for page in self.pages:
@@ -189,21 +184,30 @@ class Graph(object):
                 first = next(reader)
 
             first = next(reader) # skip node number
-            self.pageNumber = int(first[0])
-            for _ in range(self.pageNumber):
-                self.pages.append(Page(self, _))
+            pagenum = int(first[0])
 
-            #edges = list()
+            edges = list()
+            nodes = list()
             for row in reader:
                 if row[0][0] is '#':
                     continue
                 elif len(row) is 1:
-                    self.addNode( int(row[0]) ) 
+                    nodes.append( int(row[0]) ) 
                 else:
-                    self.addEdge( int(row[0]), int(row[1]), int(row[2][1:-1]), updateCrossings) 
-                                  
-            if updateCrossings:
-                self.initEdgeIds()
+                    edges.append( (int(row[0]), int(row[1]), int(row[2][1:-1])) ) 
+            
+            self.initFromLists(pagenum, nodes, edges, updateCrossings)
+
+                
+    def initFromLists(self, pagenum, nodelist, edgelist, updateCrossings=False):
+        self.pageNumber = pagenum
+    
+        for _ in range(self.pageNumber):
+            self.pages.append(Page(self, _))
+        for n in nodelist:
+            self.addNode( n )
+        for e in edgelist:
+            self.addEdge( e[0], e[1], e[2], updateCrossings )
     
     def write(self, filepath,normal=True):
         with open(filepath,"w") as writefile:
