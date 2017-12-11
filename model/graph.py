@@ -208,8 +208,7 @@ class Graph(object):
         for n in nodelist:
             self.addNode( n )
         for e in edgelist:
-            self.addEdge( e[0], e[1], e[2], updateCrossings)
-
+            self.addEdge( e[0], e[1], e[2], updateCrossings )
     
     def write(self, filepath,normal=True):
         with open(filepath,"w") as writefile:
