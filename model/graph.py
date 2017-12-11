@@ -2,9 +2,11 @@ import csv
 import os
 import numpy as np
 import copy
+import bisect
 from model.node import *
 from model.edge import *
 from model.page import *
+import numpy as np
 
 class Graph(object):
     def __init__(self):
@@ -18,17 +20,20 @@ class Graph(object):
 
     #only called when reading
     def addNode(self,id):
-        node = Node(self, id)
+        node = Node(self, id, self.pageNumber)
         self.nodeIdToIndex[node.id] = len(self.nodes)
         self.nodes.append(node)
 
     #only called when reading
     def addEdge(self,n1Id,n2Id,p, updateCrossings):
+        if n2Id > n1Id:
+            n1Id,n2Id=n2Id,n1Id
         edge = Edge(self, len(self.edgeList), n1Id, n2Id, p)
 
         page = self.pages[p]
-
+        
         self.edgeList.append(edge)
+        #bisect.insort(self.edgeList, edge)
         if(updateCrossings):
             self.crossings_valid = True
             self.initCrossingsForEdge(edge)
@@ -42,14 +47,14 @@ class Graph(object):
         dist = abs(n2Idx - n1Idx)
 
         n1 = self.getNodeByID(n1Id)
-        n1.neighbours[n2Id] = dist
+        n1.addNeighbor(n2Id,dist,p)
         n1.edges.add(edge)
+        #bisect.insort(n1.getNeighborIdx(p),n2Idx)
 
         n2 = self.getNodeByID(n2Id)
-        n2.neighbours[n1Id] = dist
+        n2.addNeighbor(n1Id,dist,p)
         n2.edges.add(edge)
-
-
+        #bisect.insort(n2.getNeighborIdx(p),n1Idx)
 
     # use only for initialisation!
     def initCrossingsForEdge(self, edge):
@@ -113,19 +118,33 @@ class Graph(object):
 
     def numCrossings(self):
         num = 0
-        for page in self.pages:
-            num += page.numCrossings()
-            #print("page:", page.id, "crossings:", page.numCrossings())
-
-# 
-#         numEdgelist = 0
-#         for edge in self.edgeList:
-#             page = edge.pageId
-#             numEdgelist += len(edge.perPageCrossedEdges[page])
-# 
-#         assert numEdgelist == num
-#         assert num % 2 == 0
-        return num//2
+        for p in range(self.pageNumber):
+            
+            ends = []
+            for idx,node in enumerate(self.nodes):
+                #remove "finished" edges
+                tmp = bisect.bisect(ends, idx)
+                if tmp!=0:
+                    ends = ends[tmp:]
+                indices = []
+                for nid in node.neighbours[p].keys():
+                    indices.append(self.nodeIdToIndex[nid])
+                toAdd = []
+                for idx2 in indices:
+                    if idx2 < idx:
+                        continue
+                    # how many edge ends are smaller than the current index? -> each one is a crossing
+                    num += bisect.bisect_left(ends,idx2)
+                    # add the end of the edge-end list
+                    toAdd.append(idx2)
+                for idx2 in toAdd:
+                    bisect.insort(ends,idx2)
+                    
+        return num
+#         num = 0
+#         for page in self.pages:
+#             num += page.numCrossings()
+#         return num//2
     
     def getCrossingSetForPage(self, pageid, edgeid):
         return self.edgeList[edgeid].getCrossingSetForPage(pageid)
@@ -166,26 +185,33 @@ class Graph(object):
                 first = next(reader)
 
             first = next(reader) # skip node number
-            self.pageNumber = int(first[0])
-            for _ in range(self.pageNumber):
-                self.pages.append(Page(self, _))
+            pagenum = int(first[0])
 
-            #edges = list()
+            edges = list()
+            nodes = list()
             for row in reader:
                 if row[0][0] is '#':
                     continue
                 elif len(row) is 1:
-                    self.addNode(int(row[0])) 
+                    nodes.append( int(row[0]) ) 
                 else:
-                    edge = Edge(self, len(self.edgeList), int(row[0]), int(row[1]),int(row[2][1:-1]))
-                    self.addEdge(edge.node1, edge.node2, edge.pageId, updateCrossings)
+                    edges.append( (int(row[0]), int(row[1]), int(row[2][1:-1])) ) 
+            
+            self.initFromLists(pagenum, nodes, edges, updateCrossings)
 
-            #for edge in edges:
-            #    self.addEdge(edge.node1, edge.node2, edge.pageId, updateCrossings)
-
-                #print("c", edge.id)
+                
+    def initFromLists(self, pagenum, nodelist, edgelist, updateCrossings=False):
+        self.pageNumber = pagenum
     
-    def write(self, filepath):
+        for _ in range(self.pageNumber):
+            self.pages.append(Page(self, _))
+        for n in nodelist:
+            self.addNode( n )
+        for e in edgelist:
+            self.addEdge( e[0], e[1], e[2], updateCrossings)
+
+    
+    def write(self, filepath,normal=True):
         with open(filepath,"w") as writefile:
             writefile.write("# cathegory: solved\n")
             writefile.write("# problem: no problem\n")
@@ -196,8 +222,18 @@ class Graph(object):
             for node in self.nodes:
                 writefile.write("%d\n" % node.id)
             
-            for edge in self.getEdges():
-                writefile.write("%d %d [%d]\n" % edge.toTuple())
+            if normal:
+                for edge in self.getEdges():
+                    writefile.write("%d %d [%d]\n" % edge.toTuple())
+            else:
+                for edge in self.getEdges():
+                    writefile.write("{%d}: %d %d [%d] {" % (edge.id, edge.node1, edge.node2, edge.pageId))
+                    for page, crossings in edge.perPageCrossedEdges.items():
+                        writefile.write("(%d:" %page)
+                        for crossing in crossings:
+                            writefile.write("%d " % crossing)
+                        writefile.write(") ")
+                    writefile.write("}\n")
     
     def copy(self):
         return copy.deepcopy(self)

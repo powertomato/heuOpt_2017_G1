@@ -4,22 +4,30 @@ import numpy as np
 import operator
                     
 class Node(object):
-    def __init__(self, graph, id):
+    def __init__(self, graph, id, pageNum):
         self.id = id
         self.graph = graph
-        self.neighbours = dict()
+        self.neighbours = []
+        for i in range(pageNum):
+            self.neighbours.append(dict())
+        
         self.edges = set()
+
+    def addNeighbor(self, otherId, dist, page):
+        self.neighbours[page][otherId] = dist
 
     def getNeighbours(self):
         neighbours = list()
-        for otherId, len in self.neighbours.items():
-            neighbours.append(self.graph.getNodeByID(otherId))
+        for perPageNeighbors in self.neighbours:
+            for otherId, len in perPageNeighbors.items():
+                neighbours.append(self.graph.getNodeByID(otherId))
         return neighbours
 
     def getNeighboursSorted(self):
         out = list()
-        for key, value in sorted(self.neighbours.items(), key=operator.itemgetter(1)):
-            out.append(self.graph.getNodeByID(key))
+        for perPageNeighbors in self.neighbours:
+            for key, value in sorted(perPageNeighbors.items(), key=operator.itemgetter(1)):
+                out.append(self.graph.getNodeByID(key))
 
         return out
             
@@ -34,13 +42,6 @@ class Node(object):
                 position = position-1
     
             alist[position]=currentvalue
-
-    def copy(self, graph=None):
-        if(graph==None):
-            graph = self.graph
-        new = Node(graph, self.id)
-        new.neighbours = set(self.neighbours)
-        new.neighboursMarked = set(self.neighboursMarked)
                 
     def __eq__(self, other):
         return self.id == other.id

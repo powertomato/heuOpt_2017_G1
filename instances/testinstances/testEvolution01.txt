@@ -1,0 +1,12 @@
+# category: automatic
+# problem: crossings 1; move edge (1,3)=id 4 to page 2 -> crossings should be 0
+4
+4
+0
+1
+2
+3
+0 1 [0]
+1 2 [1]
+2 3 [2]
+3 0 [3]
