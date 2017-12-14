@@ -1,4 +1,4 @@
-from solvers.evolution.Chromosome_RandKey import Chromosome_RK
+from solvers.evolution.Chromosome import Chromosome
 import numpy as np
 
 import random, bisect
@@ -12,7 +12,7 @@ class Population(object):
             self.edgeList.append( edge.toTuple() )
         self.size = size
         for i in range(size):
-            c = Chromosome_RK(self)
+            c = Chromosome(self)
             self.insertSorted( c )
             
     

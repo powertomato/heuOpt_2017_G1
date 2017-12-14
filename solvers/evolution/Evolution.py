@@ -1,5 +1,7 @@
 from solvers.evolution.Population import Population
 import random, math
+import numpy as np
+from solvers.evolution.Chromosome import *
 
 class GeneticAlgorithm:
     def __init__(self, graph, size, replacements, selectionsize, mutationsize, evaluator):
@@ -21,10 +23,12 @@ class GeneticAlgorithm:
         selection = self.select()
         children = self.recombine(selection)
         self.mutate(children)
-        self.population.specimen = self.population.specimen[:self.populationsize-self.replacements] 
+        self.population.specimen = self.population.specimen[:self.populationsize-self.replacements]
+        for s in self.population.specimen:
+            s.chType = ChType.ELITE
         for c in children:
             self.population.insertSorted(c)
-        
+
     def select(self):
         selection = []
         for i in range(self.selectionsize):
@@ -32,22 +36,31 @@ class GeneticAlgorithm:
             selection.append(i)
         return selection
     
-    def recombine(self, selection):
+    def recombine(self, selection, ratio=0.5):
         tmp = len(selection)-1
         children = []
         for i in range(self.replacements):
             s1 = random.randint(0,tmp)
             s2 = random.randint(0,tmp)
-            c = self.population.specimen[s1].recombine(self.population.specimen[s2])
+            #print("before recombine:", self.population.specimen[s1].nodegene, self.population.specimen[s2].nodegene)
+            c = self.population.specimen[s1].recombine(self.population.specimen[s2], ratio)
+            c.chType = ChType.RECOMBINED
+            #print("after recombine:", c.nodegene)
             children.append(c)
         return children
     
     def mutate(self, children):
         for i in range(self.mutationsize):    
             c = children[i]
-            for j in range( math.ceil(math.log(c.num_nodes_fac)/math.log(2)) ):
-                if random.random() < 0.05:
-                    c.nodegene = c.nodegene ^ (1 << j)
+            # TODO: better mutation for nodes
+            if random.random() < 1.0:
+                random.shuffle(c.nodegene)
+                c.chType=ChType.MUTATED
+            #for j in range( len(c.nodegene)-1):
+                #if random.random() < 0.1:
+                    #c.nodegene[j] = c.nodegene[j+1]
+                    #c.nodegene.insert(random.randint(0, len(c.nodegene)-1), c.nodegene.pop(j))
+                    #c.chType = ChType.MUTATED
                     # mutations
             for j in range(random.randint(0,len(c.edgegene)-1)):
                 if random.random() < 0.05:

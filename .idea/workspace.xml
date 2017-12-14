@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb7cb830-110f-4114-9d96-f9d82a9b2c21" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/visualization/GA_plot.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/solvers/evolution/Evolution_RandKey.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_testEvolution.py" afterPath="$PROJECT_DIR$/_testEvolution.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solvers/evolution/Evolution.py" afterPath="$PROJECT_DIR$/solvers/evolution/Evolution.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solvers/evolution/Population.py" afterPath="$PROJECT_DIR$/solvers/evolution/Population.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/solvers/evolution/Chromosome_RandKey.py" afterPath="$PROJECT_DIR$/solvers/evolution/Chromosome.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,18 +36,8 @@
       <file leaf-file-name="Chromosome.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/solvers/evolution/Chromosome.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Chromosome_RandKey.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/solvers/evolution/Chromosome_RandKey.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state relative-caret-position="493">
+              <caret line="47" column="44" lean-forward="true" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -48,23 +45,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Evolution.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/solvers/evolution/Evolution.py">
+      <file leaf-file-name="GA_plot.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/visualization/GA_plot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="39" column="38" lean-forward="false" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
+            <state relative-caret-position="288">
+              <caret line="29" column="24" lean-forward="false" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
               <folding>
-                <element signature="e#0#51#0" expanded="true" />
+                <element signature="e#0#36#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Evolution_RandKey.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/solvers/evolution/Evolution_RandKey.py">
+      <file leaf-file-name="Evolution.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/solvers/evolution/Evolution.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="31" column="56" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="56" />
+            <state relative-caret-position="-453">
+              <caret line="6" column="88" lean-forward="false" selection-start-line="6" selection-start-column="88" selection-end-line="6" selection-end-column="88" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -75,8 +72,8 @@
       <file leaf-file-name="_testEvolution.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_testEvolution.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="38" column="63" lean-forward="false" selection-start-line="38" selection-start-column="63" selection-end-line="38" selection-end-column="63" />
+            <state relative-caret-position="340">
+              <caret line="41" column="43" lean-forward="false" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -84,13 +81,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Population.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Population.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/solvers/evolution/Population.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+            <state relative-caret-position="238">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
-                <element signature="e#0#62#0" expanded="true" />
+                <element signature="e#0#51#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -118,18 +115,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ThreadRunner.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ThreadRunner.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1241">
-              <caret line="98" column="47" lean-forward="false" selection-start-line="98" selection-start-column="47" selection-end-line="98" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -141,9 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>node</find>
-      <find>graph</find>
-      <find>nodeIdx</find>
       <find>g</find>
       <find>gen</find>
       <find>gener</find>
@@ -168,9 +150,12 @@
       <find>Chromosome</find>
       <find>pr</find>
       <find>print</find>
-      <find>mutationsize</find>
       <find>selectSingleTournament</find>
       <find>replacements</find>
+      <find>numCrossings</find>
+      <find>replace</find>
+      <find>evaluator</find>
+      <find>mutationsize</find>
     </findStrings>
     <dirStrings>
       <dir>E:\UNI\WS2017\HOT\heuOpt_2017_G1</dir>
@@ -209,9 +194,11 @@
         <option value="$PROJECT_DIR$/model/edge.py" />
         <option value="$PROJECT_DIR$/model/graph.py" />
         <option value="$PROJECT_DIR$/solvers/evolution/Population.py" />
-        <option value="$PROJECT_DIR$/solvers/evolution/Evolution.py" />
-        <option value="$PROJECT_DIR$/solvers/evolution/Chromosome_RandKey.py" />
         <option value="$PROJECT_DIR$/solvers/evolution/Evolution_RandKey.py" />
+        <option value="$PROJECT_DIR$/solvers/evolution/Chromosome_RandKey.py" />
+        <option value="$PROJECT_DIR$/visualization/GA_plot.py" />
+        <option value="$PROJECT_DIR$/solvers/evolution/Chromosome.py" />
+        <option value="$PROJECT_DIR$/solvers/evolution/Evolution.py" />
         <option value="$PROJECT_DIR$/_testEvolution.py" />
       </list>
     </option>
@@ -238,9 +225,68 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heuOpt_2017_G1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heuOpt_2017_G1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heuOpt_2017_G1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heuOpt_2017_G1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visualization" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heuOpt_2017_G1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heuOpt_2017_G1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="solvers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heuOpt_2017_G1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heuOpt_2017_G1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="solvers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="evolution" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -248,6 +294,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../pypy3-v5.9.0-linux64/bin/pypy3" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\UNI\WS2017\HOT\heuOpt_2017_G1" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\UNI\WS2017\HOT\heuOpt_2017_G1\solvers\evolution" />
       <recent name="E:\UNI\WS2017\HOT\heuOpt_2017_G1" />
@@ -317,6 +366,24 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="heuOpt_2017_G1" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/_testEvolution.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="GA_plot" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/visualization" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="heuOpt_2017_G1" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/visualization/GA_plot.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -421,18 +488,20 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
-    <list size="5">
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.main_threads" />
       <item index="1" class="java.lang.String" itemvalue="Python tests.Nosetests in graphTest.py" />
       <item index="2" class="java.lang.String" itemvalue="Python._testNodeNeighborhood" />
       <item index="3" class="java.lang.String" itemvalue="Python.graphTest" />
       <item index="4" class="java.lang.String" itemvalue="Python._testEvolution" />
+      <item index="5" class="java.lang.String" itemvalue="Python.GA_plot" />
     </list>
     <recent_temporary>
-      <list size="3">
+      <list size="4">
         <item index="0" class="java.lang.String" itemvalue="Python._testEvolution" />
-        <item index="1" class="java.lang.String" itemvalue="Python._testNodeNeighborhood" />
-        <item index="2" class="java.lang.String" itemvalue="Python.graphTest" />
+        <item index="1" class="java.lang.String" itemvalue="Python.GA_plot" />
+        <item index="2" class="java.lang.String" itemvalue="Python._testNodeNeighborhood" />
+        <item index="3" class="java.lang.String" itemvalue="Python.graphTest" />
       </list>
     </recent_temporary>
   </component>
@@ -488,9 +557,10 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11354167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26504752" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284055" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20802534" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3907075" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -501,7 +571,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284055" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -516,6 +585,11 @@
           <line>88</line>
           <option name="timeStamp" value="69" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/visualization/GA_plot.py</url>
+          <line>41</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -527,12 +601,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="77" />
+      <option name="time" value="78" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/solvers/helper.py" />
     <entry file="file://$PROJECT_DIR$/model/graph.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1275">
@@ -636,13 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/solvers/neighborhoods/Neighborhood.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="69" column="25" lean-forward="false" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/solvers/construction/DepthFirstVertexOrder.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -684,7 +750,7 @@
         <state relative-caret-position="1241">
           <caret line="98" column="47" lean-forward="false" selection-start-line="98" selection-start-column="47" selection-end-line="98" selection-end-column="47" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -741,35 +807,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/solvers/evolution/Chromosome.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/solvers/evolution/Evolution.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="39" column="38" lean-forward="false" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/solvers/evolution/Chromosome_RandKey.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/solvers/evolution/Evolution_RandKey.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="31" column="56" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="56" />
@@ -779,22 +817,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/solvers/evolution/Chromosome.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solvers/neighborhoods/Neighborhood.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solvers/evolution/Population.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solvers/evolution/Chromosome.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="47" column="44" lean-forward="true" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualization/GA_plot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="29" column="24" lean-forward="false" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/_testEvolution.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="38" column="63" lean-forward="false" selection-start-line="38" selection-start-column="63" selection-end-line="38" selection-end-column="63" />
+        <state relative-caret-position="340">
+          <caret line="41" column="43" lean-forward="false" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
           <folding>
             <element signature="e#0#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/solvers/evolution/Population.py">
+    <entry file="file://$PROJECT_DIR$/solvers/evolution/Evolution.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+        <state relative-caret-position="-453">
+          <caret line="6" column="88" lean-forward="false" selection-start-line="6" selection-start-column="88" selection-end-line="6" selection-end-column="88" />
           <folding>
-            <element signature="e#0#62#0" expanded="true" />
+            <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>

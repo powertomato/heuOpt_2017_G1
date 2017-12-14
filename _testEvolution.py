@@ -4,12 +4,13 @@ from solvers.neighborhoods.EdgePageMove import EdgePageMove
 from solvers.neighborhoods.EdgePageMove import EdgePageMoveCandidate
 from solvers.neighborhoods.MoveNode import *
 
-from solvers.evolution.Chromosome_RandKey import Chromosome_RK
+from solvers.evolution.Chromosome import Chromosome
 from solvers.evolution.Population import Population
-from solvers.evolution.Evolution_RandKey import GeneticAlgorithm
+from solvers.evolution.Evolution import GeneticAlgorithm
 
 from solvers.LocalSearch.SimpleLocalSearch import SimpleLocalSearch
 from solvers.evaluators.Evaluator import Evaluator
+from visualization.GA_plot import *
 from model.graph import Graph
 import random
 import os,sys
@@ -36,16 +37,19 @@ print("----")
 
 
 
-graph.read( os.path.join(os.getcwd(), "instances", "instance-09.txt"), False )
+graph.read( os.path.join(os.getcwd(), "instances", "instance-01.txt"), False )
 print(graph.numCrossings())
-GA = GeneticAlgorithm(graph, 200, 199, 50, 150, None)
+GA = GeneticAlgorithm(graph, 100, 90, 80, 5, None)
+plot = GAPlot()
 
-for i in range(300):
+for i in range(500):
     GA.population.printPopulation(True)
     GA.doStep()
+    plot.add_specimens(i, 0, GA.population.specimen)
     print("#####")
     
 GA.population.printPopulation()
+plot.plot()
 
 # graph.read( os.path.join(os.getcwd(), "instances", "instance-01.txt"), True )
 # p = Population(graph, 100)
