@@ -4,11 +4,12 @@ import numpy as np
 from solvers.evolution.Chromosome import *
 
 class GeneticAlgorithm:
-    def __init__(self, graph, size, replacements, selectionsize, mutationsize, evaluator):
+    def __init__(self, graph, size, replacements, selectionsize, tournamentsize, mutationsize, evaluator):
         self.replacements = replacements 
         self.populationsize = size
         self.mutationsize = mutationsize
         self.selectionsize = selectionsize
+        self.tournamentsize = tournamentsize
         self.evaluator = evaluator
         assert(size>=replacements)
         assert(replacements>=mutationsize)
@@ -32,7 +33,7 @@ class GeneticAlgorithm:
     def select(self):
         selection = []
         for i in range(self.selectionsize):
-            i,s = self.population.selectSingleTournament(10)
+            i,s = self.population.selectSingleTournament(self.tournamentsize)
             selection.append(i)
         return selection
     
@@ -40,8 +41,10 @@ class GeneticAlgorithm:
         tmp = len(selection)-1
         children = []
         for i in range(self.replacements):
-            s1 = random.randint(0,tmp)
-            s2 = random.randint(0,tmp)
+            s1 = random.choice(selection)
+            s2 = random.choice(selection)
+            while s2 == s1:
+                s2 = random.choice(selection)
             #print("before recombine:", self.population.specimen[s1].nodegene, self.population.specimen[s2].nodegene)
             c = self.population.specimen[s1].recombine(self.population.specimen[s2], ratio)
             c.chType = ChType.RECOMBINED
@@ -54,7 +57,7 @@ class GeneticAlgorithm:
             c = children[i]
             # TODO: better mutation for nodes
             if random.random() < 1.0:
-                random.shuffle(c.nodegene)
+                c.nodegene = [random.random() for x in range(c.num_nodes)]
                 c.chType=ChType.MUTATED
             #for j in range( len(c.nodegene)-1):
                 #if random.random() < 0.1:
@@ -62,6 +65,4 @@ class GeneticAlgorithm:
                     #c.nodegene.insert(random.randint(0, len(c.nodegene)-1), c.nodegene.pop(j))
                     #c.chType = ChType.MUTATED
                     # mutations
-            for j in range(random.randint(0,len(c.edgegene)-1)):
-                if random.random() < 0.05:
-                    c.edgegene[random.randint(0,len(c.edgegene)-1)] = random.randint(0,c.pageNumber-1)
+            c.edgegene = [random.randint(0, c.pageNumber-1) for x in range(len(c.edgegene))]

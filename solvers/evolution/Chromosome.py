@@ -23,6 +23,8 @@ class Chromosome(object):
         else:
             self.nodegene = nodegene
 
+        self.node_phenotype = self.node_phenotype()
+
         if type(edgegene)==int and edgegene != -1:
             self.edgegene = self.ibase(edgegene, self.pageNumber, self.num_edges)
         elif edgegene == -1:
@@ -37,19 +39,36 @@ class Chromosome(object):
             
         self._num_crossings = -1
         self.graph = None
+
+    def checkIfDuplicate(self):
+        for specimen in self.population.specimen:
+            if specimen is not self and specimen.node_phenotype == self.node_phenotype and specimen.edgegene == self.edgegene:
+                return True
+        return False
          
     def recombine(self, other, ratio):
         newNodegene = self.recombineNodeGene(other, ratio)
         newEdgegene = self.recombineEdgeGene(other, ratio)
-        return Chromosome(self.population, newNodegene, newEdgegene)
+        candidate = Chromosome(self.population, newNodegene, newEdgegene)
+        i=0
+        while candidate.checkIfDuplicate():
+            newNodegene = self.recombineNodeGene(other, ratio)
+            newEdgegene = self.recombineEdgeGene(other, ratio)
+            candidate = Chromosome(self.population, newNodegene, newEdgegene)
+            i+=1
+            if(i>100):
+                break
+        return candidate
         
         
     def recombineNodeGene(self, other, ratio):
         n = round((len(self.nodegene)-1)*ratio)
-        if random.random() < ratio:
-            newNodegene = self.nodegene[:n] + other.nodegene[n:]
-        else:
-            newNodegene = other.nodegene[:n] + self.nodegene[n:]
+        newNodegene = self.nodegene[:]
+        for i in range(len(self.nodegene)):
+            rand = random.random()
+            if rand < ratio:
+                newNodegene[i] = other.nodegene[i]
+
         return newNodegene
     
     def recombineEdgeGene(self, other, ratio):
@@ -70,6 +89,9 @@ class Chromosome(object):
         indices = np.argsort(self.nodegene)
         for ind in indices:
             yield ind
+
+    def node_phenotype(self):
+        return np.argsort(self.nodegene).tolist()
 
     def edge_generator(self):
         num = self.num_edges

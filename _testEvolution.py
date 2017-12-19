@@ -37,12 +37,12 @@ print("----")
 
 
 
-graph.read( os.path.join(os.getcwd(), "instances", "instance-01.txt"), False )
+graph.read( os.path.join(os.getcwd(), "instances", "instance-04.txt"), False )
 print(graph.numCrossings())
-GA = GeneticAlgorithm(graph, 100, 90, 80, 5, None)
+GA = GeneticAlgorithm(graph, 100, 98, 100, 2, 25, None)
 plot = GAPlot()
 
-for i in range(500):
+for i in range(300):
     GA.population.printPopulation(True)
     GA.doStep()
     plot.add_specimens(i, 0, GA.population.specimen)
