@@ -82,7 +82,7 @@ USAGE
 
         #setup runs
 
-        template = ("./results/greedy_rnd/instance-01.txt ./results/vnd/instance-01.txt -s -c rnd")
+        template = ("./instances/instance-01.txt ./results/vnd/instance-01.txt -s -c rnd")
         argstrings = []
         for i in range(1, 11):
             argstrings.append(template.replace("01", str(i).zfill(2)))
@@ -108,7 +108,7 @@ USAGE
                 lock = mp.Lock()
 
                 for _ in range(1):
-                    tr1 = ThreadRunner(_*2+0, graph.copy(), best_solution, crossing_nums, ThreadRunner.N_DFS, ThreadRunner.E_GRD_RND, 1, lock, local_search=ThreadRunner.LS_VND, step=Neighborhood.NEXT, neighborhood=ThreadRunner.LS_EDGEMOVE)
+                    tr1 = ThreadRunner(_*2+0, graph.copy(), best_solution, crossing_nums, ThreadRunner.N_DFS, ThreadRunner.E_GRD_RND, 1, lock, local_search=ThreadRunner.LS_LS, step=Neighborhood.BEST, neighborhood=ThreadRunner.LS_EDGEMOVE)
                     #tr2 = ThreadRunner(_*2+1, graph.copy(), best_solution, crossing_nums, ThreadRunner.N_DFS, ThreadRunner.E_GRD, 100, lock, local_search=0, step=Neighborhood.NEXT, neighborhood=ThreadRunner.LS_EDGEMOVE)
 
                     # Start new Threads

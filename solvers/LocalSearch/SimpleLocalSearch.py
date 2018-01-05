@@ -20,6 +20,6 @@ class SimpleLocalSearch(object):
                 self.step += 1
                 x = x_prim.graphUpdate()
                 self.neighborhood.reset(x)
-        print("local search steps: %d" % self.step)
+        #print("local search steps: %d" % self.step)
         return x
                 

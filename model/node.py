@@ -16,6 +16,10 @@ class Node(object):
     def addNeighbor(self, otherId, dist, page):
         self.neighbours[page][otherId] = dist
 
+    def moveNeighbor(self, otherId, dist, oldpage, newpage):
+        del(self.neighbours[oldpage][otherId])
+        self.neighbours[newpage][otherId] = dist
+
     def getNeighbours(self):
         neighbours = list()
         for perPageNeighbors in self.neighbours:

@@ -2,6 +2,15 @@ from solvers.evolution.Population import Population
 import random, math
 import numpy as np
 from solvers.evolution.Chromosome import *
+from solvers.evaluators.Evaluator import *
+from solvers.LocalSearch.SimpleLocalSearch import SimpleLocalSearch
+from solvers.neighborhoods.EdgePageMove import EdgePageMove
+from solvers.neighborhoods.EdgePageMove import EdgePageMoveCandidate
+from solvers.neighborhoods.MoveNode import MoveNode
+from solvers.neighborhoods.MoveNode import MoveNodeCandidate
+
+
+from solvers.neighborhoods.Neighborhood import Neighborhood
 
 class GeneticAlgorithm:
     def __init__(self, graph, size, replacements, selectionsize, tournamentsize, mutationsize, evaluator):
@@ -20,7 +29,7 @@ class GeneticAlgorithm:
         while not self.evaluator.criteriaReached(x):
             self.doStep()
             
-    def doStep(self):
+    def doStep(self, doLocalSearch):
         selection = self.select()
         children = self.recombine(selection)
         self.mutate(children)
@@ -28,7 +37,21 @@ class GeneticAlgorithm:
         for s in self.population.specimen:
             s.chType = ChType.ELITE
         for c in children:
+            if doLocalSearch:
+                self.doLocalSearch(c)
             self.population.insertSorted(c)
+
+    def doLocalSearch(self, specimen):
+        evaluator = TimedEvaluator(datetime.timedelta(seconds=0.1))
+        step = Neighborhood.NEXT
+        neighborhood = EdgePageMove(step, evaluator)
+        #neighborhood = MoveNode(step, evaluator)
+
+        search = SimpleLocalSearch(neighborhood, evaluator)
+        graph = specimen.getGraph()
+        neighborhood.reset(graph, step)
+        x = search.optimize(graph)
+        specimen.edgegene = x.getPageAssignment()
 
     def select(self):
         selection = []

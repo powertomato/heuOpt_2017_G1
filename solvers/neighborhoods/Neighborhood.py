@@ -62,6 +62,7 @@ class Neighborhood(object):
     def stepNext(self, x):
         proposed = self._chooseNext()
         while proposed != None:
+            #print("proposed:", proposed.numCrossings(), "current:", x.numCrossings())
             if self.evaluator.compareStrict(proposed, x):
                 yield proposed
             proposed = self._chooseNext()

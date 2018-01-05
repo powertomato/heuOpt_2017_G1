@@ -39,12 +39,17 @@ print("----")
 
 graph.read( os.path.join(os.getcwd(), "instances", "instance-04.txt"), False )
 print(graph.numCrossings())
-GA = GeneticAlgorithm(graph, 100, 98, 100, 2, 25, None)
+GA = GeneticAlgorithm(graph, 100, 90, 100, 2, 25, None)
 plot = GAPlot()
 
-for i in range(300):
+LS_Interval = 60
+
+for i in range(200):
+    LS = False
     GA.population.printPopulation(True)
-    GA.doStep()
+    if i%LS_Interval == LS_Interval-1:
+        LS = True
+    GA.doStep(LS)
     plot.add_specimens(i, 0, GA.population.specimen)
     print("#####")
     
