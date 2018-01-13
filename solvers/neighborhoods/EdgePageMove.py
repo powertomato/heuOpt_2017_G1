@@ -1,8 +1,8 @@
 
+import random
+
 from solvers.neighborhoods.Neighborhood import Neighborhood
-import math
-import itertools, random
-from collections import Counter
+
 
 class EdgePageMoveCandidate(object):
     def __init__(self, graph, id, oldpage, newpage):

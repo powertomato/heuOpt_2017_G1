@@ -1,0 +1,6 @@
+usage: main_evolution.py [-h] [-i INPUT_FILE] [-se SEED] [-p POPULATION_SIZE]
+                         [-it ITERATIONS] [-s SELECTION_RATIO]
+                         [-t TOURNAMENT_SIZE] [-r REPLACEMENT_RATIO]
+                         [-m MUTATION_RATIO] [-mir MUT_IMM_RATIO]
+                         [-mr MUTATION_RATE] [-lst LOCAL_SEARCH_TIME]
+main_evolution.py: error: unrecognized arguments: 1 51126555550 E:/UNI/WS2017/HOT/heuOpt_2017_G1/tuning/Instances/instance-05.txt

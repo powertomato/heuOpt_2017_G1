@@ -1,19 +1,9 @@
-from solvers.neighborhoods.Neighborhood import Neighborhood
-
-from solvers.neighborhoods.MoveNode import MoveNodeCandidate
-from solvers.neighborhoods.MoveNode import MoveNode
-from solvers.LocalSearch.SimpleLocalSearch import SimpleLocalSearch
-from solvers.evaluators.Evaluator import Evaluator
-from model.graph import Graph
-import random
-import os,sys
-
-
-import tkinter as tk
+import os
 from tkinter import *
+
 from BEP_Visualizer.BEP_visualizer import View
-
-
+from model.graph import Graph
+from solvers.neighborhoods.MoveNode import MoveNodeCandidate
 
 # g1 = Graph()
 # g1.read( os.path.join(os.getcwd(), "instances", "testinstances", "testMove01.txt"), True )

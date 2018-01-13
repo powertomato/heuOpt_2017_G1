@@ -1,37 +1,11 @@
 #!/usr/bin/python3
 # encoding: utf-8
 
-import sys
-import os
-import copy
-
-from argparse import ArgumentParser
-from argparse import RawDescriptionHelpFormatter
-from model.graph import Graph
-
-from solvers.construction.DepthFirstVertexOrder import *
-from solvers.construction.GreedyLeastPage import *
-from solvers.construction.RandomEdgeAssignment import *
-from solvers.construction.RandomVertexOrder import *
-
-from solvers.evaluators.Evaluator import Evaluator
-from solvers.LocalSearch.SimpleLocalSearch import SimpleLocalSearch
-
-from solvers.neighborhoods.Neighborhood import Neighborhood
-from solvers.neighborhoods.MoveNode import MoveNodeCandidate
-from solvers.neighborhoods.MoveNode import MoveNode
-from solvers.neighborhoods.EdgePageMove import EdgePageMove
-from solvers.neighborhoods.EdgePageMove import EdgePageMoveCandidate
-
-from model.node import Node
-from model.edge import Edge
-from model.page import Page
-from solvers.LocalSearch.VariableNeighborhoodDescent import *
-from solvers.evaluators.Evaluator import *
-from ThreadRunner import *
 import multiprocessing as mp
-import numpy as np
-from multiprocessing import Process, Lock, Manager
+from multiprocessing import Lock, Manager
+
+from ThreadRunner import *
+from solvers.neighborhoods import Neighborhood
 
 try:
     import tkinter as tk

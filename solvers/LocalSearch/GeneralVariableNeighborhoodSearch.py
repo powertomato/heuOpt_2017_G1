@@ -1,9 +1,8 @@
 
-from solvers.neighborhoods.Neighborhood import Neighborhood
+from solvers.evaluators import Evaluator
+from solvers.neighborhoods import Neighborhood
 from solvers.LocalSearch.VariableNeighborhoodDescent import VND
-from solvers.evaluators.Evaluator import Evaluator
-import sys
-from model.graph import *
+
 
 class GVNS(object):
     

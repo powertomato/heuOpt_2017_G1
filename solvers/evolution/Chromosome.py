@@ -120,7 +120,10 @@ class Chromosome(object):
         r.reverse()
         r = [0]*(minlen-len(r)) + r
         return r
-        
+
+    def __deepcopy__(self, memodict={}):
+        return Chromosome(self.population, self.nodegene[:], self.edgegene[:])
+
     def __lt__(self, other):
         return self.numCrossings() < other.numCrossings()
         

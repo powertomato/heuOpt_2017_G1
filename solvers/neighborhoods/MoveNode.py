@@ -1,9 +1,8 @@
 
-from solvers.neighborhoods.Neighborhood import Neighborhood
-import math
-import itertools, random
-import copy
-from collections import Counter
+import random
+
+from solvers.neighborhoods import Neighborhood
+
 
 class MoveNodeCandidate(object):
     def __init__(self, graph, nodeIdx, target):

@@ -1,6 +1,5 @@
-from matplotlib import pyplot as plt
 import numpy as np
-import matplotlib
+from matplotlib import pyplot as plt
 from solvers.evolution.Chromosome import *
 
 class GAPlot():

@@ -1,7 +1,5 @@
 
-from solvers.neighborhoods.Neighborhood import Neighborhood
-from solvers.neighborhoods.EdgePageMove import *
-from solvers.neighborhoods.MoveNode import *
+from solvers.neighborhoods import Neighborhood
 
 
 class VND(object):

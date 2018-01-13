@@ -1,18 +1,10 @@
-from solvers.neighborhoods.Neighborhood import Neighborhood
-
-from solvers.neighborhoods.EdgePageMove import EdgePageMove
-from solvers.neighborhoods.EdgePageMove import EdgePageMoveCandidate
-from solvers.neighborhoods.MoveNode import *
-from solvers.LocalSearch.SimpleLocalSearch import SimpleLocalSearch
-from solvers.evaluators.Evaluator import Evaluator
-from model.graph import Graph
-import random
-import os,sys
-
-
-import tkinter as tk
+import os
 from tkinter import *
+
 from BEP_Visualizer.BEP_visualizer import View
+from model.graph import Graph
+from solvers.neighborhoods.EdgePageMove import EdgePageMoveCandidate
+from solvers.neighborhoods import Neighborhood
 
 # graph = Graph()
 # graph.read( os.path.join(os.getcwd(), "instances", "testinstances", "testEdge01.txt"), True )
@@ -119,9 +111,4 @@ root.bind("<Button-1>", click)
 root.deiconify()
 root.mainloop()
 
-
-import tkinter as tk
-from tkinter import *
-from BEP_Visualizer.BEP_visualizer import View
-   
 

@@ -1,24 +1,8 @@
-from solvers.neighborhoods.Neighborhood import Neighborhood
+import os
 
-from solvers.neighborhoods.EdgePageMove import EdgePageMove
-from solvers.neighborhoods.EdgePageMove import EdgePageMoveCandidate
-from solvers.neighborhoods.MoveNode import *
-
-from solvers.evolution.Chromosome import Chromosome
-from solvers.evolution.Population import Population
-from solvers.evolution.Evolution import GeneticAlgorithm
-
-from solvers.LocalSearch.SimpleLocalSearch import SimpleLocalSearch
-from solvers.evaluators.Evaluator import Evaluator
-from visualization.GA_plot import *
 from model.graph import Graph
-import random
-import os,sys
-
-
-import tkinter as tk
-from tkinter import *
-from BEP_Visualizer.BEP_visualizer import View
+from solvers.evolution.Evolution import GeneticAlgorithm
+from visualization.GA_plot import *
 
 graph = Graph()
 #graph.read( os.path.join(os.getcwd(), "instances", "testinstances", "testEvolution01.txt"), False )
@@ -39,7 +23,7 @@ print("----")
 
 graph.read( os.path.join(os.getcwd(), "instances", "instance-04.txt"), False )
 print(graph.numCrossings())
-GA = GeneticAlgorithm(graph, 100, 90, 100, 2, 25, None)
+GA = GeneticAlgorithm(graph, 100, 90, 100, 2, 25, 0.8, 0.1, 0.1, None)
 plot = GAPlot()
 
 LS_Interval = 60

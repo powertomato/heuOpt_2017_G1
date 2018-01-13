@@ -1,6 +1,3 @@
-
-from solvers.neighborhoods.Neighborhood import *
-
 class SimpleLocalSearch(object):
 
     def __init__(self, neighborhood, evaluator):

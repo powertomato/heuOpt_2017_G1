@@ -1,7 +1,9 @@
-from solvers.evolution.Chromosome import Chromosome
+import bisect
+import random
+
 import numpy as np
 
-import random, bisect
+from solvers.evolution.Chromosome import *
 
 class Population(object):
     def __init__(self, graph, size):
@@ -23,6 +25,10 @@ class Population(object):
         else:
             c = self.specimen[0]
             print("chromosome %d = (%s, %s) %d" % (0,str(np.argsort(c.nodegene)), str(c.edgegene), c.numCrossings() ) )
+
+    def bestResult(self):
+        c = self.specimen[0]
+        return c.numCrossings()
             
     def insertSorted(self, x):
         bisect.insort_left(self.specimen, x)

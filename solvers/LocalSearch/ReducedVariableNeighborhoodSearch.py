@@ -1,6 +1,6 @@
 
-from solvers.neighborhoods.Neighborhood import Neighborhood
-from solvers.LocalSearch.SimpleLocalSearch import SimpleLocalSearch
+from solvers.neighborhoods import Neighborhood
+
 
 class RVNS(object):
     

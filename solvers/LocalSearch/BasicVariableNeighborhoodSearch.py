@@ -1,7 +1,8 @@
 
-from solvers.neighborhoods.Neighborhood import Neighborhood
-from solvers.LocalSearch.SimpleLocalSearch import SimpleLocalSearch
-from solvers.evaluators.Evaluator import Evaluator
+from solvers.evaluators import *
+from solvers.neighborhoods import *
+from solvers.LocalSearch import *
+
 
 class BVNS(object):
     

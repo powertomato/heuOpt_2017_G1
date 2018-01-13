@@ -1,0 +1,10 @@
+GA args
+
+-i instance
+-p population_size
+-s selection_size
+-t tournament_size
+-r replacement_size
+-m mutation_size
+-mir mut_imm_ratio
+-mr mut_rat
