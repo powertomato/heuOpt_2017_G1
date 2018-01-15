@@ -29,6 +29,11 @@ class GAPlot():
         plt.ylim(ymin=0)
         plt.show()
 
+    def save(self, file):
+        plt.scatter(self.gen_x_axis, self.cost_y_axis, s=1, c=self.type_color, marker="o")
+        plt.ylim(ymin=0)
+        plt.savefig(file)
+
 if __name__ == "__main__":
     # Fixing random state for reproducibility
     np.random.seed(19680801)

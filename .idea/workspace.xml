@@ -2,31 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb7cb830-110f-4114-9d96-f9d82a9b2c21" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main_evolution.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/solvers/LocalSearch/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/solvers/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/solvers/construction/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/solvers/evaluators/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/solvers/evolution/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/solvers/neighborhoods/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/multi_instance_evolution.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThreadRunner.py" afterPath="$PROJECT_DIR$/ThreadRunner.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_testEdgeNeighborhood.py" afterPath="$PROJECT_DIR$/_testEdgeNeighborhood.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_testEvolution.py" afterPath="$PROJECT_DIR$/_testEvolution.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_testNodeNeighborhood.py" afterPath="$PROJECT_DIR$/_testNodeNeighborhood.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main_threads.py" afterPath="$PROJECT_DIR$/main_threads.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solvers/LocalSearch/BasicVariableNeighborhoodSearch.py" afterPath="$PROJECT_DIR$/solvers/LocalSearch/BasicVariableNeighborhoodSearch.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solvers/LocalSearch/GeneralVariableNeighborhoodSearch.py" afterPath="$PROJECT_DIR$/solvers/LocalSearch/GeneralVariableNeighborhoodSearch.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solvers/LocalSearch/ReducedVariableNeighborhoodSearch.py" afterPath="$PROJECT_DIR$/solvers/LocalSearch/ReducedVariableNeighborhoodSearch.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solvers/LocalSearch/SimpleLocalSearch.py" afterPath="$PROJECT_DIR$/solvers/LocalSearch/SimpleLocalSearch.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solvers/LocalSearch/VariableNeighborhoodDescent.py" afterPath="$PROJECT_DIR$/solvers/LocalSearch/VariableNeighborhoodDescent.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solvers/evolution/Chromosome.py" afterPath="$PROJECT_DIR$/solvers/evolution/Chromosome.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solvers/evolution/Evolution.py" afterPath="$PROJECT_DIR$/solvers/evolution/Evolution.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solvers/evolution/Population.py" afterPath="$PROJECT_DIR$/solvers/evolution/Population.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solvers/neighborhoods/EdgePageMove.py" afterPath="$PROJECT_DIR$/solvers/neighborhoods/EdgePageMove.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solvers/neighborhoods/MoveNode.py" afterPath="$PROJECT_DIR$/solvers/neighborhoods/MoveNode.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visualization/GA_plot.py" afterPath="$PROJECT_DIR$/visualization/GA_plot.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,8 +19,8 @@
       <file leaf-file-name="Evolution.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/solvers/evolution/Evolution.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+            <state relative-caret-position="281">
+              <caret line="65" column="41" lean-forward="false" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -85,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main_evolution.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main_evolution.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_evolution.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="72" column="9" lean-forward="false" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
+            <state relative-caret-position="536">
+              <caret line="68" column="19" lean-forward="false" selection-start-line="68" selection-start-column="19" selection-end-line="68" selection-end-column="19" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -97,11 +74,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="multi_instance_evolution.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/multi_instance_evolution.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="GA_plot.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualization/GA_plot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="42" lean-forward="false" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
+            <state relative-caret-position="578">
+              <caret line="34" column="24" lean-forward="false" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -112,7 +99,7 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
+            <state relative-caret-position="697">
               <caret line="50" column="8" lean-forward="false" selection-start-line="50" selection-start-column="8" selection-end-line="51" selection-end-column="116" />
               <folding />
             </state>
@@ -132,21 +119,11 @@
       <file leaf-file-name="BasicVariableNeighborhoodSearch.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/solvers/LocalSearch/BasicVariableNeighborhoodSearch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="85">
               <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
               <folding>
                 <element signature="e#1#33#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EdgePageMove.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/solvers/neighborhoods/EdgePageMove.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -240,15 +217,17 @@
         <option value="$PROJECT_DIR$/solvers/evolution/Population.py" />
         <option value="$PROJECT_DIR$/solvers/LocalSearch/BasicVariableNeighborhoodSearch.py" />
         <option value="$PROJECT_DIR$/solvers/evolution/Evolution.py" />
-        <option value="$PROJECT_DIR$/visualization/GA_plot.py" />
         <option value="$PROJECT_DIR$/main_evolution.py" />
+        <option value="$PROJECT_DIR$/visualization/GA_plot.py" />
+        <option value="$PROJECT_DIR$/multi_instance_evolution.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="960" />
-    <option name="width" value="960" />
-    <option name="height" value="1040" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -435,16 +414,16 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../pypy3-v5.9.0-linux64/bin/pypy3" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\UNI\WS2017\HOT\heuOpt_2017_G1\solvers\evolution" />
-      <recent name="E:\UNI\WS2017\HOT\heuOpt_2017_G1" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\UNI\WS2017\HOT\heuOpt_2017_G1" />
       <recent name="E:\UNI\WS2017\HOT\heuOpt_2017_G1\solvers" />
       <recent name="E:\UNI\WS2017\HOT\heuOpt_2017_G1\model" />
       <recent name="E:\UNI\WS2017\HOT\heuOpt_2017_G1\solvers\construction" />
       <recent name="E:\UNI\WS2017\HOT\heuOpt_2017_G1\solvers\evaluators" />
-      <recent name="E:\UNI\WS2017\HOT\heuOpt_2017_G1\solvers\neighborhoods" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\UNI\WS2017\HOT\heuOpt_2017_G1\solvers\evolution" />
+      <recent name="E:\UNI\WS2017\HOT\heuOpt_2017_G1" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -459,7 +438,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main_evolution">
+  <component name="RunManager" selected="Python.multi_instance_evolution">
     <configuration default="false" name="_testNodeNeighborhood" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -649,14 +628,33 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
-    <list size="7">
+    <configuration default="false" name="multi_instance_evolution" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="heuOpt_2017_G1" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/multi_instance_evolution.py" />
+      <option name="PARAMETERS" value="1 5 6 &quot;instance-01.txt&quot; -p 20 -s 1 -r 0.9 -t 2 -m 0.25 -mir 0.9 -mr 0.1 -ir 0" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <list size="8">
       <item index="0" class="java.lang.String" itemvalue="Python.main_threads" />
       <item index="1" class="java.lang.String" itemvalue="Python tests.Nosetests in graphTest.py" />
-      <item index="2" class="java.lang.String" itemvalue="Python._testNodeNeighborhood" />
-      <item index="3" class="java.lang.String" itemvalue="Python._testEvolution" />
-      <item index="4" class="java.lang.String" itemvalue="Python.GA_plot" />
-      <item index="5" class="java.lang.String" itemvalue="Python.main" />
-      <item index="6" class="java.lang.String" itemvalue="Python.main_evolution" />
+      <item index="2" class="java.lang.String" itemvalue="Python.multi_instance_evolution" />
+      <item index="3" class="java.lang.String" itemvalue="Python._testNodeNeighborhood" />
+      <item index="4" class="java.lang.String" itemvalue="Python._testEvolution" />
+      <item index="5" class="java.lang.String" itemvalue="Python.GA_plot" />
+      <item index="6" class="java.lang.String" itemvalue="Python.main" />
+      <item index="7" class="java.lang.String" itemvalue="Python.main_evolution" />
     </list>
     <recent_temporary>
       <list size="5">
@@ -714,14 +712,12 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="0" width="960" height="1040" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35911018" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1765625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284055" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35123524" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35058078" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -734,8 +730,29 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284055" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35058078" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1765625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284055" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38990334" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -750,7 +767,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/visualization/GA_plot.py</url>
-          <line>40</line>
+          <line>45</line>
           <option name="timeStamp" value="77" />
         </line-breakpoint>
       </breakpoints>
@@ -769,7 +786,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/instances/testinstances/testMove02.txt" />
     <entry file="file://$PROJECT_DIR$/instances/testinstances/testMove03.txt" />
     <entry file="file://$PROJECT_DIR$/BEP_Visualizer/BEP_visualizer.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -838,7 +854,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="155" column="33" lean-forward="true" selection-start-line="155" selection-start-column="33" selection-end-line="155" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -905,7 +920,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -927,7 +941,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="859">
           <caret line="107" column="22" lean-forward="false" selection-start-line="107" selection-start-column="22" selection-end-line="107" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -935,7 +948,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -943,7 +955,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -951,7 +962,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -959,7 +969,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -967,7 +976,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -975,9 +983,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#1#14#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -985,7 +990,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -993,7 +997,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1027,7 +1030,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/solvers/LocalSearch/BasicVariableNeighborhoodSearch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="85">
           <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
           <folding>
             <element signature="e#1#33#0" expanded="true" />
@@ -1045,7 +1048,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
+        <state relative-caret-position="697">
           <caret line="50" column="8" lean-forward="false" selection-start-line="50" selection-start-column="8" selection-end-line="51" selection-end-column="116" />
           <folding />
         </state>
@@ -1055,30 +1058,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/igLikeAndComment8-2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/igLikeAndComment8-1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="22" column="108" lean-forward="true" selection-start-line="22" selection-start-column="108" selection-end-line="22" selection-end-column="108" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/igLikeAndComment8-2.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/igLikeAndComment8-1.py" />
     <entry file="file://$PROJECT_DIR$/solvers/evolution/Evolution.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+        <state relative-caret-position="281">
+          <caret line="65" column="41" lean-forward="false" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -1093,23 +1081,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main_evolution.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="68" column="19" lean-forward="false" selection-start-line="68" selection-start-column="19" selection-end-line="68" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/visualization/GA_plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="42" lean-forward="false" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
+        <state relative-caret-position="578">
+          <caret line="34" column="24" lean-forward="false" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_evolution.py">
+    <entry file="file://$PROJECT_DIR$/multi_instance_evolution.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="72" column="9" lean-forward="false" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="289">
+          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
